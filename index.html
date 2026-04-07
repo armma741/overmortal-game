@@ -36,548 +36,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 .nav-btn .nav-icon{font-size:18px;display:block;margin-bottom:2px}
 .nav-btn.active{color:var(--gold)}
 .nav-btn.active::after{content:'';position:absolute;top:0;left:30%;right:30%;height:2px;background:var(--gold);border-radius:1px}
-.nav-btn:hover{color:#fbbf24}}
-
-/* Sidebar */
-.sidebar{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:98;transform:translateX(-100%);transition:.3s;overflow-y:auto}
-.sidebar.show{transform:translateX(0)}
-.sidebar-content{background:var(--card);max-width:400px;height:100%;padding:20px;overflow-y:auto}
-.sidebar-close{float:right;font-size:24px;cursor:pointer;color:var(--text);margin-bottom:20px}
-
-.sidebar h2{font-size:16px;margin:15px 0 10px;color:var(--gold)}
-.sidebar-section{margin-bottom:15px}
-.sidebar-item{padding:6px 0;font-size:12px;color:var(--text2)}
-.sidebar-item .label{display:block;color:var(--text3);font-size:10px;margin-bottom:2px}
-.sidebar-item .value{color:var(--gold);font-weight:700}
-
-/* Scrollable Content */
-.content{padding-bottom:20px}
-.section{margin-bottom:20px;padding:0 10px}
-
-/* Card Styles */
-.card{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:12px;margin-bottom:10px}
-.card-title{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:6px}
-.card-stat{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:11px;border-bottom:1px solid var(--border)}
-.card-stat:last-child{border-bottom:none}
-.card-stat .label{color:var(--text2)}
-.card-stat .value{color:var(--text);font-weight:700}
-
-/* Progress Bar */
-.progress-bar{width:100%;height:6px;background:var(--border);border-radius:3px;margin:4px 0;overflow:hidden}
-.progress-bar .fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px}
-
-/* Button Styles */
-.btn{display:inline-block;padding:6px 12px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;margin:2px;
-family:inherit}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
-.btn-secondary{background:var(--card2);color:var(--gold);border:1px solid var(--gold)}
-.btn-secondary:hover{background:var(--border)}
-.btn-success{background:linear-gradient(135deg,var(--green),#16a34a)}
-.btn-danger{background:linear-gradient(135deg,var(--red),#b91c1c)}
-.btn-group{margin:6px 0}
-.btn-group .btn{margin:2px 2px 2px 0}
-
-/* Character Card */
-.char-card{text-align:center;padding:10px}
-.char-avatar{font-size:48px;margin:10px 0}
-.char-name{font-size:14px;font-weight:700;color:var(--gold);margin:5px 0}
-.char-level{font-size:11px;color:var(--text2)}
-.char-hp{width:100%;height:8px;background:var(--border);border-radius:4px;margin:8px 0;overflow:hidden}
-.char-hp .fill{height:100%;background:linear-gradient(90deg,var(--green),#15803d);width:100%}
-
-/* Equipment Slot */
-.equipment-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}
-.equipment-slot{background:var(--card);border:1px solid var(--border);padding:6px;border-radius:6px;text-align:center;font-size:10px;color:var(--text2)}
-.equipment-slot.empty{opacity:0.5;border-style:dashed}
-.equipment-slot .icon{font-size:20px;margin:3px 0}
-.equipment-slot .name{font-size:9px;color:var(--text);margin:2px 0}
-.equipment-slot .stat{font-size:9px;color:var(--gold)}
-
-/* Skill List */
-.skill-item{background:var(--card);border-left:3px solid var(--gold);padding:8px;margin:6px 0;border-radius:4px;font-size:10px}
-.skill-item .name{color:var(--gold);font-weight:700;margin-bottom:2px}
-.skill-item .desc{color:var(--text2);font-size:9px;margin-bottom:4px}
-.skill-item .cooldown{color:var(--text3);font-size:9px}
-
-/* Quest Item */
-.quest-item{background:var(--card2);border-left:3px solid var(--cyan);padding:8px;margin:6px 0;border-radius:4px}
-.quest-item.active{border-left-color:var(--gold)}
-.quest-item .title{color:var(--gold);font-weight:700;font-size:11px;margin-bottom:4px}
-.quest-item .desc{color:var(--text2);font-size:9px;margin-bottom:4px}
-.quest-item .progress{display:flex;align-items:center;font-size:9px;color:var(--text3)}
-.quest-item .progress .bar{flex:1;height:4px;background:var(--border);border-radius:2px;margin:0 6px;overflow:hidden}
-.quest-item .progress .bar .fill{height:100%;background:var(--blue)}
-
-/* Inventory Grid */
-.inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0}
-.inv-slot{aspect-ratio:1;background:var(--card);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:.2s;position:relative}
-.inv-slot:hover{transform:translateY(-2px);border-color:var(--gold)}
-.inv-slot.empty{opacity:0.3}
-.inv-slot .badge{position:absolute;top:0;right:0;background:var(--gold);color:#000;font-size:9px;padding:1px 3px;border-radius:2px}
-
-/* Small Utils */
-.text-center{text-align:center}
-.text-gold{color:var(--gold)}
-.text-success{color:var(--green)}
-.text-danger{color:var(--red)}
-.text-info{color:var(--blue)}
-.text-small{font-size:9px}
-.text-muted{color:var(--text3)}
-.mt{margin-top:10px}
-.mb{margin-bottom:10px}
-.separator{height:1px;background:var(--border);margin:10px 0}
-.divider{text-align:center;color:var(--text3);font-size:9px;margin:6px 0}
-
-/* Animations */
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes shimmer{0%{background-position:0}100%{background-position:1000px}}
-.pulse{animation:pulse 2s infinite}
-.bounce{animation:bounce 1s infinite}
-.shimmer{animation:shimmer 2s infinite;background-size:1000px 100%}
-
-/* Stat Colors */
-.stat-hp{color:var(--red)}
-.stat-mp{color:var(--blue)}
-.stat-atk{color:var(--gold)}
-.stat-def{color:var(--green)}
-
-/* Modal */
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:200;display:none;align-items:center;justify-content:center;overflow-y:auto}
-.modal.show{display:flex}
-.modal-content{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;max-width:90%;max-height:90%;overflow-y:auto;animation:slideUp 0.3s}
-@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;border-bottom:1px solid var(--border);padding-bottom:10px}
-.modal-header h2{font-size:16px;color:var(--gold);margin:0}
-.modal-close{font-size:24px;cursor:pointer;color:var(--text)}
-.modal-body{font-size:11px;line-height:1.6;color:var(--text)}
-.modal-footer{display:flex;gap:6px;margin-top:15px;justify-content:flex-end}
-
-/* Responsive */
-@media(max-width:480px){
-  .app{max-width:100%}
-  .sidebar-content{max-width:100%}
-}
-
-/* Loading Spinner */
-.spinner{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* Tooltip */
-.tooltip{position:relative;display:inline-block;cursor:help}
-.tooltip .tooltiptext{visibility:hidden;width:150px;background-color:rgba(0,0,0,0.8);color:var(--text);text-align:center;border-radius:4px;padding:4px;position:absolute;z-index:1;bottom:125%;left:50%;margin-left:-75px;opacity:0;transition:opacity 0.3s;font-size:9px}
-.tooltip:hover .tooltiptext{visibility:visible;opacity:1}
-.tooltip .tooltiptext::after{content:'';position:absolute;top:100%;left:50%;margin-left:-5px;border-width:5px;border-style:solid;border-color:rgba(0,0,0,0.8) transparent transparent transparent}
-</style>
-</head>
-<body>
-<div class="app">
-<div class="sidebar" id="sidebar">
-<span class="sidebar-close" id="sidebarClose">x</span>
-<h2>Stats</h2>
-<div class="sidebar-section">
-<div class="sidebar-item">
-<span class="label">Level</span>
-<span class="value" id="sidebarLvl">1</span>
-</div>
-<div class="sidebar-item">
-<span class="label">Experience</span>
-<span class="value" id="sidebarExp">0</span>
-</div>
-<div class="sidebar-item">
-<span class="label">HP</span>
-<span class="value" id="sidebarHP">100/100</span>
-</div>
-<div class="sidebar-item">
-<span class="label">Attack</span>
-<span class="value" id="sidebarAtk">10</span>
-</div>
-<div class="sidebar-item">
-<span class="label">Defense</span>
-<span class="value" id="sidebarDef">5</span>
-</div>
-</div>
-<h2>Equipment</h2>
-<div class="sidebar-section" id="sidebarEquip"></div>
-</div>
-<div class="header">
-<h1>PLANT KING</h1>
-<div class="realm-badge" id="realmBadge">Realm Lv. 1</div>
-<div class="header-meta">
-<span id="toggleSidebar">STAT</span>
-<span id="toggleSettings">SET</span>
-</div>
-</div>
-<div class="resources">
-<div class="res-item">
-<div class="icon">💰</div>
-<div class="val" id="goldVal">0</div>
-<div class="label">Gold</div>
-</div>
-<div class="res-item">
-<div class="icon">💎</div>
-<div class="val" id="diamondVal">0</div>
-<div class="label">Diamond</div>
-</div>
-<div class="res-item">
-<div class="icon">⚔</div>
-<div class="val" id="honorVal">0</div>
-<div class="label">Honor</div>
-</div>
-</div>
-<div id="content" class="content"></div>
-</div>
-<div class="bottom-nav" id="bottomNav">
-<button class="nav-btn active" data-page="grow"><span class="nav-icon">🌱</span>Grow</button>
-<button class="nav-btn" data-page="farm"><span class="nav-icon">🏠</span>Farm</button>
-<button class="nav-btn" data-page="battle"><span class="nav-icon">⚔</span>Battle</button>
-<button class="nav-btn" data-page="shop"><span class="nav-icon">🏪</span>Shop</button>
-</div>
-</div>
-
-<div class="modal" id="settingsModal">
-<div class="modal-content">
-<div class="modal-header">
-<h2>Settings</h2>
-<span class="modal-close" id="settingsClose">x</span>
-</div>
-<div class="modal-body">
-<div style="margin-bottom:10px">
-<label>
-<input type="checkbox" id="autoSave" checked>
-Auto Save
-</label>
-</div>
-<div style="margin-bottom:10px">
-<label>
-<input type="checkbox" id="soundToggle" checked>
-Sound Effects
-</label>
-</div>
-<div style="margin-bottom:10px">
-Language: 
-<select id="langSelect">
-<option value="th">Thai (ไทย)</option>
-<option value="en">English</option>
-<option value="ja">Japanese</option>
-</select>
-</div>
-<div style="margin-bottom:10px">
-UI Scale: 
-<input type="range" id="uiScale" min="0.8" max="1.2" step="0.05" value="1">
-</div>
-</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" id="settingsClose2">Close</button>
-<button class="btn" id="settingsSave">Save</button>
-</div>
-</div>
-</div>
-
-<script>
-class GrowthGame {
-  constructor() {
-    this.gameState = {
-      level: 1,
-      exp: 0,
-      expMax: 100,
-      hp: 100,
-      hpMax: 100,
-      atk: 10,
-      def: 5,
-      gold: 0,
-      diamond: 0,
-      honor: 0,
-      equip: {},
-      inventory: [],
-      quests: [],
-      currentPage: 'grow',
-      plants: [],
-      farmland: [],
-      energy: 100,
-      energyMax: 100
-    };
-    
-    this.pages = {
-      grow: () => this.renderGrowPage(),
-      farm: () => this.renderFarmPage(),
-      battle: () => this.renderBattlePage(),
-      shop: () => this.renderShopPage()
-    };
-    
-    this.init();
-  }
-
-  init() {
-    this.setupEventListeners();
-    this.loadGame();
-    this.render();
-    setInterval(() => this.gameLoop(), 100);
-  }
-
-  setupEventListeners() {
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        e.target.closest('.nav-btn').classList.add('active');
-        this.gameState.currentPage = e.target.closest('.nav-btn').dataset.page;
-        this.render();
-      });
-    });
-
-    document.getElementById('toggleSidebar').addEventListener('click', () => {
-      document.getElementById('sidebar').classList.toggle('show');
-    });
-
-    document.getElementById('sidebarClose').addEventListener('click', () => {
-      document.getElementById('sidebar').classList.remove('show');
-    });
-
-    document.getElementById('toggleSettings').addEventListener('click', () => {
-      document.getElementById('settingsModal').classList.add('show');
-    });
-
-    document.getElementById('settingsClose').addEventListener('click', () => {
-      document.getElementById('settingsModal').classList.remove('show');
-    });
-    
-    document.getElementById('settingsClose2').addEventListener('click', () => {
-      document.getElementById('settingsModal').classList.remove('show');
-    });
-
-    document.getElementById('settingsSave').addEventListener('click', () => {
-      this.saveGame();
-      this.showNotification('Settings Saved!');
-      document.getElementById('settingsModal').classList.remove('show');
-    });
-  }
-
-  gameLoop() {
-    this.updateResources();
-  }
-
-  render() {
-    this.updateResources();
-    const page = this.pages[this.gameState.currentPage];
-    if (page) page.call(this);
-  }
-
-  updateResources() {
-    document.getElementById('goldVal').textContent = this.gameState.gold.toLocaleString();
-    document.getElementById('diamondVal').textContent = this.gameState.diamond.toLocaleString();
-    document.getElementById('honorVal').textContent = this.gameState.honor.toLocaleString();
-    
-    document.getElementById('sidebarLvl').textContent = this.gameState.level;
-    document.getElementById('sidebarExp').textContent = `${this.gameState.exp}/${this.gameState.expMax}`;
-    document.getElementById('sidebarHP').textContent = `${this.gameState.hp}/${this.gameState.hpMax}`;
-    document.getElementById('sidebarAtk').textContent = this.gameState.atk;
-    document.getElementById('sidebarDef').textContent = this.gameState.def;
-  }
-
-  renderGrowPage() {
-    const content = `
-      <div class="section">
-        <div class="char-card">
-          <div class="char-avatar">🌿</div>
-          <div class="char-name">Green Sprout</div>
-          <div class="char-level">Level ${this.gameState.level}</div>
-          <div class="char-hp">
-            <div class="fill" style="width: ${(this.gameState.hp/this.gameState.hpMax)*100}%"></div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <div class="card-title">Character Stats</div>
-          <div class="card-stat"><span class="label">Health</span><span class="value">${this.gameState.hp}/${this.gameState.hpMax}</span></div>
-          <div class="card-stat"><span class="label">Attack</span><span class="value">${this.gameState.atk}</span></div>
-          <div class="card-stat"><span class="label">Defense</span><span class="value">${this.gameState.def}</span></div>
-          <div class="card-stat"><span class="label">Experience</span><span class="value">${this.gameState.exp}/${this.gameState.expMax}</span></div>
-        </div>
-        
-        <div class="progress-bar">
-          <div class="fill" style="width: ${(this.gameState.exp/this.gameState.expMax)*100}%"></div>
-        </div>
-        
-        <div class="btn-group">
-          <button class="btn" onclick="game.gainExp(10)">Gain 10 EXP</button>
-          <button class="btn" onclick="game.gainGold(100)">Gain 100 Gold</button>
-        </div>
-        
-        <div class="card">
-          <div class="card-title">Equipment</div>
-          <div class="equipment-grid" id="equipGrid"></div>
-        </div>
-      </div>
-    `;
-    document.getElementById('content').innerHTML = content;
-    this.renderEquipmentGrid();
-  }
-
-  renderEquipmentGrid() {
-    const grid = document.getElementById('equipGrid');
-    const slots = ['head', 'body', 'hand', 'foot', 'ring', 'amulet'];
-    grid.innerHTML = slots.map(slot => `
-      <div class="equipment-slot ${this.gameState.equip[slot] ? '' : 'empty'}">
-        <div class="icon">⚔</div>
-        <div class="name">${slot}</div>
-        <div class="stat">${this.gameState.equip[slot] ? '+5' : '---'}</div>
-      </div>
-    `).join('');
-  }
-
-  renderFarmPage() {
-    const content = `
-      <div class="section">
-        <div class="card">
-          <div class="card-title">My Farm</div>
-          <div class="separator"></div>
-          <div style="font-size:11px;color:var(--text2);margin:10px 0">
-            Plant crops to earn gold and resources.
-          </div>
-          <div class="btn-group">
-            <button class="btn">Plant Crop</button>
-            <button class="btn btn-secondary">Harvest</button>
-            <button class="btn btn-secondary">Fertilize</button>
-          </div>
-        </div>
-        <div id="farmland"></div>
-      </div>
-    `;
-    document.getElementById('content').innerHTML = content;
-    this.renderFarmland();
-  }
-
-  renderFarmland() {
-    const farmland = document.getElementById('farmland');
-    farmland.innerHTML = `
-      <div class="card" style="padding:0;overflow:hidden">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px;background:var(--border)">
-          ${Array(9).fill(0).map((_, i) => `
-            <div style="aspect-ratio:1;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:24px">
-              🌾
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  renderBattlePage() {
-    const content = `
-      <div class="section">
-        <div class="card">
-          <div class="card-title">Battle Arena</div>
-          <div style="text-align:center;padding:20px">
-            <div style="font-size:48px;margin:10px 0">⚔</div>
-            <div style="font-size:14px;color:var(--gold);font-weight:700;margin:10px 0">Ready to Battle?</div>
-            <div style="font-size:11px;color:var(--text2);margin:10px 0">
-              Challenge monsters to gain experience and honor.
-            </div>
-            <div class="btn-group" style="margin-top:15px">
-              <button class="btn">Easy</button>
-              <button class="btn btn-success">Normal</button>
-              <button class="btn btn-danger">Hard</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    document.getElementById('content').innerHTML = content;
-  }
-
-  renderShopPage() {
-    const content = `
-      <div class="section">
-        <div class="card">
-          <div class="card-title">Shop</div>
-          <div style="font-size:11px;color:var(--text2);margin:10px 0">
-            Purchase items to boost your character.
-          </div>
-          <div class="separator"></div>
-          ${this.renderShopItems()}
-        </div>
-      </div>
-    `;
-    document.getElementById('content').innerHTML = content;
-  }
-
-  renderShopItems() {
-    const items = [
-      {name: 'Health Potion', price: 50, icon: '🧪'},
-      {name: 'Mana Potion', price: 75, icon: '💧'},
-      {name: 'Rare Scroll', price: 200, icon: '📜'},
-      {name: 'Golden Armor', price: 500, icon: '🛡'}
-    ];
-    
-    return items.map(item => `
-      <div class="card" style="background:var(--card);margin:6px 0;padding:8px;display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <div style="font-size:16px;margin-bottom:3px">${item.icon}</div>
-          <div style="font-size:11px;color:var(--text)">${item.name}</div>
-        </div>
-        <div>
-          <div style="font-size:12px;color:var(--gold);font-weight:700">${item.price}</div>
-          <button class="btn" style="padding:3px 8px;font-size:9px;margin-top:3px">Buy</button>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  gainExp(amount) {
-    this.gameState.exp += amount;
-    if (this.gameState.exp >= this.gameState.expMax) {
-      this.gameState.level++;
-      this.gameState.exp -= this.gameState.expMax;
-      this.gameState.expMax = Math.floor(this.gameState.expMax * 1.1);
-      this.gameState.hpMax += 20;
-      this.gameState.hp = this.gameState.hpMax;
-      this.gameState.atk += 2;
-      this.gameState.def += 1;
-      this.showNotification(`Level Up! Now Level ${this.gameState.level}`);
-    }
-    this.render();
-    this.saveGame();
-  }
-
-  gainGold(amount) {
-    this.gameState.gold += amount;
-    this.showNotification(`+${amount} Gold`);
-    this.render();
-    this.saveGame();
-  }
-
-  showNotification(message) {
-    const notif = document.createElement('div');
-    notif.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:10px 20px;border-radius:6px;font-weight:700;z-index:999;animation:slideDown 0.3s';
-    notif.textContent = message;
-    document.body.appendChild(notif);
-    setTimeout(() => notif.remove(), 2000);
-  }
-
-  saveGame() {
-    localStorage.setItem('gameState', JSON.stringify(this.gameState));
-  }
-
-  loadGame() {
-    const saved = localStorage.getItem('gameState');
-    if (saved) {
-      this.gameState = JSON.parse(saved);
-    }
-  }
-}
-
-let game;
-document.addEventListener('DOMContentLoaded', () => {
-  game = new GrowthGame();
-});
-
-// Add CSS animation
-const style = document.createElement('style');
-style.textContent = '@keyframes slideDown { from { transform: translateX(-50%) translateY(-20px); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }';
-document.head.appendChild(style);
-</script>
-</body>
-</html>:var(--text2)}
+.nav-btn:hover{color:var(--text2)}
 .nav-btn .badge{position:absolute;top:2px;right:calc(50% - 18px);background:var(--red);color:#fff;font-size:8px;padding:1px 4px;border-radius:6px;font-weight:700}
 
 /* Panels */
@@ -677,727 +136,738 @@ document.head.appendChild(style);
 .pvp-name{font-size:13px;font-weight:600}
 .pvp-detail{font-size:10px;color:var(--text3)}
 .pvp-fight{padding:8px 14px;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:12px;font-family:inherit;white-space:nowrap}
-.pvp-record{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin:6px 0}
-.record-item{text-align:center;padding:8px;border-radius:6px;background:var(--bg);border:1px solid var(--border);font-size:11px}
-.record-item.win{border-color:var(--green)}
-.record-item.loss{border-color:var(--red)}
+.pvp-record{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;margin-bottom:12px}
+.pvp-record .pr-val{font-size:20px;font-weight:700}.pvp-record .pr-label{font-size:10px;color:var(--text3)}
+.pvp-rank-info{text-align:center;padding:12px;margin-bottom:12px}
+.pvp-rank-tier{font-size:36px;margin-bottom:4px}
+.pvp-rank-name{font-size:16px;font-weight:700}
+.pvp-rank-pts{font-size:12px;color:var(--text3)}
 
-/* Dungeon */
-.dungeon-floor{display:flex;align-items:center;gap:8px;padding:12px;background:var(--card2);border-radius:8px;margin-bottom:6px;border-left:3px solid var(--purple)}
-.dungeon-floor.cleared{border-left-color:var(--green)}
-.dungeon-floor .floor-icon{font-size:20px}
-.dungeon-floor .floor-info{flex:1}
-.floor-name{font-size:12px;font-weight:600}
-.floor-reward{font-size:10px;color:var(--text3)}
-.dungeon-floor .floor-btn{padding:6px 12px;border:none;border-radius:6px;background:var(--purple);color:#fff;cursor:pointer;font-size:11px;font-family:inherit;font-weight:700}
+/* Sect/Guild */
+.sect-card{text-align:center;padding:20px}
+.sect-icon{font-size:48px;margin-bottom:8px}
+.sect-name{font-size:18px;font-weight:700;color:var(--gold)}
+.sect-desc{font-size:12px;color:var(--text3);margin-top:4px}
+.sect-bonus{margin-top:12px;font-size:12px;color:var(--cyan)}
+.sect-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sect-option{padding:14px;text-align:center;cursor:pointer;transition:.2s}
+.sect-option:hover{border-color:var(--gold);transform:scale(1.02)}
+.sect-option .so-icon{font-size:32px;margin-bottom:6px}
+.sect-option .so-name{font-size:13px;font-weight:600}
+.sect-option .so-bonus{font-size:10px;color:var(--cyan);margin-top:4px}
+.sect-members{margin-top:10px}
+.sect-member{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px}
+.sect-member:last-child{border:none}
+.sect-member .sm-rank{color:var(--gold);font-weight:700;width:20px}
+.sect-member .sm-role{font-size:10px;color:var(--purple);margin-left:auto}
 
-/* Tower */
-.tower-level{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.tower-btn{aspect-ratio:1;border-radius:12px;border:2px solid var(--border);background:var(--card2);cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:10px;text-align:center}
-.tower-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
-.tower-btn .level-num{font-size:16px;font-weight:700;color:var(--gold)}
-.tower-btn .level-reward{font-size:9px;color:var(--text3);margin-top:2px}
-.tower-btn.cleared{border-color:var(--green);background:rgba(34,197,94,0.08)}
+/* Idle Banner */
+.idle-banner{background:linear-gradient(135deg,rgba(168,85,247,0.12),rgba(251,191,36,0.08));border:1px solid var(--purple);border-radius:10px;padding:10px;margin:8px 0;text-align:center}
+.idle-banner .idle-label{font-size:11px;color:var(--text3)}
+.idle-banner .idle-val{font-size:18px;font-weight:700;color:var(--gold);margin-top:2px}
 
-/* Event */
-.event-banner{border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid var(--border)}
-.event-img{width:100%;height:120px;background:linear-gradient(135deg,var(--purple),var(--blue));display:flex;align-items:center;justify-content:center;font-size:48px}
-.event-info{padding:12px;background:var(--card2)}
-.event-title{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:6px}
-.event-desc{font-size:11px;color:var(--text2);margin-bottom:8px}
-.event-countdown{display:flex;justify-content:space-between;align-items:center}
-.timer{display:flex;gap:4px}
-.timer-unit{text-align:center;font-size:10px}
-.timer-num{display:block;font-size:14px;font-weight:700;color:var(--gold)}
-.timer-label{display:block;font-size:8px;color:var(--text3)}
-
-/* Achievements */
-.ach-item{display:flex;align-items:center;gap:8px;padding:8px;background:var(--card2);border-radius:8px;margin-bottom:6px;border-left:3px solid var(--text3);position:relative}
-.ach-item.unlocked{border-left-color:var(--gold)}
-.ach-item.unlocked{background:rgba(251,191,36,0.08)}
-.ach-icon{font-size:24px;flex-shrink:0}
-.ach-info{flex:1}
-.ach-name{font-size:12px;font-weight:700;color:var(--text)}
-.ach-desc{font-size:10px;color:var(--text3);margin-top:2px}
-.ach-reward{position:absolute;top:4px;right:4px;font-size:10px;color:var(--gold)}
-
-/* Notifications */
-.notification{position:fixed;top:60px;right:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;font-size:12px;color:var(--text);animation:slideIn .3s;z-index:1000;min-width:200px;max-width:300px}
-@keyframes slideIn{from{opacity:0;transform:translateX(400px)}to{opacity:1;transform:translateX(0)}}
-.notification.success{border-left:4px solid var(--green)}
-.notification.error{border-left:4px solid var(--red)}
-.notification.warning{border-left:4px solid var(--gold)}
-.notification.info{border-left:4px solid var(--blue)}
-
-/* Form Styles */
-input[type='text'],input[type='password'],input[type='email'],select,textarea{
-  width:100%;padding:8px 12px;border:1px solid var(--border);background:var(--card2);color:var(--text);border-radius:6px;font-family:inherit;font-size:12px;margin-bottom:6px;box-sizing:border-box
-}
-input[type='text']:focus,input[type='password']:focus,input[type='email']:focus,select:focus,textarea:focus{
-  outline:none;border-color:var(--gold);box-shadow:0 0 8px rgba(251,191,36,0.2)
-}
-
-/* Tabs */
-.tabs{display:flex;gap:2px;border-bottom:1px solid var(--border);margin-bottom:12px;overflow-x:auto}
-.tab{padding:10px 16px;border:none;background:transparent;color:var(--text3);cursor:pointer;font-size:12px;font-family:inherit;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s}
-.tab:hover{color:var(--text)}
-.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-
-/* Loading States */
-.skeleton{background:linear-gradient(90deg,var(--card2) 0%,var(--border) 50%,var(--card2) 100%);background-size:200% 100%;animation:load 1.5s infinite;border-radius:4px}
-@keyframes load{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.skeleton-text{height:12px;margin-bottom:6px}
-.skeleton-block{height:100px;margin-bottom:6px}
-
-/* Scrollbar */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--text3)}
-
-/* Print Styles */
-@media print{
-  .bottom-nav,.header{display:none}
-}
-</style>
-</head>
-<body>
-<div class="app-container">
-<div class="sidebar" id="sidebar">
-<div class="sidebar-header">
-<h2 class="sidebar-title">Cultivation Idle RPG</h2>
-<button class="sidebar-close" id="closeSidebar">x</button>
-</div>
-<div class="sidebar-stats" id="sidebarStats"></div>
-<div class="sidebar-equipment" id="sidebarEquip"></div>
-</div>
-<div class="main-content">
-<div class="header">
-<div class="header-left">
-<button class="menu-btn" id="menuBtn">☰</button>
-</div>
-<div class="header-center">
-<h1 class="title">CULTIVATION REALM</h1>
-</div>
-<div class="header-right">
-<button class="settings-btn" id="settingsBtn">⚙</button>
-</div>
-</div>
-<div class="resource-bar" id="resourceBar"></div>
-<div class="content-area">
-<div id="pageContent"></div>
-</div>
-<div class="bottom-nav" id="bottomNav"></div>
-</div>
-</div>
-
-<div class="modal" id="settingsModal">
-<div class="modal-content">
-<div class="modal-header">
-<h2>Settings</h2>
-<button class="modal-close" id="closeSettings">x</button>
-</div>
-<div class="modal-body">
-<label>
-<input type="checkbox" id="autoSave" checked>
-Auto Save (Every 30s)
-</label>
-<label>
-<input type="checkbox" id="soundToggle" checked>
-Sound Effects
-</label>
-<label>
-<input type="checkbox" id="particleToggle" checked>
-Particle Effects
-</label>
-<label>
-Background Music:
-<input type="range" id="musicVolume" min="0" max="100" value="50">
-</label>
-<label>
-UI Size:
-<select id="uiSize">
-<option value="0.9">Small</option>
-<option value="1.0" selected>Normal</option>
-<option value="1.1">Large</option>
-</select>
-</label>
-<label>
-Theme:
-<select id="themeSelect">
-<option value="dark">Dark</option>
-<option value="light">Light</option>
-<option value="auto">Auto</option>
-</select>
-</label>
-</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" id="resetBtn">Reset Data</button>
-<button class="btn btn-purple" id="closeSettingsBtn">Close</button>
-</div>
-</div>
-</div>
-
-<script>ar(--card2);border-radius:8px;margin-bottom:12px}
-.modal .reward-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;animation:fadeIn .3s}
+.modal{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:22px;max-width:360px;width:90%;text-align:center;animation:modalIn .4s}
+@keyframes modalIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+.modal h2{font-size:20px;color:var(--gold);margin-bottom:4px}
+.modal .modal-sub{font-size:12px;color:var(--text3);margin-bottom:12px}
+.modal .reward-list{text-align:left;padding:10px;background:var(--card2);border-radius:8px;margin-bottom:12px}
+.modal .reward-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:13px}
 .modal .reward-row:last-child{border:none}
-.modal .reward-label{font-size:12px;color:var(--text2)}
-.modal .reward-value{font-size:13px;font-weight:700;color:var(--gold)}
-.modal .modal-actions{display:flex;gap:6px;margin-top:12px}
-.modal .modal-actions .btn{flex:1}
+.modal .reward-row .rw-val{color:var(--gold);font-weight:700}
+.modal .claim-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-family:inherit}
+.modal .claim-x2{width:100%;padding:8px;border:1px solid var(--purple);border-radius:8px;font-size:12px;cursor:pointer;background:transparent;color:var(--purple);font-family:inherit;margin-top:6px}
 
-/* Screen Transitions */
-@keyframes pageTransitionIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pageTransitionOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-20px)}}
-.page{animation:pageTransitionIn 0.3s ease-out}
+/* PvP Result Modal */
+.pvp-result{font-size:40px;margin:10px 0}
+.pvp-result-text{font-size:18px;font-weight:700;margin-bottom:10px}
 
-/* Utility Classes */
-.text-center{text-align:center}
-.text-right{text-align:right}
-.mt-1{margin-top:4px}
-.mt-2{margin-top:8px}
-.mt-3{margin-top:12px}
-.mb-1{margin-bottom:4px}
-.mb-2{margin-bottom:8px}
-.mb-3{margin-bottom:12px}
-.flex{display:flex}
-.flex-center{display:flex;align-items:center;justify-content:center}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
-.gap-1{gap:4px}
-.gap-2{gap:8px}
-.gap-3{gap:12px}
-.hidden{display:none!important}
-.visible{display:block!important}
-.opacity-50{opacity:0.5}
-.opacity-75{opacity:0.75}
-.rounded{border-radius:8px}
-.rounded-lg{border-radius:12px}
-.border{border:1px solid var(--border)}
-.border-gold{border-color:var(--gold)!important}
-.bg-card{background:var(--card2)}
-.p-2{padding:8px}
-.p-3{padding:12px}
-.p-4{padding:16px}
+/* Toast */
+.toast{position:fixed;top:70px;left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--gold);color:var(--gold);padding:8px 20px;border-radius:8px;font-size:13px;z-index:1001;animation:toastIn .3s,toastOut .3s 2s forwards;pointer-events:none;white-space:nowrap}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-15px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(-50%) translateY(-15px)}}
 
-/* Responsive Design */
-@media (max-width:480px){
-  .app-container{font-size:14px}
-  .header{padding:12px 10px}
-  .title{font-size:18px}
-  .bottom-nav{font-size:9px}
-}
+.save-indicator{position:fixed;bottom:65px;right:10px;font-size:10px;color:var(--text3);z-index:50;opacity:0;transition:opacity .3s}
+.save-indicator.show{opacity:1}
 
-/* Dark Mode (default) */
-:root{
-  color-scheme:dark
-}
-
-/* Animations Library */
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
-@keyframes glow{0%,100%{filter:drop-shadow(0 0 4px transparent)}50%{filter:drop-shadow(0 0 8px rgba(251,191,36,0.5))}}
-.animate-spin{animation:spin 1s linear infinite}
-.animate-bounce{animation:bounce 1s ease-in-out infinite}
-.animate-float{animation:float 3s ease-in-out infinite}
-.animate-shake{animation:shake 0.5s ease-in-out}
-.animate-glow{animation:glow 2s ease-in-out infinite}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+@media(max-width:500px){.app{max-width:100%}.bottom-nav{max-width:100%}}
 </style>
 </head>
 <body>
-<div id="app"></div>
+
+<div class="app" id="app">
+  <div class="header">
+    <h1>ปลูกฝังเซียน</h1>
+    <div class="realm-badge" id="realmBadge">ขั้นฝึกกาย ชั้น 1</div>
+    <div class="header-meta">
+      <span id="playTimeDisplay">0น.</span> |
+      <span onclick="saveGame();toast('💾 บันทึกแล้ว!')">💾 บันทึก</span> |
+      <span onclick="resetGame()" style="color:var(--red)">รีเซ็ต</span>
+    </div>
+  </div>
+
+  <div class="resources">
+    <div class="res-item"><div class="icon">🔮</div><div class="val" id="qiRes">0</div><div class="label">พลังจิต</div></div>
+    <div class="res-item"><div class="icon">💎</div><div class="val" id="spiritStone">0</div><div class="label">หินวิญญาณ</div></div>
+    <div class="res-item"><div class="icon">⚔️</div><div class="val" id="combatPower">0</div><div class="label">พลังรับ</div></div>
+  </div>
+
+  <!-- ========== CULTIVATE ========== -->
+  <div class="panel active" id="panel-cultivate">
+    <div class="idle-banner">
+      <div class="idle-label">ผลิต Qi อัตโนมัติ</div>
+      <div class="idle-val" id="qiPerSec">+0 /วินาที</div>
+    </div>
+    <div class="cult-circle" id="cultCircle">
+      <div class="qi-text" id="qiDisplay">0</div>
+      <div class="qi-label">พลังจิต (Qi)</div>
+    </div>
+    <div style="padding:0 8px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:3px">
+        <span id="expLabel">EXP: 0</span><span id="expMax">/ 100</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="expBar" style="width:0%"></div></div>
+    </div>
+    <button class="btn btn-purple" id="meditateBtn" onclick="toggleMeditate()">🧘 เริ่มนั่งสมาธิ</button>
+    <button class="btn btn-gold" id="breakthroughBtn" onclick="tryBreakthrough()"" disabled>⚡ บุกทะลวงขั้น</button>
+    <div class="card" style="margin-top:12px">
+      <h3 id="realmTitle" style="color:var(--gold);font-size:14px;margin-bottom:4px">ขั้นฝึกกาย - ชั้น 1</h3>
+      <p id="realmDesc" style="font-size:12px;color:var(--text2);line-height:1.5">เริ่มต้นเส้นทางการฝึกฝน</p>
+    </div>
+    <div class="section-title">📊 สถานะ</div>
+    <div class="card card-sm" id="statsContainer"></div>
+  </div>
+
+  <!-- ========== COMBAT ========== -->
+  <div class="panel" id="panel-combat">
+    <div class="card" style="text-align:center">
+      <div style="font-size:11px;color:var(--text3)">ชั้นลับแดน</div>
+      <div style="font-size:22px;font-weight:700;color:var(--gold)" id="floorNum">ชั้นที่ 1</div>
+    </div>
+    <div class="card" id="battleArea">
+      <div class="enemy-display">
+        <span class="enemy-icon" id="enemyIcon">👹</span>
+        <div class="enemy-name" id="enemyName">สัตว์ป่า</div>
+        <div class="enemy-level" id="enemyLevel">Lv.1</div>
+        <div class="hp-bar"><div class="fill enemy-hp" id="enemyHPBar" style="width:100%"></div><span class="hp-text" id="enemyHPText">100/100</span></div>
+      </div>
+      <div style="text-align:center;font-size:11px;color:var(--text3);margin:6px 0">— VS —</div>
+      <div style="text-align:center;margin-bottom:6px">
+        <span style="font-size:11px;color:var(--text2)" id="playerNameCombat">ผู้ฝึกฝน</span>
+        <div class="hp-bar"><div class="fill player-hp" id="playerHPBar" style="width:100%"></div><span class="hp-text" id="playerHPText">100/100</span></div>
+      </div>
+      <div class="combat-log" id="combatLog"><div class="info">พร้อมต่อสู้...</div></div>
+    </div>
+    <button class="btn btn-red" id="fightBtn" onclick="startBattle()">⚔️ เข้าต่อสู้</button>
+  </div>
+
+  <!-- ========== PVP ARENA ========== -->
+  <div class="panel" id="panel-pvp">
+    <div class="card pvp-rank-info">
+      <div class="pvp-rank-tier" id="pvpTierIcon">🥉</div>
+      <div class="pvp-rank-name" id="pvpTierName" style="color:var(--gold)">ทองแดง</div>
+      <div class="pvp-rank-pts" id="pvpPtsText">คะแนน: 0 / 100</div>
+      <div class="progress-bar" style="margin-top:8px"><div class="progress-fill" id="pvpPtsBar" style="width:0%;background:linear-gradient(90deg,var(--cyan),var(--blue))"></div></div>
+    </div>
+    <div class="pvp-record card card-sm" id="pvpRecord">
+      <div><div class="pr-val" style="color:var(--green)" id="pvpWins">0</div><div class="pr-label">ชนะ</div></div>
+      <div><div class="pr-val" style="color:var(--red)" id="pvpLosses">0</div><div class="pr-label">แพ้</div></div>
+      <div><div class="pr-val" style="color:var(--gold)" id="pvpStreak">0</div><div class="pr-label">ชนะติด</div></div>
+    </div>
+    <div class="section-title">🏇 คู่ต่อสู้</div>
+    <div id="pvpOpponents"></div>
+    <button class="btn btn-blue" onclick="refreshPvpOpponents()" style="margin-top:4px">🔄 รีเฟรชคู่ต่อสู้</button>
+    <!-- PvP Battle Area (hidden by default) -->
+    <div class="card" id="pvpBattleArea" style="display:none;margin-top:10px">
+      <div style="display:flex;justify-content:space-around;align-items:center;margin-bottom:10px">
+        <div style="text-align:center"><div style="font-size:11px;color:var(--text2)">คุณ</div><div class="hp-bar" style="width:140px"><div class="fill player-hp" id="pvpPlayerHP" style="width:100%"></div><span class="hp-text" id="pvpPlayerHPText"></span></div></div>
+        <div style="font-size:12px;color:var(--text3)">VS</div>
+        <div style="text-align:center"><div style="font-size:11px;color:var(--text2)" id="pvpEnemyLabel">คู่ต่อสู้</div><div class="hp-bar" style="width:140px"><div class="fill enemy-hp" id="pvpEnemyHP" style="width:100%"></div><span class="hp-text" id="pvpEnemyHPText"></span></div></div>
+      </div>
+      <div class="combat-log" id="pvpCombatLog"></div>
+    </div>
+  </div>
+
+  <!-- ========== LEADERBOARD ========== -->
+  <div class="panel" id="panel-leaderboard">
+    <div class="lb-tabs">
+      <button class="lb-tab active" onclick="switchLB('power',this)">💪 พลังรบ</button>
+      <button class="lb-tab" onclick="switchLB('realm',this)">🧘 ขั้นฝึก</button>
+      <button class="lb-tab" onclick="switchLB('pvp',this)">🏆 PvP</button>
+    </div>
+    <div id="lbContent"></div>
+  </div>
+
+  <!-- ========== SECT/GUILD ========== -->
+  <div class="panel" id="panel-sect">
+    <div id="sectContent"></div>
+  </div>
+
+  <!-- ========== INVENTORY ========== -->
+  <div class="panel" id="panel-inventory">
+    <div class="card card-sm">
+      <h4 style="color:var(--gold);font-size:13px;margin-bottom:6px">🛡️ อุปกรณ์สวมใส่</h4>
+      <div class="equip-slots">
+        <div class="equip-slot"><span class="eq-icon">⚔️</span>อาวุธ<br><small id="eqWeaponName" style="color:var(--cyan)">ว่าง</small></div>
+        <div class="equip-slot"><span class="eq-icon">🛡️</span>เกราะ<br><small id="eqArmorName" style="color:var(--cyan)">ว่าง</small></div>
+        <div class="equip-slot"><span class="eq-icon">💍</span>เครื่องประดับ<br><small id="eqAccessoryName" style="color:var(--cyan)">ว่าง</small></div>
+      </div>
+    </div>
+    <div class="section-title">🎒 กระเป๋า</div>
+    <div class="inv-grid" id="invGrid"></div>
+    <p style="text-align:center;color:var(--text3);font-size:11px;margin-top:10px" id="invEmpty">กระเป๋าว่างเปล่า</p>
+  </div>
+
+  <!-- ========== SHOP ========== -->
+  <div class="panel" id="panel-shop">
+    <div class="section-title">🏪 ร้านค้าอมตะ</div>
+    <div id="shopList"></div>
+  </div>
+</div>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav" id="bottomNav">
+  <button class="nav-btn active" data-tab="cultivate"><span class="nav-icon">🧘</span>ฝึกฝน</button>
+  <button class="nav-btn" data-tab="combat"><span class="nav-icon">⚔️</span>ลับแดน</button>
+  <button class="nav-btn" data-tab="pvp"><span class="nav-icon">🏯️</span>PvP</button>
+  <button class="nav-btn" data-tab="leaderboard"><span class="nav-icon">🏆</span>อันดับ</button>
+  <button class="nav-btn" data-tab="sect"><span class="nav-icon">🏯</span>สำนัก</button>
+  <button class="nav-btn" data-tab="inventory"><span class="nav-icon">🎒</span>ของ</button>
+  <button class="nav-btn" data-tab="shop"><span class="nav-icon">🏪</span>ร้านค้า</button>
+</div>
+
+<!-- Idle Modal -->
+<div class="modal-overlay" id="idleModal" style="display:none">
+  <div class="modal">
+    <h2>🌙 ยินดีต้อนรับกลับ!</h2>
+    <div class="modal-sub">ศิษย์ได้ฝึกฝนต่อเนื่องขณะท่านจากไป</div>
+    <div style="font-size:14px;color:var(--cyan);margin-bottom:10px" id="idleTime"></div>
+    <div class="reward-list">
+      <div class="reward-row"><span>🔮 พลังจิต</span><span class="rw-val" id="idleQi">+0</span></div>
+      <div class="reward-row"><span>✨ EXP</span><span class="rw-val" id="idleExp">+0</span></div>
+      <div class="reward-row"><span>💎 หินวิญญาณ</span><span class="rw-val" id="idleStones">+0</span></div>
+    </div>
+    <button class="claim-btn" onclick="claimIdleRewards(1)">รับรางวัล</button>
+    <button class="claim-x2" onclick="claimIdleRewards(2)">🔮 รับ x2 (50 หินวิญญาณ)</button>
+  </div>
+</div>
+
+<!-- PvP Result Modal -->
+<div class="modal-overlay" id="pvpResultModal" style="display:none">
+  <div class="modal">
+    <div class="pvp-result" id="pvpResultIcon"></div>
+    <div class="pvp-result-text" id="pvpResultText"></div>
+    <div class="reward-list" id="pvpRewardList"></div>
+    <button class="claim-btn" onclick="closePvpResult()">ตกลง</button>
+  </div>
+</div>
+
+<div class="save-indicator" id="saveIndicator">💾 บันทึกแล้ว</div>
 
 <script>
-// Game State Management
-const GameState = {
-  player: {
-    name: 'Unknown Cultivator',
-    level: 1,
-    exp: 0,
-    expMax: 100,
-    hp: 100,
-    hpMax: 100,
-    mp: 50,
-    mpMax: 50,
-    atk: 10,
-    def: 5,
-    spd: 8,
-    crit: 5
-  },
-  resources: {
-    gold: 0,
-    diamond: 0,
-    honor: 0,
-    spirit: 0
-  },
-  realm: {
-    name: 'Nascent Soul',
-    level: 1,
-    cultivation: 0,
-    cultivationMax: 1000
-  },
-  skills: [],
-  equipment: {},
-  inventory: [],
-  quests: [],
-  achievements: [],
-  settings: {
-    autoSave: true,
-    sound: true,
-    particles: true,
-    theme: 'dark'
-  }
+// ==================== DATA ====================
+const REALMS=[
+  {name:'ขั้นฝึกกาย',stages:9,baseExp:100,mult:1.5,desc:'เริ่มต้นเส้นทาง ร่างกายรับรู้พลังจิตจากสวรรค์และแผ่นดิน',stats:{hp:20,atk:3,def:2,spd:1,crit:0.5}},
+  {name:'ขั้นสร้างฐาน',stages:9,baseExp:500,mult:1.6,desc:'สถาปนาฐานราก (Dantian) เก็บพลังจิตมหาศาล',stats:{hp:50,atk:8,def:5,spd:2,crit:1}},
+  {name:'ขั้นก่อแกนทอง',stages:9,baseExp:2000,mult:1.7,desc:'หลอมรวมพลังจิตเป็นแกนทอง ใช้เทคนิคขั้นสูง',stats:{hp:120,atk:20,def:12,spd:4,crit:1.5}},
+  {name:'ขั้นจิตวิญญาณ',stages:9,baseExp:8000,mult:1.8,desc:'จิตวิญญาณตื่นรู้ มองทะลุสรรพสิ่ง',stats:{hp:300,atk:50,def:30,spd:8,crit:2}},
+  {name:'ขั้นรวมดาว',stages:9,baseExp:30000,mult:2,desc:'ดึงพลังดวงดาว ข้ามพ้นขีดจำกัดมนุษย์',stats:{hp:800,atk:120,def:70,spd:15,crit:3}},
+  {name:'ขั้นอมตะ',stages:9,baseExp:100000,mult:2.5,desc:'ก้าวสู่อาณาจักรอมตะ พลังเทียบเทพเซียน!',stats:{hp:2000,atk:300,def:180,spd:30,crit:5}}
+];
+const ENEMIES_DATA=[
+  [{name:'สัตว์ป่า',icon:'🐗',hp:80,atk:8,def:2,spd:5},{name:'หมาป่า',icon:'🐺',hp:120,atk:12,def:4,spd:8}],
+  [{name:'ภูตไม้',icon:'🌳',hp:200,atk:18,def:10,spd:6},{name:'งูยักษ์',icon:'🐍',hp:250,atk:25,def:8,spd:12}],
+  [{name:'ปีศาจหิน',icon:'🗿',hp:500,atk:35,def:25,spd:8},{name:'นกอินทรีเพลิง',icon:'🦅',hp:400,atk:50,def:15,spd:20}],
+  [{name:'มังกรน้ำ',icon:'🐉',hp:1000,atk:80,def:40,spd:18},{name:'ยักษ์เหล็ก',icon:'👹',hp:1500,atk:60,def:60,spd:10}],
+  [{name:'เทพอสูร',icon:'😈',hp:3000,atk:150,def:80,spd:25},{name:'ราชามังกร',icon:'🐲',hp:5000,atk:200,def:100,spd:20}],
+  [{name:'จักรพรรดิอมตะ',icon:'👑',hp:10000,atk:400,def:200,spd:40},{name:'เทพเซียนมืด',icon:'☠️',hp:15000,atk:500,def:250,spd:35}]
+];
+const ITEMS_DB=[
+  {id:'sw1',name:'ดาบเหล็ก',icon:'🗡️',type:'weapon',rarity:'common',atk:5,desc:'+5 ATK'},
+  {id:'sw2',name:'ดาบเงิน',icon:'⚔️',type:'weapon',rarity:'uncommon',atk:15,desc:'+15 ATK'},
+  {id:'sw3',name:'ดาบมังกร',icon:'🔥',type:'weapon',rarity:'rare',atk:40,desc:'+40 ATK'},
+  {id:'sw4',name:'ดาบสวรรค์',icon:'✨',type:'weapon',rarity:'epic',atk:100,desc:'+100 ATK'},
+  {id:'sw5',name:'ดาบเซียน',icon:'🌟',type:'weapon',rarity:'legendary',atk:250,desc:'+250 ATK'},
+  {id:'ar1',name:'เสื้อผ้า',icon:'👘',type:'armor',rarity:'common',hp:30,def:3,desc:'+30 HP +3 DEF'},
+  {id:'ar2',name:'เกราะเหล็ก',icon:'🛡️',type:'armor',rarity:'uncommon',hp:80,def:10,desc:'+80 HP +10 DEF'},
+  {id:'ar3',name:'เกราะมังกร',icon:'🐉',type:'armor',rarity:'rare',hp:200,def:25,desc:'+200 HP +25 DEF'},
+  {id:'ar4',name:'จีวรทอง',icon:'👑',type:'armor',rarity:'epic',hp:500,def:60,desc:'+500 HP +60 DEF'},
+  {id:'ri1',name:'แหวนพลัง',icon:'💍',type:'accessory',rarity:'common',crit:3,spd:2,desc:'+3% Crit +2 SPD'},
+  {id:'ri2',name:'แหวนมังกร',icon:'🐲',type:'accessory',rarity:'rare',crit:8,spd:5,atk:20,desc:'+8% Crit +5 SPD +20 ATK'},
+  {id:'ri3',name:'แหวนเซียน',icon:'🌙',type:'accessory',rarity:'legendary',crit:15,spd:12,atk:50,hp:300,desc:'+15% Crit +12 SPD +50 ATK +300 HP'},
+];
+const SHOP_ITEMS=[
+  {id:'p1',name:'ยาฟื้นฟูจิต',icon:'💊',desc:'+500 Qi',cost:50,act:g=>{g.qi+=500}},
+  {id:'p2',name:'ยาเร่งฝึก',icon:'🧪',desc:'Qi/s x2 เป็นเวลา 60 วินาที',cost:200,act:g=>{g.qiBoostTimer=60}},
+  {id:'p3',name:'คัมภีร์โบราณ',icon:'📜',desc:'+500 EXP',cost:300,act:g=>{g.exp+=500}},
+  {id:'p4',name:'กล่องสมบัติ',icon:'📦',desc:'สุ่มไอเทม 1 ชิ้น',cost:150,act:g=>{const pool=ITEMS_DB;const r=Math.random();let it;if(r<0.05)it=pool.find(i=>i.rarity==='legendary');else if(r<0.15)it=pool.find(i=>i.rarity==='epic');else if(r<0.3)it=pool.find(i=>i.rarity==='rare');else if(r<0.55)it=pool.find(i=>i.rarity==='uncommon');else it=pool.find(i=>i.rarity==='common');if(it){g.inventory.push({...it,uid:Date.now()+Math.random()});toast(`🎁 ได้รับ ${it.name}!`);renderInventory()}}},
+  {id:'p5',name:'หินวิญญาณ x10',icon:'💎',desc:'แลก 1000 Qi',costType:'qi',cost:1000,act:g=>{if(g.qi>=1000){g.qi-=1000;g.spiritStones+=10;toast('แลกได้ 10 หินวิญญาณ!')}else toast('Qi ไม่พอ!')}},
+];
+
+// PvP Tier
+const PVP_TIERS=[
+  {name:'ทองแดง',icon:'🥉',min:0,max:100,color:'#d97706'},
+  {name:'เงิน',icon:'🥈',min:100,max:300,color:'#94a3b8'},
+  {name:'ทอง',icon:'🥇',min:300,max:600,color:'#fbbf24'},
+  {name:'แพลทินัม',icon:'💠',min:600,max:1000,color:'#06b6d4'},
+  {name:'เพชร',icon:'💎',min:1000,max:1500,color:'#a855f7'},
+  {name:'จักรพรรดิ',icon:'👑',min:1500,max:99999,color:'#ef4444'},
+];
+
+// Sects
+const SECTS=[
+  {id:'sword',name:'สำนักกระบี่สวรรค์',icon:'⚔️',desc:'เชี่ยวชาญดาบ สายโจมตี',bonus:{atk:15,crit:3},bonusText:'+15% ATK, +3% CRIT'},
+  {id:'shield',name:'สำนักโล่เหล็ก',icon:'🛡️',desc:'แข็งแกร่งดั่งภูเขา สายป้องกัน',bonus:{def:20,hp:10},bonusText:'+20% DEF, +10% HP'},
+  {id:'wind',name:'สำนักสายลม',icon:'🌪️',desc:'ว่องไวด้านลม สายความเร็ว',bonus:{spd:20,crit:5},bonusText:'+20% SPD, +5% CRIT'},
+  {id:'spirit',name:'สำนักจิตวิญญาณ',icon:'🔮',desc:'ฝึก Qi ขั้นเทพ สาย Idle',bonus:{qiMult:1.5,expMult:1.3},bonusText:'+50% Qi/s, +30% EXP'},
+];
+
+// NPC Names
+const NPC_NAMES=['เซียนจันทรา','มังกรเพลิง','ดาวเหนือ','จิตอสูร','เงาสายฟ้า','พายุหิมะ','ราชามืด','แสงทอง','เหล็กดำ','ลมครัว','เมฆมรณะ','ไฟนรก','น้ำค้างเหล็ก','ปลาหมึก','สายรุ้ง','จิ้งจอกเรียว','หมู่เขา','เหยี่ยวแดน','ลมเขี','มหาบ','นักหงส์แดง','กระตายทอง','เต่าหยิ่งจันทร์','ผีเสื้อขาว','อินทรีลม'];
+
+// ==================== STATE ====================
+const SAVE_KEY='overmortal_save_v3';
+let game={
+  qi:0,spiritStones:50,exp:0,realmIndex:0,stage:1,
+  baseHP:100,baseATK:10,baseDEF:5,baseSPD:10,baseCRIT:5,
+  meditating:false,qiBoostTimer:0,
+  floor:1,inBattle:false,playerHP:100,maxPlayerHP:100,
+  inventory:[],equipped:{weapon:null,armor:null,accessory:null},
+  battleInterval:null,lastSaveTime:Date.now(),totalPlayTime:0,
+  // PvP
+  pvpPoints:0,pvpWins:0,pvpLosses:0,pvpStreak:0,pvpBestStreak:0,
+  // Sect
+  sectId:null,sectJoinTime:0,
+  // Leaderboard seed
+  lbSeed:Math.floor(Math.random()*99999)
 };
+let pendingIdleRewards=null;
 
-class CultivationGame {
-  constructor() {
-    this.state = JSON.parse(JSON.stringify(GameState));
-    this.currentPage = 'home';
-    this.isGameRunning = true;
-    this.lastSave = Date.now();
-    this.saveInterval = 30000; // 30 seconds
-    this.init();
-  }
+// ==================== HELPERS ====================
+function $(id){return document.getElementById(id)}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2500)}
+function formatNum(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.floor(n).toString()}
+function seededRandom(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
 
-  init() {
-    this.loadGame();
-    this.setupEventListeners();
-    this.render();
-    this.startGameLoop();
-  }
+function getExpRequired(){const r=REALMS[game.realmIndex];return Math.floor(r.baseExp*Math.pow(r.mult,game.stage-1))}
 
-  loadGame() {
-    const saved = localStorage.getItem('cultivationGameState');
-    if (saved) {
-      try {
-        this.state = JSON.parse(saved);
-      } catch (e) {
-        console.error('Failed to load game state:', e);
-      }
-    }
-  }
-
-  saveGame() {
-    localStorage.setItem('cultivationGameState', JSON.stringify(this.state));
-    this.lastSave = Date.now();
-  }
-
-  setupEventListeners() {
-    // Menu button
-    document.addEventListener('click', (e) => {
-      if (e.target.id === 'menuBtn') {
-        const sidebar = document.getElementById('sidebar');
-        sidebar.classList.toggle('active');
-      }
-      if (e.target.id === 'closeSidebar') {
-        document.getElementById('sidebar').classList.remove('active');
-      }
-      if (e.target.id === 'settingsBtn') {
-        document.getElementById('settingsModal').classList.add('show');
-      }
-      if (e.target.id === 'closeSettings' || e.target.id === 'closeSettingsBtn') {
-        document.getElementById('settingsModal').classList.remove('show');
-      }
-    });
-  }
-
-  startGameLoop() {
-    setInterval(() => {
-      if (this.isGameRunning) {
-        this.gameLoop();
-      }
-    }, 1000);
-
-    // Auto save
-    setInterval(() => {
-      if (this.state.settings.autoSave) {
-        this.saveGame();
-      }
-    }, this.saveInterval);
-  }
-
-  gameLoop() {
-    // Update MP regeneration
-    if (this.state.player.mp < this.state.player.mpMax) {
-      this.state.player.mp += 0.5;
-    }
-    // Update cultivation
-    if (this.state.realm.cultivation < this.state.realm.cultivationMax) {
-      this.state.realm.cultivation += 0.1;
-    }
-  }
-
-  render() {
-    const app = document.getElementById('app');
-    app.innerHTML = this.renderLayout();
-    this.updateResourceBar();
-    this.attachPageEventListeners();
-  }
-
-  renderLayout() {
-    return `
-      <div class="app-container">
-        ${this.renderSidebar()}
-        <div class="main-content">
-          ${this.renderHeader()}
-          ${this.renderResourceBar()}
-          <div class="content-area">
-            ${this.renderCurrentPage()}
-          </div>
-          ${this.renderBottomNav()}
-        </div>
-      </div>
-      ${this.renderSettings()}
-    `;
-  }
-
-  renderSidebar() {
-    return `
-      <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-          <h2 class="sidebar-title">Stats</h2>
-          <button class="sidebar-close" id="closeSidebar">x</button>
-        </div>
-        <div class="sidebar-stats">
-          <div class="stat-row">
-            <span>Level</span>
-            <span class="s-val">${this.state.player.level}</span>
-          </div>
-          <div class="stat-row">
-            <span>HP</span>
-            <span class="s-val">${Math.floor(this.state.player.hp)}/${this.state.player.hpMax}</span>
-          </div>
-          <div class="stat-row">
-            <span>MP</span>
-            <span class="s-val">${Math.floor(this.state.player.mp)}/${this.state.player.mpMax}</span>
-          </div>
-          <div class="stat-row">
-            <span>ATK</span>
-            <span class="s-val">${this.state.player.atk}</span>
-          </div>
-          <div class="stat-row">
-            <span>DEF</span>
-            <span class="s-val">${this.state.player.def}</span>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderHeader() {
-    return `
-      <div class="header">
-        <div class="header-left">
-          <button class="menu-btn" id="menuBtn">☰</button>
-        </div>
-        <div class="header-center">
-          <h1 class="title">CULTIVATION REALM</h1>
-        </div>
-        <div class="header-right">
-          <button class="settings-btn" id="settingsBtn">⚙</button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderResourceBar() {
-    return `
-      <div class="resource-bar" id="resourceBar">
-        <div class="res-item">
-          <div class="res-icon">💰</div>
-          <div class="res-value">${this.state.resources.gold}</div>
-          <div class="res-label">Gold</div>
-        </div>
-        <div class="res-item">
-          <div class="res-icon">💎</div>
-          <div class="res-value">${this.state.resources.diamond}</div>
-          <div class="res-label">Diamond</div>
-        </div>
-        <div class="res-item">
-          <div class="res-icon">⭐</div>
-          <div class="res-value">${this.state.resources.spirit}</div>
-          <div class="res-label">Spirit</div>
-        </div>
-      </div>
-    `;
-  }
-
-  updateResourceBar() {
-    const bar = document.getElementById('resourceBar');
-    if (bar) {
-      const items = bar.querySelectorAll('.res-item');
-      if (items[0]) items[0].querySelector('.res-value').textContent = this.state.resources.gold;
-      if (items[1]) items[1].querySelector('.res-value').textContent = this.state.resources.diamond;
-      if (items[2]) items[2].querySelector('.res-value').textContent = this.state.resources.spirit;
-    }
-  }
-
-  renderCurrentPage() {
-    switch (this.currentPage) {
-      case 'home':
-        return this.renderHomePage();
-      case 'cultivation':
-        return this.renderCultivationPage();
-      case 'battle':
-        return this.renderBattlePage();
-      case 'inventory':
-        return this.renderInventoryPage();
-      case 'shop':
-        return this.renderShopPage();
-      default:
-        return this.renderHomePage();
-    }
-  }
-
-  renderHomePage() {
-    return `
-      <div class="page">
-        <div class="section">
-          <div class="section-title">Welcome to Cultivation Realm</div>
-          <div class="card">
-            <div class="stat-row">
-              <span>Realm</span>
-              <span class="s-val">${this.state.realm.name} Lv.${this.state.realm.level}</span>
-            </div>
-            <div class="stat-row">
-              <span>Cultivation</span>
-              <span class="s-val">${Math.floor(this.state.realm.cultivation)}/${this.state.realm.cultivationMax}</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width:${(this.state.realm.cultivation/this.state.realm.cultivationMax)*100}%"></div>
-            </div>
-            <div class="stat-row">
-              <span>Experience</span>
-              <span class="s-val">${this.state.player.exp}/${this.state.player.expMax}</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width:${(this.state.player.exp/this.state.player.expMax)*100}%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderCultivationPage() {
-    return `
-      <div class="page">
-        <div class="section">
-          <div class="cult-circle meditating">
-            <div class="qi-text">☯</div>
-            <div class="qi-label">Cultivating...</div>
-          </div>
-          <button class="btn btn-purple" onclick="game.addExperience(10)">Meditate</button>
-          <button class="btn btn-gold" onclick="game.addGold(50)">Gain Gold</button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderBattlePage() {
-    return `
-      <div class="page">
-        <div class="section">
-          <div class="enemy-display">
-            <span class="enemy-icon">👹</span>
-            <div class="enemy-name">Demonic Beast</div>
-            <div class="enemy-level">Level 5</div>
-          </div>
-          <div class="card">
-            <div class="stat-row">
-              <span>HP</span>
-              <span class="s-val">50/50</span>
-            </div>
-            <div class="hp-bar">
-              <div class="fill enemy-hp" style="width:100%"></div>
-            </div>
-          </div>
-          <button class="btn btn-red" onclick="game.battle()">Fight</button>
-        </div>
-      </div>
-    `;
-  }
-
-  renderInventoryPage() {
-    return `
-      <div class="page">
-        <div class="section">
-          <div class="section-title">Inventory</div>
-          <div class="inv-grid" id="inventoryGrid">
-            ${this.renderInventoryGrid()}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderInventoryGrid() {
-    let html = '';
-    for (let i = 0; i < 16; i++) {
-      html += `<div class="inv-slot empty"><span class="item-icon">-</span></div>`;
-    }
-    return html;
-  }
-
-  renderShopPage() {
-    return `
-      <div class="page">
-        <div class="section">
-          <div class="section-title">Heavenly Shop</div>
-          <div class="shop-item">
-            <span class="si-icon">🧪</span>
-            <div class="si-info">
-              <div class="si-name">Health Potion</div>
-              <div class="si-desc">Restore 50 HP</div>
-            </div>
-            <button class="si-btn" onclick="game.buyItem('potion', 50)">50G</button>
-          </div>
-          <div class="shop-item">
-            <span class="si-icon">⚔️</span>
-            <div class="si-info">
-              <div class="si-name">Iron Sword</div>
-              <div class="si-desc">+5 ATK</div>
-            </div>
-            <button class="si-btn" onclick="game.buyItem('sword', 200)">200G</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  renderBottomNav() {
-    const pages = [
-      { id: 'home', icon: '🏠', label: 'Home' },
-      { id: 'cultivation', icon: '☯️', label: 'Cultivation' },
-      { id: 'battle', icon: '⚔️', label: 'Battle' },
-      { id: 'inventory', icon: '🎒', label: 'Inventory' },
-      { id: 'shop', icon: '🏪', label: 'Shop' }
-    ];
-
-    return `
-      <div class="bottom-nav" id="bottomNav">
-        ${pages.map(p => `
-          <button class="nav-btn ${this.currentPage === p.id ? 'active' : ''}" onclick="game.setPage('${p.id}')">
-            <span class="nav-icon">${p.icon}</span>${p.label}
-          </button>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  renderSettings() {
-    return `
-      <div class="modal" id="settingsModal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>Settings</h2>
-            <button class="modal-close" id="closeSettings">×</button>
-          </div>
-          <div class="modal-body">
-            <label>
-              <input type="checkbox" id="autoSave" ${this.state.settings.autoSave ? 'checked' : ''}>
-              Auto Save
-            </label>
-            <label>
-              <input type="checkbox" id="soundToggle" ${this.state.settings.sound ? 'checked' : ''}>
-              Sound Effects
-            </label>
-            <label>
-              <input type="checkbox" id="particleToggle" ${this.state.settings.particles ? 'checked' : ''}>
-              Particle Effects
-            </label>
-            <label>
-              Theme:
-              <select id="themeSelect">
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-              </select>
-            </label>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="game.resetData()">Reset</button>
-            <button class="btn btn-purple" id="closeSettingsBtn">Close</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  attachPageEventListeners() {
-    // Event listeners will be attached here
-  }
-
-  setPage(page) {
-    this.currentPage = page;
-    this.render();
-  }
-
-  addExperience(amount) {
-    this.state.player.exp += amount;
-    if (this.state.player.exp >= this.state.player.expMax) {
-      this.levelUp();
-    }
-    this.render();
-    this.saveGame();
-  }
-
-  addGold(amount) {
-    this.state.resources.gold += amount;
-    this.updateResourceBar();
-    this.saveGame();
-  }
-
-  levelUp() {
-    this.state.player.level++;
-    this.state.player.exp = 0;
-    this.state.player.expMax = Math.floor(this.state.player.expMax * 1.1);
-    this.state.player.hpMax += 10;
-    this.state.player.atk += 2;
-    this.showNotification(`Level Up! You are now level ${this.state.player.level}`);
-  }
-
-  battle() {
-    const damage = Math.floor(Math.random() * 10) + 5;
-    this.addExperience(20);
-    this.addGold(30);
-    this.showNotification(`Victory! Gained 20 EXP and 30 Gold`);
-  }
-
-  buyItem(item, price) {
-    if (this.state.resources.gold >= price) {
-      this.state.resources.gold -= price;
-      this.showNotification(`Purchased ${item}!`);
-      this.updateResourceBar();
-      this.saveGame();
-    } else {
-      this.showNotification('Not enough gold!');
-    }
-  }
-
-  resetData() {
-    if (confirm('Are you sure? This will reset all progress!')) {
-      localStorage.removeItem('cultivationGameState');
-      this.state = JSON.parse(JSON.stringify(GameState));
-      this.render();
-      this.showNotification('Data reset!');
-    }
-  }
-
-  showNotification(message) {
-    const notif = document.createElement('div');
-    notif.className = 'notification success';
-    notif.textContent = message;
-    document.body.appendChild(notif);
-    setTimeout(() => notif.remove(), 3000);
-  }
+function getTotalStats(){
+  let s={hp:game.baseHP,atk:game.baseATK,def:game.baseDEF,spd:game.baseSPD,crit:game.baseCRIT};
+  for(let i=0;i<=game.realmIndex;i++){const r=REALMS[i];const stg=i<game.realmIndex?r.stages:game.stage-1;for(let j=0;j<stg;j++){s.hp+=r.stats.hp;s.atk+=r.stats.atk;s.def+=r.stats.def;s.spd+=r.stats.spd;s.crit+=r.stats.crit}}
+  ['weapon','armor','accessory'].forEach(sl=>{const it=game.equipped[sl];if(it){if(it.hp)s.hp+=it.hp;if(it.atk)s.atk+=it.atk;if(it.def)s.def+=it.def;if(it.spd)s.spd+=it.spd;if(it.crit)s.crit+=it.crit}});
+  // Sect bonus
+  if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus){
+    if(sect.bonus.atk)s.atk=Math.floor(s.atk*(1+sect.bonus.atk/100));
+    if(sect.bonus.def)s.def=Math.floor(s.def*(1+sect.bonus.def/100));
+    if(sect.bonus.hp)s.hp=Math.floor(s.hp*(1+sect.bonus.hp/100));
+    if(sect.bonus.spd)s.spd=Math.floor(s.spd*(1+sect.bonus.spd/100));
+    if(sect.bonus.crit)s.crit+=sect.bonus.crit;
+  }}
+  return s;
+}
+function getCombatPower(){const s=getTotalStats();return Math.floor(s.hp*0.5+s.atk*3+s.def*2+s.spd*1.5+s.crit*5)}
+function getQiPerSec(){
+  let base=1+(game.realmIndex*5)+(game.stage*0.5);
+  if(game.meditating)base*=3;
+  if(game.qiBoostTimer>0)base*=2;
+  if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.qiMult)base*=sect.bonus.qiMult}
+  return Math.floor(base*10)/10;
 }
 
-// Initialize game
-let game;
-document.addEventListener('DOMContentLoaded', () => {
-  game = new CultivationGame();
+// ==================== SAVE/LOAD ====================
+function saveGame(){
+  const d={qi:game.qi,spiritStones:game.spiritStones,exp:game.exp,realmIndex:game.realmIndex,stage:game.stage,baseHP:game.baseHP,baseATK:game.baseATK,baseDEF:game.baseDEF,baseSPD:game.baseSPD,baseCRIT:game.baseCRIT,meditating:game.meditating,floor:game.floor,inventory:game.inventory,equipped:game.equipped,lastSaveTime:Date.now(),totalPlayTime:game.totalPlayTime,pvpPoints:game.pvpPoints,pvpWins:game.pvpWins,pvpLosses:game.pvpLosses,pvpStreak:game.pvpStreak,pvpBestStreak:game.pvpBestStreak,sectId:game.sectId,sectJoinTime:game.sectJoinTime,lbSeed:game.lbSeed};
+  try{localStorage.setItem(SAVE_KEY,JSON.stringify(d));$('saveIndicator').classList.add('show');setTimeout(()=>$('saveIndicator').classList.remove('show'),1200)}catch(e){}
+}
+function loadGame(){
+  try{
+    const raw=localStorage.getItem(SAVE_KEY);if(!raw)return false;const d=JSON.parse(raw);
+    Object.keys(d).forEach(k=>{if(k in game)game[k]=d[k]});
+    const elapsed=(Date.now()-(d.lastSaveTime||Date.now()))/1000;
+    const idleSec=Math.min(elapsed,43200);
+    if(idleSec>=60){
+      const qiR=1+(game.realmIndex*5)+(game.stage*0.5);
+      const idleQi=Math.floor(qiR*idleSec*0.5);
+      const idleExp=Math.floor((0.5+game.realmIndex*0.3+game.stage*0.1)*idleSec*0.3);
+      const idleStones=Math.floor(idleSec/600)*(1+Math.floor(game.floor/5));
+      pendingIdleRewards={qi:idleQi,exp:idleExp,stones:idleStones,seconds:idleSec};
+      showIdleModal();
+    }
+    if(game.meditating){$('meditateBtn').textContent='🧘 หยุดนั่งสมาธิ';$('meditateBtn').classList.add('active');$('cultCircle').classList.add('meditating')}
+    return true;
+  }catch(e){return false}
+}
+function showIdleModal(){
+  if(!pendingIdleRewards)return;const r=pendingIdleRewards;
+  const h=Math.floor(r.seconds/3600),m=Math.floor((r.seconds%3600)/60);
+  $('idleTime').textContent=`ห่างไป: ${h>0?h+'ชม. ':''}${m}น.`;
+  $('idleQi').textContent=`+${formatNum(r.qi)}`;$('idleExp').textContent=`+${formatNum(r.exp)}`;$('idleStones').textContent=`+${formatNum(r.stones)}`;
+  $('idleModal').style.display='flex';
+}
+function claimIdleRewards(mult){
+  if(!pendingIdleRewards)return;
+  if(mult===2&&game.spiritStones<50){toast('หินวิญญาณไม่พอ!');return}
+  if(mult===2)game.spiritStones-=50;
+  const r=pendingIdleRewards;game.qi+=r.qi*mult;game.exp+=r.exp*mult;game.spiritStones+=r.stones*mult;
+  pendingIdleRewards=null;$('idleModal').style.display='none';
+  toast(mult===2?'🎉 รับรางวัล x2!':'🎉 รับรางวัลแล้ว!');updateUI();
+}
+function resetGame(){if(confirm('รีเซ็ตเกมทั้งหมด?')){localStorage.removeItem(SAVE_KEY);location.reload()}}
+
+// ==================== UI ====================
+function updateUI(){
+  const stats=getTotalStats(),expReq=getExpRequired(),realm=REALMS[game.realmIndex],qps=getQiPerSec();
+  $('qiRes').textContent=formatNum(game.qi);$('spiritStone').textContent=formatNum(game.spiritStones);$('combatPower').textContent=formatNum(getCombatPower());
+  $('qiDisplay').textContent=formatNum(game.qi);$('qiPerSec').textContent=`+${formatNum(qps)} /วิ`;
+  $('expLabel').textContent=`EXP: ${formatNum(game.exp)}`;$('expMax').textContent=`/ ${formatNum(expReq)}`;
+  $('expBar').style.width=Math.min(100,game.exp/expReq*100)+'%';
+  $('realmBadge').textContent=`${realm.name} ชั้น ${game.stage}`;
+  $('realmTitle').textContent=`${realm.name} - ชั้น ${game.stage}`;$('realmDesc').textContent=realm.desc;
+  $('floorNum').textContent=`ชั้นที่ ${game.floor}`;
+  // Stats
+  $('statsContainer').innerHTML=[['พลังชีวิต (HP)',Math.floor(stats.hp)],['โจมตี (ATK)',Math.floor(stats.atk)],['ป้องกัน (DEF)',Math.floor(stats.def)],['ความเร็ว (SPD)',Math.floor(stats.spd)],['คริ (%)',stats.crit.toFixed(1)+'%']].map(([n,v])=>`<div class="stat-row"><span>${n}</span><span class="s-val">${v}</span></div>`).join('');
+  // Breakthrough
+  const canBr=game.exp>=expReq;$('breakthroughBtn').disabled=!canBr;
+  $('breakthroughBtn').textContent=canBr?'⚡ บุกทะลวงขั้น (พร้อม!)':'⚡ บุกทะลวงขั้น';
+  game.maxPlayerHP=stats.hp;
+  updateEquipDisplay();
+  // PvP
+  updatePvpUI();
+  // Playtime
+  const tm=Math.floor(game.totalPlayTime/60),th=Math.floor(tm/60);
+  $('playTimeDisplay').textContent=th>0?`${th}ชม.${tm%60}น.`:`${tm}น.`;
+}
+
+// ==================== NAVIGATION ====================
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    $('panel-'+btn.dataset.tab).classList.add('active');
+    if(btn.dataset.tab==='leaderboard')renderLeaderboard();
+    if(btn.dataset.tab==='sect')renderSect();
+    if(btn.dataset.tab==='pvp')refreshPvpOpponents();
+  });
 });
+
+// ==================== CULTIVATION ====================
+function toggleMeditate(){
+  game.meditating=!game.meditating;
+  const btn=$('meditateBtn'),c=$('cultCircle');
+  if(game.meditating){btn.textContent='🧘 หยุดนั่งสมาธิ';btn.classList.add('active');c.classList.add('meditating')}
+  else{btn.textContent='🧘 เริ่มนั่งสมาธิ';btn.classList.remove('active');c.classList.remove('meditating')}
+}
+function tryBreakthrough(){
+  const expReq=getExpRequired();if(game.exp<expReq)return;game.exp-=expReq;
+  let chance=0.7+game.stage*-0.03;if(game.stage>=REALMS[game.realmIndex].stages)chance-=0.1;chance=Math.max(0.2,Math.min(0.95,chance));
+  if(Math.random()<chance){
+    if(game.stage>=REALMS[game.realmIndex].stages){
+      if(game.realmIndex<REALMS.length-1){game.realmIndex++;game.stage=1;toast(`🎉 ก้าวเข้าสู่ ${REALMS[game.realmIndex].name}!`)}
+      else toast('🏆 บรรลุขั้นสูงสุด!')
+    }else{game.stage++;toast(`✨ บุกทะลวงสำเร็จ! ชั้น ${game.stage}`)}
+  }else{toast('💥 บุกทะลวงล้มเหลว!');game.exp=Math.floor(game.exp*0.5)}
+  updateUI();
+}
+
+// ==================== COMBAT ====================
+let currentEnemy=null;
+function getEnemyForFloor(f){
+  const ti=Math.min(Math.floor((f-1)/5),ENEMIES_DATA.length-1),pool=ENEMIES_DATA[ti];
+  const b=pool[Math.floor(Math.random()*pool.length)],m=1+((f-1)*0.3);
+  return{...b,hp:Math.floor(b.hp*m),maxHP:Math.floor(b.hp*m),atk:Math.floor(b.atk*m),def:Math.floor(b.def*m),spd:Math.floor(b.spd*m),level:f};
+}
+function startBattle(){
+  if(game.inBattle)return;game.inBattle=true;$('fightBtn').disabled=true;$('fightBtn').textContent='⚔️ กำลังต่อสู้...';$('combatLog').innerHTML='';
+  const s=getTotalStats();game.playerHP=s.hp;game.maxPlayerHP=s.hp;currentEnemy=getEnemyForFloor(game.floor);
+  $('enemyIcon').textContent=currentEnemy.icon;$('enemyName').textContent=currentEnemy.name;$('enemyLevel').textContent=`Lv.${currentEnemy.level}`;
+  updateBattleHP();
+  game.battleInterval=setInterval(()=>{
+    if(!game.inBattle)return clearInterval(game.battleInterval);
+    const pf=s.spd>=currentEnemy.spd;
+    if(pf){if(pAtk(s))return;if(eAtk(s))return}else{if(eAtk(s))return;if(pAtk(s))return}
+    updateBattleHP();
+  },700);
+}
+function pAtk(s){
+  let d=Math.max(1,s.atk-currentEnemy.def*0.5),cr=Math.random()*100<s.crit;if(cr)d*=2;d=Math.floor(d*(0.9+Math.random()*0.2));
+  currentEnemy.hp-=d;logC(cr?`💥 คริ! ${d} dmg`:`⚔️ โจมตี ${d} dmg`,cr?'crit':'dmg','combatLog');
+  if(currentEnemy.hp<=0){currentEnemy.hp=0;updateBattleHP();endBattle(true);return true}return false;
+}
+function eAtk(s){
+  let d=Math.max(1,currentEnemy.atk-s.def*0.5);d=Math.floor(d*(0.9+Math.random()*0.2));
+  game.playerHP-=d;logC(`👹 ${currentEnemy.name} ${d} dmg`,'dmg','combatLog');
+  if(game.playerHP<=0){game.playerHP=0;updateBattleHP();endBattle(false);return true}return false;
+}
+function endBattle(won){
+  clearInterval(game.battleInterval);game.inBattle=false;$('fightBtn').disabled=false;
+  if(won){
+    const xp=Math.floor(30*game.floor*(1+game.realmIndex*0.5)),st=Math.floor(5+game.floor*2),qi=Math.floor(50*game.floor);
+    let sectMult=1;if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)sectMult=sect.bonus.expMult}
+    game.exp+=Math.floor(xp*sectMult);game.spiritStones+=st;game.qi+=qi;game.floor++;
+    logC(`🎉 ชนะ! +${xp} EXP +${st}💎 +${qi} Qi`,'info','combatLog');
+    if(Math.random()<0.3){const it=dropItem();if(it){logC(`🎁 ดรอป: ${it.name}!`,'info','combatLog');toast(`🎁 ${it.name}!`)}}
+    $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
+  }else{logC('💀 พ่ายแพ้!','dmg','combatLog');$('fightBtn').textContent='⚔️ ลองอีกครั้ง'}
+  updateUI();
+}
+function dropItem(){
+  const r=Math.random();let pool;
+  if(r<0.03)pool=ITEMS_DB.filter(i=>i.rarity==='legendary');else if(r<0.1)pool=ITEMS_DB.filter(i=>i.rarity==='epic');
+  else if(r<0.25)pool=ITEMS_DB.filter(i=>i.rarity==='rare');else if(r<0.5)pool=ITEMS_DB.filter(i=>i.rarity==='uncommon');
+  else pool=ITEMS_DB.filter(i=>i.rarity==='common');
+  if(!pool.length)return null;const it={...pool[Math.floor(Math.random()*pool.length)],uid:Date.now()+Math.random()};
+  game.inventory.push(it);renderInventory();return it;
+}
+function updateBattleHP(){
+  const ep=currentEnemy?Math.max(0,currentEnemy.hp/currentEnemy.maxHP*100):100;
+  $('enemyHPBar').style.width=ep+'%';$('enemyHPText').textContent=currentEnemy?`${Math.max(0,Math.floor(currentEnemy.hp))}/${currentEnemy.maxHP}`:'';
+  $('playerHPBar').style.width=Math.max(0,game.playerHP/game.maxPlayerHP*100)+'%';
+  $('playerHPText').textContent=`${Math.max(0,Math.floor(game.playerHP))}/${Math.floor(game.maxPlayerHP)}`;
+}
+function logC(msg,type,logId){const l=$(logId),d=document.createElement('div');d.className=type;d.textContent=msg;l.appendChild(d);l.scrollTop=l.scrollHeight}
+
+// ==================== PVP ARENA ====================
+let pvpOpponents=[];
+function generateNPC(powerRange){
+  const rng=seededRandom(Date.now()+Math.random()*99999);
+  const ri=Math.floor(rng()*REALMS.length);
+  const st=Math.floor(rng()*REALMS[ri].stages)+1;
+  const name=NPC_NAMES[Math.floor(rng()*NPC_NAMES.length)];
+  let basePow=0;for(let i=0;i<=ri;i++){const r=REALMS[i];const s2=i<ri?r.stages:st-1;basePow+=(r.stats.hp*0.5+r.stats.atk*3+r.stats.def*2+r.stats.spd*1.5+r.stats.crit*5)*s2}
+  basePow+=100*0.5+10*3+5*2+10*1.5+5*5;
+  const variance=0.7+rng()*0.6;basePow=Math.floor(basePow*variance);
+  // Generate stats from power
+  const atk=Math.floor(basePow*0.25),def=Math.floor(basePow*0.12),hp=Math.floor(basePow*0.8),spd=Math.floor(basePow*0.08),crit=5+ri*2+st;
+  return{name,realmIndex:ri,stage:st,power:basePow,hp,atk,def,spd,crit,
+    realmName:`${REALMS[ri].name} ชั้น ${st}`,
+    avatar:['🧑‍🦱','👩‍🦰','🧑‍🦳','👨‍🦱','🧔','👩','👨‍🦱','👩‍🦳'][Math.floor(rng()*8)],
+    bgColor:`hsl(${Math.floor(rng()*360)},40%,20%)`};
+}
+function refreshPvpOpponents(){
+  pvpOpponents=[];
+  const myPow=getCombatPower();
+  for(let i=0;i<3;i++){
+    let npc;let tries=0;
+    do{npc=generateNPC(myPow);tries++}while(tries<20&&(npc.power<myPow*0.5||npc.power>myPow*2));
+    pvpOpponents.push(npc);
+  }
+  renderPvpOpponents();
+}
+function renderPvpOpponents(){
+  const c=$('pvpOpponents');c.innerHTML='';
+  pvpOpponents.forEach((opp,i)=>{
+    const d=document.createElement('div');d.className='card card-sm';
+    const diff=opp.power>getCombatPower()*1.3?'color:var(--red)':opp.power<getCombatPower()*0.7?'color:var(--green)':'color:var(--gold)';
+    d.innerHTML=`<div class="pvp-opponent">
+      <div class="pvp-avatar" style="background:${opp.bgColor}">${opp.avatar}</div>
+      <div class="pvp-info"><div class="pvp-name">${opp.name}</div><div class="pvp-detail">${opp.realmName} | <span style="${diff}">⚔️${formatNum(opp.power)}</span></div></div>
+      <button class="pvp-fight btn-red" style="padding:8px 14px;border:none;border-radius:8px;color:#fff;background:linear-gradient(135deg,var(--red),#dc2626);font-weight:700;cursor:pointer;font-family:inherit;font-size:12px" onclick="startPvpBattle(${i})">ท้าสู้</button>
+    </div>`;
+    c.appendChild(d);
+  });
+}
+function startPvpBattle(idx){
+  const opp=pvpOpponents[idx];if(!opp)return;
+  const s=getTotalStats();
+  let pH=s.hp,eH=opp.hp;const pMax=s.hp,eMax=opp.hp;
+  $('pvpBattleArea').style.display='block';$('pvpCombatLog').innerHTML='';
+  $('pvpEnemyLabel').textContent=opp.name;
+  let interval=setInterval(()=>{
+    // Player attacks
+    let pd=Math.max(1,s.atk-opp.def*0.4);if(Math.random()*100<s.crit)pd*=2;pd=Math.floor(pd*(0.85+Math.random()*0.3));
+    eH-=pd;logC(`⚔️ คุณโจมตี ${pd}`,'dmg','pvpCombatLog');
+    $('pvpEnemyHP').style.width=Math.max(0,eH/eMax*100)+'%';$('pvpEnemyHPText').textContent=`${Math.max(0,Math.floor(eH))}/${eMax}`;
+    if(eH<=0){clearInterval(interval);endPvpBattle(true,opp);return}
+    // Enemy attacks
+    let ed=Math.max(1,opp.atk-s.def*0.4);if(Math.random()*100<opp.crit)ed*=2;ed=Math.floor(ed*(0.85+Math.random()*0.3));
+    pH-=ed;logC(`👤 ${opp.name} โจมตี ${ed}`,'dmg','pvpCombatLog');
+    $('pvpPlayerHP').style.width=Math.max(0,pH/pMax*100)+'%';$('pvpPlayerHPText').textContent=`${Math.max(0,Math.floor(pH))}/${pMax}`;
+    if(pH<=0){clearInterval(interval);endPvpBattle(false,opp);return}
+  },500);
+}
+function endPvpBattle(won,opp){
+  let ptsChange,stonesReward=0,expReward=0;
+  if(won){
+    ptsChange=Math.floor(15+opp.power/getCombatPower()*10);
+    stonesReward=Math.floor(10+game.pvpPoints*0.05);
+    expReward=Math.floor(50+game.pvpPoints*0.1);
+    game.pvpWins++;game.pvpStreak++;if(game.pvpStreak>game.pvpBestStreak)game.pvpBestStreak=game.pvpStreak;
+    game.spiritStones+=stonesReward;game.exp+=expReward;
+  }else{
+    ptsChange=-Math.floor(10);
+    game.pvpLosses++;game.pvpStreak=0;
+  }
+  game.pvpPoints=Math.max(0,game.pvpPoints+ptsChange);
+  // Show result modal
+  $('pvpResultIcon').textContent=won?'🏆':'💀';
+  $('pvpResultText').textContent=won?'ชัยชนะ!':'พ่ายแพ้...';
+  $('pvpResultText').style.color=won?'var(--gold)':'var(--red)';
+  let rewards=`<div class="reward-row"><span>🏆 คะแนน PvP</span><span class="rw-val" style="color:${ptsChange>=0?'var(--green)':'var(--red)'}">${ptsChange>=0?'+':''}${ptsChange}</span></div>`;
+  if(won)rewards+=`<div class="reward-row"><span>💎 หินวิญญาณ</span><span class="rw-val">+${stonesReward}</span></div><div class="reward-row"><span>✨ EXP</span><span class="rw-val">+${expReward}</span></div>`;
+  $('pvpRewardList').innerHTML=rewards;
+  $('pvpResultModal').style.display='flex';
+  setTimeout(()=>{$('pvpBattleArea').style.display='none';$('pvpPlayerHP').style.width='100%';$('pvpEnemyHP').style.width='100%'},300);
+  refreshPvpOpponents();updateUI();
+}
+function closePvpResult(){$('pvpResultModal').style.display='none'}
+function updatePvpUI(){
+  const tier=PVP_TIERS.find(t=>game.pvpPoints>=t.min&&game.pvpPoints<t.max)||PVP_TIERS[0];
+  $('pvpTierIcon').textContent=tier.icon;$('pvpTierName').textContent=tier.name;$('pvpTierName').style.color=tier.color;
+  $('pvpPtsText').textContent=`คะแนน: ${game.pvpPoints} / ${tier.max}`;
+  $('pvpPtsBar').style.width=Math.min(100,(game.pvpPoints-tier.min)/(tier.max-tier.min)*100)+'%';
+  $('pvpWins').textContent=game.pvpWins;$('pvpLosses').textContent=game.pvpLosses;$('pvpStreak').textContent=game.pvpStreak;
+}
+
+// ==================== LEADERBOARD ====================
+let currentLBType='power';
+function switchLB(type,btn){
+  currentLBType=type;
+  document.querySelectorAll('.lb-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
+  renderLeaderboard();
+}
+function renderLeaderboard(){
+  const rng=seededRandom(game.lbSeed+currentLBType.length);
+  let entries=[];
+  for(let i=0;i<50;i++){
+    const ri=Math.min(Math.floor(rng()*6),5),st=Math.floor(rng()*REALMS[ri].stages)+1;
+    const name=NPC_NAMES[Math.floor(rng()*NPC_NAMES.length)]+(i<10?'⭐':'');
+    let pow=0;for(let j=0;j<=ri;j++){const r=REALMS[j];const s2=j<ri?r.stages:st-1;pow+=(r.stats.hp*0.5+r.stats.atk*3+r.stats.def*2+r.stats.spd*1.5+r.stats.crit*5)*s2}
+    pow+=150;pow=Math.floor(pow*(0.8+rng()*0.4));
+    const pvpP=Math.floor(rng()*1800);
+    entries.push({name,realmIndex:ri,stage:st,power:pow,pvpPoints:pvpP,realmName:`${REALMS[ri].name} ${st}`});
+  }
+  // Add player
+  entries.push({name:'🌟 คุณ',realmIndex:game.realmIndex,stage:game.stage,power:getCombatPower(),pvpPoints:game.pvpPoints,realmName:`${REALMS[game.realmIndex].name} ${game.stage}`,isPlayer:true});
+  // Sort
+  if(currentLBType==='power')entries.sort((a,b)=>b.power-a.power);
+  else if(currentLBType==='realm')entries.sort((a,b)=>(b.realmIndex*10+b.stage)-(a.realmIndex*10+a.stage));
+  else entries.sort((a,b)=>b.pvpPoints-a.pvpPoints);
+
+  const c=$('lbContent');c.innerHTML='';
+  entries.slice(0,20).forEach((e,i)=>{
+    const rank=i+1;
+    const rc=rank===1?'r1':rank===2?'r2':rank===3?'r3':'rn';
+    const val=currentLBType==='pvp'?`${e.pvpPoints} pts`:`⚔️${formatNum(e.power)}`;
+    const d=document.createElement('div');d.className=`card card-sm ${e.isPlayer?'lb-you':''}`;
+    d.innerHTML=`<div class="lb-row"><div class="lb-rank ${rc}">${rank}</div><div class="lb-info"><div class="lb-name">${e.name}</div><div class="lb-realm">${e.realmName}</div></div><div class="lb-power">${val}</div></div>`;
+    c.appendChild(d);
+  });
+}
+
+// ==================== SECT ====================
+function renderSect(){
+  const c=$('sectContent');
+  if(!game.sectId){
+    // Choose sect
+    c.innerHTML=`<div class="card" style="text-align:center;margin-bottom:12px"><h3 style="color:var(--gold);font-size:16px;margin-bottom:4px">🏯 เลือกสำนัก</h3><p style="font-size:12px;color:var(--text3)">เข้าร่วมสำนักเพื่อรับโบนัสสถาวร!</p></div><div class="sect-grid" id="sectGrid"></div>`;
+    const grid=$('sectGrid');
+    SECTS.forEach(s=>{
+      const d=document.createElement('div');d.className='card sect-option';
+      d.innerHTML=`<div class="so-icon">${s.icon}</div><div class="so-name">${s.name}</div><div style="font-size:10px;color:var(--text3);margin:4px 0">${s.desc}</div><div class="so-bonus">${s.bonusText}</div>`;
+      d.addEventListener('click',()=>joinSect(s.id));
+      grid.appendChild(d);
+    });
+  }else{
+    const sect=SECTS.find(s=>s.id===game.sectId);
+    // Generate fake members
+    const rng=seededRandom(game.sectJoinTime||12345);
+    let members=[];for(let i=0;i<8;i++){
+      const n=NPC_NAMES[Math.floor(rng()*NPC_NAMES.length)];
+      const ri=Math.floor(rng()*5),st=Math.floor(rng()*9)+1;
+      members.push({name:n,realm:`${REALMS[ri].name} ${st}`,role:i===0?'สำนักจู':'อาวุโส'});
+    }
+    c.innerHTML=`
+      <div class="card sect-card">
+        <div class="sect-icon">${sect.icon}</div>
+        <div class="sect-name">${sect.name}</div>
+        <div class="sect-desc">${sect.desc}</div>
+        <div class="sect-bonus">โบนัส: ${sect.bonusText}</div>
+      </div>
+      <div class="section-title">👥 สมาชิกสำนัก</div>
+      <div class="card card-sm">
+        <div class="sect-member"><span class="sm-rank">1</span><span>🌟 คุณ</span><span class="sm-role">ศิษย์</span></div>
+        ${members.map((m,i)=>`<div class="sect-member"><span class="sm-rank">${i+2}</span><span>${m.name}</span><span class="sm-role">${m.role}</span></div>`).join('')}
+      </div>
+      <button class="btn btn-red" style="margin-top:8px;font-size:13px;padding:10px" onclick="leaveSect()">ออกจากสำนัก</button>
+    `;
+  }
+}
+function joinSect(id){
+  game.sectId=id;game.sectJoinTime=Date.now();
+  toast(`🏯 เข้าร่วม ${SECTS.find(s=>s.id===id).name} แล้ว!`);
+  renderSect();updateUI();
+}
+function leaveSect(){
+  if(!confirm('ออกจากสำนักจริงหรือ?'))return;
+  game.sectId=null;toast('ออกจากสำนักแล้ว');renderSect();updateUI();
+}
+
+// ==================== INVENTORY ====================
+function renderInventory(){
+  const g=$('invGrid');g.innerHTML='';$('invEmpty').style.display=game.inventory.length?'none':'block';
+  game.inventory.forEach((it,i)=>{
+    const s=document.createElement('div');s.className=`inv-slot rarity-${it.rarity}`;
+    const isEq=Object.values(game.equipped).some(e=>e&&e.uid===it.uid);
+    if(isEq)s.classList.add('equipped');
+    s.innerHTML=`<span class="item-icon">${it.icon}</span><span class="item-name">${it.name}</span>${isEq?'<span class="equipped-badge">E</span>':''}`;
+    s.title=`${it.name}\n${it.desc}`;
+    s.addEventListener('click',()=>handleItem(it,i));g.appendChild(s);
+  });
+}
+function handleItem(it,i){
+  const sl=it.type==='weapon'?'weapon':it.type==='armor'?'armor':'accessory';
+  const cur=game.equipped[sl];
+  if(cur&&cur.uid===it.uid){game.equipped[sl]=null;toast(`ถอด ${it.name}`)}
+  else{game.equipped[sl]=it;toast(`สวมใส่ ${it.name}`)}
+  renderInventory();updateUI();
+}
+function updateEquipDisplay(){
+  ['weapon','armor','accessory'].forEach(sl=>{const it=game.equipped[sl];$('eq'+sl.charAt(0).toUpperCase()+sl.slice(1)+'Name').textContent=it?it.name:'ว่าง'});
+}
+
+// ==================== SHOP ====================
+function renderShop(){
+  const c=$('shopList');c.innerHTML='';
+  SHOP_ITEMS.forEach(it=>{
+    const isQi=it.costType==='qi';const can=isQi?game.qi>=it.cost:game.spiritStones>=it.cost;
+    const d=document.createElement('div');d.className='card card-sm';
+    d.innerHTML=`<div class="shop-item"><div class="si-icon">${it.icon}</div><div class="si-info"><div class="si-name">${it.name}</div><div class="si-desc">${it.desc}</div></div><button class="si-btn" ${can?'':'disabled'}>${it.cost} ${isQi?'Qi':'💎'}</button></div>`;
+    d.querySelector('.si-btn').addEventListener('click',()=>{
+      if(isQi){if(game.qi<it.cost)return toast('Qi ไม่พอ!')}
+      else{if(game.spiritStones<it.cost)return toast('หินวิญญาณไม่พอ!');game.spiritStones-=it.cost}
+      it.act(game);toast(`✅ ซื้อ ${it.name} สำเร็จ!`);renderShop();updateUI();
+    });
+    c.appendChild(d);
+  });
+}
+
+// ==================== GAME LOOP ====================
+let saveTimer=0;
+function gameLoop(){
+  game.qi+=getQiPerSec()/10;
+  if(game.meditating){
+    let expRate=0.5+(game.realmIndex*0.3)+(game.stage*0.1);
+    if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)expRate*=sect.bonus.expMult}
+    game.exp+=expRate;
+  }
+  if(game.qiBoostTimer>0)game.qiBoostTimer-=0.1;
+  game.totalPlayTime+=0.1;
+  saveTimer+=0.1;if(saveTimer>=30){saveTimer=0;saveGame()}
+  updateUI();renderShop();
+}
+
+// ==================== INIT ====================
+// Background stars
+(function(){const c=document.createElement('canvas');c.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none';document.body.appendChild(c);const cx=c.getContext('2d');function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);const st=[];for(let i=0;i<60;i++)st.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*1.2+0.3,sp:Math.random()*0.2+0.05,b:Math.random()});(function d(){cx.clearRect(0,0,c.width,c.height);st.forEach(s=>{s.y+=s.sp;if(s.y>c.height){s.y=0;s.x=Math.random()*c.width}s.b+=0.015;cx.fillStyle=`rgba(255,255,255,${0.15+Math.sin(s.b)*0.1})`;cx.beginPath();cx.arc(s.x,s.y,s.s,0,Math.PI*2);cx.fill()});requestAnimationFrame(d)})()})();
+
+loadGame();
+renderInventory();renderShop();refreshPvpOpponents();updateUI();
+setInterval(gameLoop,100);
+addEventListener('beforeunload',()=>saveGame());
+document.addEventListener('visibilitychange',()=>{if(document.hidden)saveGame()});
 </script>
 </body>
 </html>

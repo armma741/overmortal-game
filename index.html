@@ -463,27 +463,37 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
   </div>
 </div>
 
-<!-- Cloud Save Modal -->
+<!-- Cloud Login Modal -->
 <div class="modal-overlay" id="cloudSaveModal" style="display:none">
   <div class="modal" style="max-width:380px">
-    <h2>☁️ บันทึกออนไลน์</h2>
-    <div style="margin:10px 0;text-align:center">
-      <div style="color:var(--muted);font-size:0.85em;margin-bottom:8px">Player ID ของคุณ</div>
-      <div style="font-size:1.4em;color:var(--cyan);font-weight:700" id="cloudPlayerId"></div>
+    <div id="cloudLoginView">
+      <h2>🔐 เข้าสู่ระบบ</h2>
+      <div style="color:var(--muted);font-size:0.85em;margin:8px 0;text-align:center">ล็อกอินเพื่อเซฟข้อมูลออนไลน์</div>
+      <input type="text" id="loginUser" placeholder="ชื่อผู้ใช้ (Username)" maxlength="20" autocomplete="off" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:0.95em;margin:6px 0">
+      <input type="password" id="loginPass" placeholder="รหัสผ่าน (Password)" maxlength="30" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:0.95em;margin:6px 0">
+      <div id="cloudStatus" style="text-align:center;font-size:0.85em;min-height:22px;color:var(--muted);margin:4px 0"></div>
+      <button class="claim-btn" onclick="cloudLogin()" style="width:100%;margin:4px 0">🔑 เข้าสู่ระบบ</button>
+      <button class="claim-btn" onclick="cloudRegister()" style="width:100%;margin:4px 0;background:var(--card2);border:1px solid var(--cyan);color:var(--cyan)">📝 สมัครสมาชิกใหม่</button>
+      <hr style="border-color:var(--border);margin:12px 0">
+      <div style="color:var(--muted);font-size:0.8em;text-align:center">หรือใช้รหัสเซฟ</div>
+      <div style="display:flex;gap:6px;margin-top:6px">
+        <button class="claim-btn" onclick="exportSaveCode()" style="flex:1;font-size:0.8em;background:var(--card2);border:1px solid var(--border);color:var(--text)">📋 คัดลอก</button>
+        <input type="text" id="importCodeInput" placeholder="วางรหัสเซฟ..." style="flex:2;padding:6px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:0.8em">
+        <button class="claim-btn" onclick="importSaveCode()" style="font-size:0.8em;padding:6px 10px">โหลด</button>
+      </div>
     </div>
-    <div style="display:flex;gap:8px;margin:12px 0">
-      <button class="claim-btn" onclick="cloudSave()" style="flex:1;font-size:0.9em">☁️ บันทึกขึ้นคลาวด์</button>
-      <button class="claim-btn" onclick="cloudLoad()" style="flex:1;font-size:0.9em;background:var(--card2);border:1px solid var(--cyan);color:var(--cyan)">📥 โหลดจากคลาวด์</button>
+    <div id="cloudLoggedView" style="display:none">
+      <h2>☁️ บัญชีออนไลน์</h2>
+      <div style="margin:10px 0;text-align:center">
+        <div style="color:var(--muted);font-size:0.85em">เข้าสู่ระบบเป็น</div>
+        <div style="font-size:1.3em;color:var(--cyan);font-weight:700;margin:4px 0" id="loggedUsername"></div>
+        <div style="color:#4ade80;font-size:0.85em">✅ เซฟอัตโนมัติทุก 30 วินาที</div>
+      </div>
+      <div id="cloudStatus2" style="text-align:center;font-size:0.85em;min-height:22px;color:var(--muted);margin:4px 0"></div>
+      <button class="claim-btn" onclick="cloudSaveNow()" style="width:100%;margin:4px 0">☁️ บันทึกเดี๋ยวนี้</button>
+      <button class="claim-btn" onclick="cloudLogout()" style="width:100%;margin:4px 0;background:var(--card2);border:1px solid var(--red);color:var(--red)">🚪 ออกจากระบบ</button>
     </div>
-    <div id="cloudStatus" style="text-align:center;font-size:0.85em;min-height:24px;color:var(--muted);margin:4px 0"></div>
-    <hr style="border-color:var(--border);margin:12px 0">
-    <div style="color:var(--muted);font-size:0.85em;margin-bottom:8px;text-align:center">หรือใช้รหัสเซฟ (Save Code)</div>
-    <button class="claim-btn" onclick="exportSaveCode()" style="width:100%;font-size:0.85em;background:var(--card2);border:1px solid var(--border);color:var(--text);margin-bottom:6px">📋 คัดลอกรหัสเซฟ</button>
-    <div style="display:flex;gap:6px">
-      <input type="text" id="importCodeInput" placeholder="วางรหัสเซฟที่นี่..." style="flex:1;padding:8px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:0.85em">
-      <button class="claim-btn" onclick="importSaveCode()" style="font-size:0.85em;padding:8px 12px">โหลด</button>
-    </div>
-    <button class="claim-btn" onclick="closeCloudModal()" style="width:100%;margin-top:12px;background:var(--card2);color:var(--text);border:1px solid var(--border)">ปิด</button>
+    <button class="claim-btn" onclick="closeCloudModal()" style="width:100%;margin-top:10px;background:var(--card2);color:var(--text);border:1px solid var(--border)">ปิด</button>
   </div>
 </div>
 
@@ -1275,7 +1285,7 @@ function gameLoop(){
   // Update skill cooldowns
   SKILLS.forEach(s=>{if((game.skillCooldowns[s.id]||0)>0)game.skillCooldowns[s.id]-=0.1});
   renderSkillButtons();
-  saveTimer+=0.1;if(saveTimer>=30){saveTimer=0;saveGame()}
+  saveTimer+=0.1;if(saveTimer>=30){saveTimer=0;saveGame();cloudAutoSave()}
   updateUI();renderShop();
 }
 
@@ -1338,62 +1348,112 @@ function claimIdleRewards(mult){
 }
 function resetGame(){if(confirm('รีเซ็ตเกมทั้งหมด?')){localStorage.removeItem(SAVE_KEY);location.reload()}}
 
-// ==================== CLOUD SAVE ====================
-const CLOUD_API='https://overmortal-save.deno.dev';
+// ==================== CLOUD SAVE (ID+PASSWORD) ====================
+const FB_URL='https://solar-nimbus-466702-e4-default-rtdb.firebaseio.com';
+let cloudUser=localStorage.getItem('cloud_user')||null;
+let cloudAutoTimer=0;
 
-function showCloudModal(){
-  $('cloudPlayerId').textContent='#'+game.playerId;
-  $('cloudStatus').textContent='';
-  $('importCodeInput').value='';
-  $('cloudSaveModal').style.display='flex';
-}
-function closeCloudModal(){$('cloudSaveModal').style.display='none'}
+async function hashPwd(p){const e=new TextEncoder().encode(p);const h=await crypto.subtle.digest('SHA-256',e);return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join('')}
 
 function getSaveData(){
   return{qi:game.qi,spiritStones:game.spiritStones,exp:game.exp,realmIndex:game.realmIndex,stage:game.stage,baseHP:game.baseHP,baseATK:game.baseATK,baseDEF:game.baseDEF,baseSPD:game.baseSPD,baseCRIT:game.baseCRIT,meditating:game.meditating,floor:game.floor,inventory:game.inventory,equipped:game.equipped,lastSaveTime:Date.now(),totalPlayTime:game.totalPlayTime,pvpPoints:game.pvpPoints,pvpWins:game.pvpWins,pvpLosses:game.pvpLosses,pvpStreak:game.pvpStreak,pvpBestStreak:game.pvpBestStreak,sectId:game.sectId,sectJoinTime:game.sectJoinTime,lbSeed:game.lbSeed,playerId:game.playerId,playerName:game.playerName,skillLevels:game.skillLevels,skillCooldowns:game.skillCooldowns,dailyQuests:game.dailyQuests,lastQuestReset:game.lastQuestReset,towerFloor:game.towerFloor,towerBest:game.towerBest,towerLastReset:game.towerLastReset,towerLog:game.towerLog};
 }
 
-function cloudSave(){
-  const status=$('cloudStatus');
-  status.textContent='☁️ กำลังบันทึก...';status.style.color='var(--cyan)';
-  const data=getSaveData();
-  fetch(CLOUD_API+'/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:game.playerId,data:data})})
-  .then(r=>{if(!r.ok)throw new Error('Server error');return r.json()})
-  .then(()=>{status.textContent='✅ บันทึกขึ้นคลาวด์สำเร็จ!';status.style.color='#4ade80';toast('☁️ บันทึกออนไลน์สำเร็จ!')})
-  .catch(e=>{status.textContent='❌ บันทึกไม่สำเร็จ ลองใช้รหัสเซฟแทน';status.style.color='var(--red)';console.error('Cloud save error:',e)});
+function showCloudModal(){
+  $('cloudStatus').textContent='';
+  $('importCodeInput').value='';
+  if(cloudUser){
+    $('cloudLoginView').style.display='none';
+    $('cloudLoggedView').style.display='block';
+    $('loggedUsername').textContent=cloudUser;
+    $('cloudStatus2').textContent='';
+  }else{
+    $('cloudLoginView').style.display='block';
+    $('cloudLoggedView').style.display='none';
+    $('loginUser').value='';$('loginPass').value='';
+  }
+  $('cloudSaveModal').style.display='flex';
 }
-function cloudLoad(){
-  const status=$('cloudStatus');
-  const pid=prompt('ใส่ Player ID ที่ต้องการโหลด (เช่น XRHNWQ):');
-  if(!pid)return;
-  const cleanId=pid.replace('#','').trim().toUpperCase();
-  status.textContent='📥 กำลังโหลด...';status.style.color='var(--cyan)';
-  fetch(CLOUD_API+'/load/'+cleanId)
-  .then(r=>{if(!r.ok)throw new Error(r.status===404?'ไม่พบข้อมูล':'Server error');return r.json()})
-  .then(res=>{
-    if(!res.data){status.textContent='❌ ไม่พบข้อมูลของ ID นี้';status.style.color='var(--red)';return}
-    if(!confirm('โหลดเซฟของ '+(res.data.playerName||cleanId)+'? (ข้อมูลปัจจุบันจะถูกแทนที่)'))return;
-    Object.keys(res.data).forEach(k=>{if(k in game)game[k]=res.data[k]});
-    saveGame();updateUI();
-    status.textContent='✅ โหลดสำเร็จ!';status.style.color='#4ade80';
-    toast('📥 โหลดเซฟออนไลน์สำเร็จ!');
-    setTimeout(()=>location.reload(),1000);
-  })
-  .catch(e=>{status.textContent='❌ '+e.message;status.style.color='var(--red)';console.error('Cloud load error:',e)});
+function closeCloudModal(){$('cloudSaveModal').style.display='none'}
+
+async function cloudRegister(){
+  const u=$('loginUser').value.trim().toLowerCase();
+  const p=$('loginPass').value;
+  const s=$('cloudStatus');
+  if(!u||u.length<3){s.textContent='❌ ชื่อผู้ใช้ต้องมีอย่างน้อย 3 ตัวอักษร';s.style.color='var(--red)';return}
+  if(!p||p.length<4){s.textContent='❌ รหัสผ่านต้องมีอย่างน้อย 4 ตัวอักษร';s.style.color='var(--red)';return}
+  if(!/^[a-z0-9_]+$/.test(u)){s.textContent='❌ ชื่อผู้ใช้ใช้ได้เฉพาะ a-z, 0-9, _';s.style.color='var(--red)';return}
+  s.textContent='📝 กำลังสมัคร...';s.style.color='var(--cyan)';
+  try{
+    const chk=await fetch(FB_URL+'/users/'+u+'/ph.json');
+    const exist=await chk.json();
+    if(exist){s.textContent='❌ ชื่อนี้ถูกใช้แล้ว';s.style.color='var(--red)';return}
+    const ph=await hashPwd(p);
+    const data=getSaveData();
+    await fetch(FB_URL+'/users/'+u+'.json',{method:'PUT',body:JSON.stringify({ph:ph,data:data,name:game.playerName,created:Date.now()})});
+    cloudUser=u;localStorage.setItem('cloud_user',u);
+    s.textContent='✅ สมัครสำเร็จ!';s.style.color='#4ade80';
+    toast('📝 สมัครสมาชิกสำเร็จ!');
+    setTimeout(()=>showCloudModal(),800);
+  }catch(e){s.textContent='❌ เกิดข้อผิดพลาด';s.style.color='var(--red)'}
+}
+
+async function cloudLogin(){
+  const u=$('loginUser').value.trim().toLowerCase();
+  const p=$('loginPass').value;
+  const s=$('cloudStatus');
+  if(!u||!p){s.textContent='❌ กรุณากรอกชื่อผู้ใช้และรหัสผ่าน';s.style.color='var(--red)';return}
+  s.textContent='🔑 กำลังเข้าสู่ระบบ...';s.style.color='var(--cyan)';
+  try{
+    const r=await fetch(FB_URL+'/users/'+u+'.json');
+    const rec=await r.json();
+    if(!rec||!rec.ph){s.textContent='❌ ไม่พบบัญชีนี้';s.style.color='var(--red)';return}
+    const ph=await hashPwd(p);
+    if(ph!==rec.ph){s.textContent='❌ รหัสผ่านไม่ถูกต้อง';s.style.color='var(--red)';return}
+    if(rec.data){
+      Object.keys(rec.data).forEach(k=>{if(k in game)game[k]=rec.data[k]});
+      saveGame();updateUI();
+    }
+    cloudUser=u;localStorage.setItem('cloud_user',u);
+    toast('🔑 เข้าสู่ระบบสำเร็จ!');
+    setTimeout(()=>{showCloudModal();location.reload()},800);
+  }catch(e){s.textContent='❌ เชื่อมต่อไม่ได้';s.style.color='var(--red)'}
+}
+
+async function cloudSaveNow(){
+  if(!cloudUser)return;
+  const s=$('cloudStatus2');
+  s.textContent='☁️ กำลังบันทึก...';s.style.color='var(--cyan)';
+  try{
+    const data=getSaveData();
+    await fetch(FB_URL+'/users/'+cloudUser+'/data.json',{method:'PUT',body:JSON.stringify(data)});
+    await fetch(FB_URL+'/users/'+cloudUser+'/name.json',{method:'PUT',body:JSON.stringify(game.playerName)});
+    s.textContent='✅ บันทึกสำเร็จ!';s.style.color='#4ade80';
+    toast('☁️ บันทึกออนไลน์สำเร็จ!');
+  }catch(e){s.textContent='❌ บันทึกไม่สำเร็จ';s.style.color='var(--red)'}
+}
+
+async function cloudAutoSave(){
+  if(!cloudUser)return;
+  try{
+    const data=getSaveData();
+    await fetch(FB_URL+'/users/'+cloudUser+'/data.json',{method:'PUT',body:JSON.stringify(data)});
+  }catch(e){}
+}
+
+function cloudLogout(){
+  cloudUser=null;localStorage.removeItem('cloud_user');
+  toast('🚪 ออกจากระบบแล้ว');showCloudModal();
 }
 
 function exportSaveCode(){
   try{
-    const data=getSaveData();
-    const json=JSON.stringify(data);
+    const data=getSaveData();const json=JSON.stringify(data);
     const code=btoa(unescape(encodeURIComponent(json)));
     navigator.clipboard.writeText(code).then(()=>{
       toast('📋 คัดลอกรหัสเซฟแล้ว!');
-      $('cloudStatus').textContent='📋 คัดลอกรหัสเซฟสำเร็จ! เก็บไว้ที่ปลอดภัย';
-      $('cloudStatus').style.color='#4ade80';
-    }).catch(()=>{
-      prompt('คัดลอกรหัสเซฟนี้:',code);
-    });
+      $('cloudStatus').textContent='📋 คัดลอกสำเร็จ!';$('cloudStatus').style.color='#4ade80';
+    }).catch(()=>{prompt('คัดลอกรหัสเซฟนี้:',code)});
   }catch(e){toast('❌ สร้างรหัสเซฟไม่สำเร็จ')}
 }
 
@@ -1401,21 +1461,12 @@ function importSaveCode(){
   const code=$('importCodeInput').value.trim();
   if(!code){toast('กรุณาวางรหัสเซฟก่อน');return}
   try{
-    const json=decodeURIComponent(escape(atob(code)));
-    const data=JSON.parse(json);
-    if(!data.playerId){throw new Error('Invalid save')}
-    if(!confirm('โหลดเซฟของ '+(data.playerName||'ผู้เล่น')+'? (ข้อมูลปัจจุบันจะถูกแทนที่)'))return;
+    const json=decodeURIComponent(escape(atob(code)));const data=JSON.parse(json);
+    if(!data.playerId)throw new Error('Invalid');
+    if(!confirm('โหลดเซฟของ '+(data.playerName||'ผู้เล่น')+'?'))return;
     Object.keys(data).forEach(k=>{if(k in game)game[k]=data[k]});
-    saveGame();updateUI();
-    toast('✅ โหลดรหัสเซฟสำเร็จ!');
-    $('cloudStatus').textContent='✅ โหลดสำเร็จ!';
-    $('cloudStatus').style.color='#4ade80';
-    setTimeout(()=>location.reload(),1000);
-  }catch(e){
-    toast('❌ รหัสเซฟไม่ถูกต้อง');
-    $('cloudStatus').textContent='❌ รหัสเซฟไม่ถูกต้อง';
-    $('cloudStatus').style.color='var(--red)';
-  }
+    saveGame();updateUI();toast('✅ โหลดสำเร็จ!');setTimeout(()=>location.reload(),1000);
+  }catch(e){toast('❌ รหัสเซฟไม่ถูกต้อง')}
 }
 
 // ==================== UI ====================

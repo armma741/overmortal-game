@@ -350,7 +350,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
     <div id="towerLog" style="font-size:11px;color:var(--text3);line-height:1.8"></div>
   </div>
 
-  <!-- ========== PvP ARENA ========== -->
+  <!-- ========== PVP ARENA ========== -->
   <div class="panel" id="panel-pvp">
     <div class="card pvp-rank-info">
       <div class="pvp-rank-tier" id="pvpTierIcon">🥉</div>
@@ -380,7 +380,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
   <!-- ========== LEADERBOARD ========== -->
   <div class="panel" id="panel-leaderboard">
     <div class="lb-tabs">
-      <button class="lb-tab active" onclick="switchLB('power',this)">💪 พลังรับ</button>
+      <button class="lb-tab active" onclick="switchLB('power',this)">💪 พลังรบ</button>
       <button class="lb-tab" onclick="switchLB('realm',this)">🧘 ขั้นฝึก</button>
       <button class="lb-tab" onclick="switchLB('pvp',this)">🏆 PvP</button>
     </div>
@@ -418,7 +418,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 <div class="bottom-nav" id="bottomNav">
   <button class="nav-btn active" data-tab="cultivate"><span class="nav-icon">🧘</span>ฝึกฝน</button>
   <button class="nav-btn" data-tab="combat"><span class="nav-icon">⚔️</span>ลับแดน</button>
-  <button class="nav-btn" data-tab="quests"><span class="nav-icon">"nav-icon">📋</span>ภารกิจ</button>
+  <button class="nav-btn" data-tab="quests"><span class="nav-icon">📋</span>ภารกิจ</button>
   <button class="nav-btn" data-tab="tower"><span class="nav-icon">🏯</span>หอคอย</button>
   <button class="nav-btn" data-tab="pvp"><span class="nav-icon">🏟️</span>PvP</button>
   <button class="nav-btn" data-tab="leaderboard"><span class="nav-icon">🏆</span>อันดับ</button>
@@ -430,8 +430,8 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 <!-- Idle Modal -->
 <div class="modal-overlay" id="idleModal" style="display:none">
   <div class="modal">
-    <h2>🌙 ยินดีต้อนรับกลัับ!</h2>
-    <div class="modal-sub">ศิษย์ได้ฝึกฝนต่อเนื่องขณะที่จากไป</div>
+    <h2>🌙 ยินดีต้อนรับกลับ!</h2>
+    <div class="modal-sub">ศิษย์ได้ฝึกฝนต่อเนื่องขณะท่านจากไป</div>
     <div style="font-size:14px;color:var(--cyan);margin-bottom:10px" id="idleTime"></div>
     <div class="reward-list">
       <div class="reward-row"><span>🔮 พลังจิต</span><span class="rw-val" id="idleQi">+0</span></div>
@@ -467,11 +467,11 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 <script>
 // ==================== DATA ====================
 const REALMS=[
-  {name:'ขั้นฝึกก่ายกาย',stages:9,baseExp:100,mult:1.5,desc:'เริ่มต้นเสื้นทาง ร่างกายรับรู้พลังจิตจากสวรรค์และแผ่นดิน',stats:{hp:20,atk:3,def:2,spd:1,crit:0.5}},
-  {name:'ขั้นสร้างฐานนาน',stages:9,baseExp:500,mult:1.6,desc:'สถาปนาฐานนาน (Dantian) เก็บพลังจิตมหาศาล',stats:{hp:50,atk:8,def:5,spd:2,crit:1}},
+  {name:'ขั้นฝึกกาย',stages:9,baseExp:100,mult:1.5,desc:'เริ่มต้นเส้นทาง ร่างกายรับรู้พลังจิตจากสวรรค์และแผ่นดิน',stats:{hp:20,atk:3,def:2,spd:1,crit:0.5}},
+  {name:'ขั้นสร้างฐาน',stages:9,baseExp:500,mult:1.6,desc:'สถาปนาฐานราก (Dantian) เก็บพลังจิตมหาศาล',stats:{hp:50,atk:8,def:5,spd:2,crit:1}},
   {name:'ขั้นก่อแกนทอง',stages:9,baseExp:2000,mult:1.7,desc:'หลอมรวมพลังจิตเป็นแกนทอง ใช้เทคนิคขั้นสูง',stats:{hp:120,atk:20,def:12,spd:4,crit:1.5}},
   {name:'ขั้นจิตวิญญาณ',stages:9,baseExp:8000,mult:1.8,desc:'จิตวิญญาณตื่นรู้ มองทะลุสรรพสิ่ง',stats:{hp:300,atk:50,def:30,spd:8,crit:2}},
-  {name:'ขั้นรวมดาว',stages:9,baseExp:30000,mult:2,desc:'ดึงพลังดวงดาว ข้ามพ้นขีดจำกัดมนุษยชาติ',stats:{hp:800,atk:120,def:70,spd:15,crit:3}},
+  {name:'ขั้นรวมดาว',stages:9,baseExp:30000,mult:2,desc:'ดึงพลังดวงดาว ข้ามพ้นขีดจำกัดมนุษย์',stats:{hp:800,atk:120,def:70,spd:15,crit:3}},
   {name:'ขั้นอมตะ',stages:9,baseExp:100000,mult:2.5,desc:'ก้าวสู่อาณาจักรอมตะ พลังเทียบเทพเซียน!',stats:{hp:2000,atk:300,def:180,spd:30,crit:5}}
 ];
 
@@ -493,10 +493,10 @@ const SKILLS=[
 ];
 
 const ENEMIES_DATA=[
-  [{name:'สัตว์ป่า',icon:'🐕',hp:80,atk:8,def:2,spd:5},{name:'หมาป่า',icon:'🐺',hp:120,atk:12,def:4,spd:8}],
+  [{name:'สัตว์ป่า',icon:'🐗',hp:80,atk:8,def:2,spd:5},{name:'หมาป่า',icon:'🐺',hp:120,atk:12,def:4,spd:8}],
   [{name:'ภูตไม้',icon:'🌳',hp:200,atk:18,def:10,spd:6},{name:'งูยักษ์',icon:'🐍',hp:250,atk:25,def:8,spd:12}],
-  [{name:'ปีศาจหิน',icon:'🏺',hp:500,atk:35,def:25,spd:8},{name:'นกอินทรีย์เพลิง',icon:'🦅',hp:400,atk:50,def:15,spd:20}],
-  [{name:'มังกรน้ำ',icon:'🐉',hp:1000,atk:80,def:40,spd:18},{name:'ยักษ์เหลั่ก',icon:'👹',hp:1500,atk:60,def:60,spd:10}],
+  [{name:'ปีศาจหิน',icon:'🗿',hp:500,atk:35,def:25,spd:8},{name:'นกอินทรีเพลิง',icon:'🦅',hp:400,atk:50,def:15,spd:20}],
+  [{name:'มังกรน้ำ',icon:'🐉',hp:1000,atk:80,def:40,spd:18},{name:'ยักษ์เหล็ก',icon:'👹',hp:1500,atk:60,def:60,spd:10}],
   [{name:'เทพอสูร',icon:'😈',hp:3000,atk:150,def:80,spd:25},{name:'ราชามังกร',icon:'🐲',hp:5000,atk:200,def:100,spd:20}],
   [{name:'จักรพรรดิอมตะ',icon:'👑',hp:10000,atk:400,def:200,spd:40},{name:'เทพเซียนมืด',icon:'☠️',hp:15000,atk:500,def:250,spd:35}]
 ];
@@ -507,7 +507,7 @@ const ITEMS_DB=[
   {id:'sw3',name:'ดาบมังกร',icon:'🔥',type:'weapon',rarity:'rare',atk:40,desc:'+40 ATK'},
   {id:'sw4',name:'ดาบสวรรค์',icon:'✨',type:'weapon',rarity:'epic',atk:100,desc:'+100 ATK'},
   {id:'sw5',name:'ดาบเซียน',icon:'🌟',type:'weapon',rarity:'legendary',atk:250,desc:'+250 ATK'},
-  {id:'ar1',name:'เสื้อผ้า',icon:'👔',type:'armor',rarity:'common',hp:30,def:3,desc:'+30 HP +3 DEF'},
+  {id:'ar1',name:'เสื้อผ้า',icon:'👘',type:'armor',rarity:'common',hp:30,def:3,desc:'+30 HP +3 DEF'},
   {id:'ar2',name:'เกราะเหล็ก',icon:'🛡️',type:'armor',rarity:'uncommon',hp:80,def:10,desc:'+80 HP +10 DEF'},
   {id:'ar3',name:'เกราะมังกร',icon:'🐉',type:'armor',rarity:'rare',hp:200,def:25,desc:'+200 HP +25 DEF'},
   {id:'ar4',name:'จีวรทอง',icon:'👑',type:'armor',rarity:'epic',hp:500,def:60,desc:'+500 HP +60 DEF'},
@@ -518,9 +518,9 @@ const ITEMS_DB=[
 
 const SHOP_ITEMS=[
   {id:'p1',name:'ยาฟื้นฟูจิต',icon:'💊',desc:'+500 Qi',cost:50,act:g=>{g.qi+=500}},
-  {id:'p2',name:'ยาเร่งฝึก',icon:'🦪',desc:'Qi/s x2 เป็นเวลา 60 วินาที',cost:200,act:g=>{g.qiBoostTimer=60}},
-  {id:'p3',name:'คัมภีร์โบราณ',icon:'📔',desc:'+500 EXP',cost:300,act:g=>{g.exp+=500}},
-  {id:'p4',name:'กล่องสมบัติ',icon:'📦',desc:'สุ่มไอเทม 1 ชิ้น',cost:150,act:g=>{const pool=ITEMS_DB;const r=Math.random();let it;if(r<0.05)it=pool.find(i=>i.rarity==='legendary');else if(r<0.15)it=pool.find(i=>i.rarity==='epic');else if(r<0.3)it=pool.find(i=>i.rarity==='rare');else if(r<0.55)it=pool.find(i=>i.rarity==='uncommon');else it=pool.find(i=>i.rarity==='common');if(it){g.inventory.push({...it,uid:Date.now()+Math.random(),enchantLv:0});toast('🎁 ได้รับ '+it.name+'!');renderInventory()}}},
+  {id:'p2',name:'ยาเร่งฝึก',icon:'🧪',desc:'Qi/s x2 เป็นเวลา 60 วินาที',cost:200,act:g=>{g.qiBoostTimer=60}},
+  {id:'p3',name:'คัมภีร์โบราณ',icon:'📜',desc:'+500 EXP',cost:300,act:g=>{g.exp+=500}},
+  {id:'p4',name:'กล่องสมบัติ',icon:'📦',desc:'สุ่มไอเทม 1 ชิ้น',cost:150,act:g=>{const pool=ITEMS_DB;const r=Math.random();let it;if(r<0.05)it=pool.find(i=>i.rarity==='legendary');else if(r<0.15)it=pool.find(i=>i.rarity==='epic');else if(r<0.3)it=pool.find(i=>i.rarity==='rare');else if(r<0.55)it=pool.find(i=>i.rarity==='uncommon');else it=pool.find(i=>i.rarity==='common');if(it){g.inventory.push({...it,uid:Date.now()+Math.random(),enchantLv:0});toast(`🎁 ได้รับ ${it.name}!`);renderInventory()}}},
   {id:'p5',name:'หินวิญญาณ x10',icon:'💎',desc:'แลก 1000 Qi',costType:'qi',cost:1000,act:g=>{if(g.qi>=1000){g.qi-=1000;g.spiritStones+=10;toast('แลกได้ 10 หินวิญญาณ!')}else toast('Qi ไม่พอ!')}},
 ];
 
@@ -535,12 +535,113 @@ const PVP_TIERS=[
 
 const SECTS=[
   {id:'sword',name:'สำนักกระบี่สวรรค์',icon:'⚔️',desc:'เชี่ยวชาญดาบ สายโจมตี',bonus:{atk:15,crit:3},bonusText:'+15% ATK, +3% CRIT'},
-  {id:'shield',name:'สำนักโล่เหล็ก',icon:'🛡️',desc:'แข็งแกร่งลึก สายป้องกัน',bonus:{def:20,hp:10},bonusText:'+20% DEF, +10% HP'},
-  {id:'wind',name:'สำนักสายลม',icon:'🌪️',desc:'ว่องไวด่างลม สายความเร็ว',bonus:{spd:20,crit:5},bonusText:'+20% SPD, +5% CRIT'},
+  {id:'shield',name:'สำนักโล่เหล็ก',icon:'🛡️',desc:'แข็งแกร่งดั่งภูเขา สายป้องกัน',bonus:{def:20,hp:10},bonusText:'+20% DEF, +10% HP'},
+  {id:'wind',name:'สำนักสายลม',icon:'🌪️',desc:'ว่องไวดั่งลม สายความเร็ว',bonus:{spd:20,crit:5},bonusText:'+20% SPD, +5% CRIT'},
   {id:'spirit',name:'สำนักจิตวิญญาณ',icon:'🔮',desc:'ฝึก Qi ขั้นเทพ สาย Idle',bonus:{qiMult:1.5,expMult:1.3},bonusText:'+50% Qi/s, +30% EXP'},
 ];
 
-const NPC_NAMES=['เซียนจันทรา','มังกรเพลิง','ดาวเหนือ','จิตอสูร','เงาสายฟ้า','พายุหิมะ','ราชามืด','แสงทอง','งูเขีย','เสือขาว','มังกรหยุก','นกหงส์แดง','กระต่ายจันทร์','เต่าหิน','ปลามังกร','ผีเสื้อขาว','หมีดำ','สิงโตหิมะ','อินทรีย์ลม'];;if(it.def)s.def+=Math.floor(it.def*mult);if(it.spd)s.spd+=Math.floor(it.spd*mult);if(it.crit)s.crit+=Math.floor(it.crit*mult)}});
+const NPC_NAMES=['เซียนจันทรา','มังกรเพลิง','ดาวเหนือ','จิตอสูร','เงาสายฟ้า','พายุหิมะ','ราชามืด','แสงทอง','เหล็กดำ','ลมกรด','เมฆมรณะ','ไฟนรก','น้ำค้างเหล็ก','ดาบหยก','สายรุ้ง','จิ้งจอกเงิน','หมาป่าดำ','เหยี่ยวทอง','งูเขียว','เสือขาว','มังกรหยก','นกหงส์แดง','กระต่ายจันทร์','เต่าหิน','ปลามังกร','ผีเสื้อเงิน','แมงป่องทอง','หมีดำ','สิงโตไฟ','อินทรีลม'];
+
+// DAILY QUESTS
+const DAILY_QUESTS=[
+  {id:'meditate',name:'นั่งสมาธิ 60 วินาที',icon:'🧘',goal:60,type:'time',reward:{spiritStones:100}},
+  {id:'adventure',name:'ชนะ 3 ครั้งในผจญภัย',icon:'⚔️',goal:3,type:'combat',reward:{qi:500,exp:200}},
+  {id:'pvp',name:'ชนะ PvP 1 ครั้ง',icon:'🏆',goal:1,type:'pvp',reward:{spiritStones:50}}
+];
+
+// ==================== STATE ====================
+const SAVE_KEY='overmortal_save_v4';
+let game={
+  qi:0,spiritStones:50,exp:0,realmIndex:0,stage:1,
+  baseHP:100,baseATK:10,baseDEF:5,baseSPD:10,baseCRIT:5,
+  meditating:false,qiBoostTimer:0,
+  floor:1,inBattle:false,playerHP:100,maxPlayerHP:100,
+  inventory:[],equipped:{weapon:null,armor:null,accessory:null},
+  battleInterval:null,lastSaveTime:Date.now(),totalPlayTime:0,
+  pvpPoints:0,pvpWins:0,pvpLosses:0,pvpStreak:0,pvpBestStreak:0,
+  sectId:null,sectJoinTime:0,
+  lbSeed:Math.floor(Math.random()*99999),
+  playerId:null,
+  playerName:'',
+  // Skills
+  skillLevels:{},skillCooldowns:{},
+  // Quests
+  dailyQuests:{},lastQuestReset:0,
+  // Tower
+  towerFloor:1,towerBest:1,towerLastReset:0,towerLog:[],
+  // Boss state
+  bossMode:false,bossPhase:0
+};
+
+let pendingIdleRewards=null;
+let currentEnemy=null;
+let pvpOpponents=[];
+let currentLBType='power';
+
+// ==================== PLAYER ID SYSTEM ====================
+function generatePlayerId(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let id='';for(let i=0;i<6;i++)id+=chars[Math.floor(Math.random()*chars.length)];
+  return id;
+}
+function showNameInputModal(){
+  const overlay=document.createElement('div');overlay.className='id-modal-overlay';overlay.id='idModalOverlay';
+  const previewId=game.playerId||generatePlayerId();
+  overlay.innerHTML=`<div class="id-modal"><h2>🌟 ยินดีต้อนรับ</h2><div class="id-sub">ตั้งชื่อตัวละครของคุณเพื่อเริ่มต้นเส้นทางปลูกฝัง</div><input type="text" id="nameInput" placeholder="ใส่ชื่อตัวละคร..." maxlength="20" autocomplete="off"><div class="id-preview"><div class="id-label">Player ID ของคุณ</div><div class="id-code" id="previewIdCode">#${previewId}</div></div><button class="id-confirm-btn" id="confirmNameBtn" disabled onclick="confirmPlayerName()">⚡ เริ่มปลูกฝัง</button></div>`;
+  document.body.appendChild(overlay);
+  if(!game.playerId)game.playerId=previewId;
+  const inp=document.getElementById('nameInput');const btn=document.getElementById('confirmNameBtn');
+  inp.addEventListener('input',()=>{const v=inp.value.trim();btn.disabled=v.length<1;});
+  inp.focus();
+  inp.addEventListener('keydown',(e)=>{if(e.key==='Enter'&&inp.value.trim().length>0)confirmPlayerName()});
+}
+function confirmPlayerName(){
+  const inp=document.getElementById('nameInput');
+  const name=inp.value.trim();if(!name)return;
+  game.playerName=name;
+  saveGame();
+  document.getElementById('idModalOverlay').remove();
+  updatePlayerIdDisplay();
+  toast('🎉 ยินดีต้อนรับ '+name+'!');
+}
+function showEditNameModal(){
+  const overlay=document.createElement('div');overlay.className='id-modal-overlay';overlay.id='editNameOverlay';
+  overlay.innerHTML=`<div class="id-modal"><h2>✏️ แก้ไขชื่อ</h2><div class="id-sub">Player ID: <span style="color:var(--cyan)">#${game.playerId}</span></div><input type="text" id="editNameInput" placeholder="ชื่อใหม่..." maxlength="20" value="${game.playerName}" autocomplete="off"><button class="id-confirm-btn" id="editNameBtn" onclick="confirmEditName()" style="margin-top:14px">✅ บันทึก</button><button class="id-confirm-btn" onclick="document.getElementById('editNameOverlay').remove()" style="margin-top:6px;background:var(--card2);color:var(--text);border:1px solid var(--border)">ยกเลิก</button></div>`;
+  document.body.appendChild(overlay);
+  const inp=document.getElementById('editNameInput');inp.focus();inp.select();
+  inp.addEventListener('keydown',(e)=>{if(e.key==='Enter')confirmEditName()});
+}
+function confirmEditName(){
+  const inp=document.getElementById('editNameInput');
+  const name=inp.value.trim();if(!name)return;
+  game.playerName=name;saveGame();
+  document.getElementById('editNameOverlay').remove();
+  updatePlayerIdDisplay();
+  toast('✅ เปลี่ยนชื่อเป็น '+name);
+}
+function copyPlayerId(){
+  if(navigator.clipboard){navigator.clipboard.writeText(game.playerId).then(()=>toast('📋 คัดลอก ID: #'+game.playerId))}
+  else toast('ID: #'+game.playerId);
+}
+function updatePlayerIdDisplay(){
+  const badge=document.getElementById('playerIdBadge');
+  const nameDisp=document.getElementById('playerNameDisplay');
+  if(game.playerId){badge.textContent='ID: #'+game.playerId;badge.style.display='inline-block'}
+  if(game.playerName){nameDisp.textContent='⚔️ '+game.playerName;nameDisp.style.display='block'}
+}
+
+// ==================== HELPERS ====================
+function $(id){return document.getElementById(id)}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2500)}
+function formatNum(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return Math.floor(n).toString()}
+function seededRandom(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+function getExpRequired(){const r=REALMS[game.realmIndex];return Math.floor(r.baseExp*Math.pow(r.mult,game.stage-1))}
+
+function getTotalStats(){
+  let s={hp:game.baseHP,atk:game.baseATK,def:game.baseDEF,spd:game.baseSPD,crit:game.baseCRIT};
+  for(let i=0;i<=game.realmIndex;i++){const r=REALMS[i];const stg=i<game.realmIndex?r.stages:game.stage-1;for(let j=0;j<stg;j++){s.hp+=r.stats.hp;s.atk+=r.stats.atk;s.def+=r.stats.def;s.spd+=r.stats.spd;s.crit+=r.stats.crit}}
+  ['weapon','armor','accessory'].forEach(sl=>{const it=game.equipped[sl];if(it){let mult=1+it.enchantLv*0.1;if(it.hp)s.hp+=Math.floor(it.hp*mult);if(it.atk)s.atk+=Math.floor(it.atk*mult);if(it.def)s.def+=Math.floor(it.def*mult);if(it.spd)s.spd+=Math.floor(it.spd*mult);if(it.crit)s.crit+=Math.floor(it.crit*mult)}});
   if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus){
     if(sect.bonus.atk)s.atk=Math.floor(s.atk*(1+sect.bonus.atk/100));
     if(sect.bonus.def)s.def=Math.floor(s.def*(1+sect.bonus.def/100));
@@ -557,7 +658,361 @@ function getQiPerSec(){
   if(game.qiBoostTimer>0)base*=2;
   if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.qiMult)base*=sect.bonus.qiMult}
   return Math.floor(base*10)/10;
-}rcle');
+}
+
+// ==================== QUESTS ====================
+function resetDailyQuests(){
+  const now=Date.now();
+  const last=game.lastQuestReset||0;
+  const lastDate=new Date(last).toDateString();
+  const nowDate=new Date(now).toDateString();
+  if(lastDate!==nowDate){
+    DAILY_QUESTS.forEach(q=>{game.dailyQuests[q.id]={progress:0,completed:false}});
+    game.lastQuestReset=now;
+  }
+}
+function renderQuests(){
+  resetDailyQuests();
+  const c=$('questsContainer');c.innerHTML='';
+  DAILY_QUESTS.forEach(q=>{
+    const qdata=game.dailyQuests[q.id]||{progress:0,completed:false};
+    const done=qdata.completed;
+    const d=document.createElement('div');
+    d.className=`quest-card ${done?'completed':''}`;
+    let rewardText=[];
+    if(q.reward.spiritStones)rewardText.push(`${q.reward.spiritStones}💎`);
+    if(q.reward.qi)rewardText.push(`${q.reward.qi}🔮`);
+    if(q.reward.exp)rewardText.push(`${q.reward.exp}✨`);
+    d.innerHTML=`
+      <div class="quest-title">${q.icon} ${q.name}</div>
+      <div class="quest-progress">${qdata.progress} / ${q.goal}</div>
+      <div class="quest-reward">รางวัล: ${rewardText.join(' ')}</div>
+      <button class="quest-claim-btn" ${done?'disabled':''}>${done?'✅ ได้รับแล้ว':'รับรางวัล'}</button>
+    `;
+    d.querySelector('.quest-claim-btn').addEventListener('click',()=>claimQuestReward(q.id));
+    c.appendChild(d);
+  });
+}
+function updateQuestProgress(type,amount=1){
+  const q=DAILY_QUESTS.find(x=>x.type===type);
+  if(!q)return;
+  const qdata=game.dailyQuests[q.id];
+  if(!qdata||qdata.completed)return;
+  qdata.progress=Math.min(q.goal,qdata.progress+amount);
+  if(qdata.progress>=q.goal)renderQuests();
+}
+function claimQuestReward(qid){
+  const q=DAILY_QUESTS.find(x=>x.id===qid);
+  if(!q)return;
+  const qdata=game.dailyQuests[q.id];
+  if(!qdata||qdata.completed||qdata.progress<q.goal)return;
+  qdata.completed=true;
+  if(q.reward.spiritStones)game.spiritStones+=q.reward.spiritStones;
+  if(q.reward.qi)game.qi+=q.reward.qi;
+  if(q.reward.exp)game.exp+=q.reward.exp;
+  toast(`✅ รับรางวัลภารกิจ!`);
+  renderQuests();updateUI();
+}
+
+// ==================== SKILLS ====================
+function initSkills(){
+  SKILLS.forEach(s=>{
+    if(!(s.id in game.skillLevels))game.skillLevels[s.id]=0;
+    if(!(s.id in game.skillCooldowns))game.skillCooldowns[s.id]=0;
+  });
+}
+function renderSkillButtons(){
+  const s=$('skillsPanel');if(!s)return;
+  s.innerHTML='';
+  const availSkills=SKILLS.filter(sk=>game.realmIndex>=sk.realm);
+  availSkills.slice(0,6).forEach(sk=>{
+    const cd=game.skillCooldowns[sk.id]||0;
+    const btn=document.createElement('button');
+    btn.className='skill-btn';
+    btn.disabled=cd>0||!currentEnemy||game.inBattle===false;
+    btn.innerHTML=`<span class="skill-icon">${sk.icon}</span><span>${sk.name}</span>${cd>0?`<span class="skill-cd">CD: ${cd.toFixed(0)}s</span>`:''}`;
+    btn.addEventListener('click',()=>useSkill(sk.id));
+    s.appendChild(btn);
+  });
+}
+function useSkill(skillId){
+  if(!currentEnemy||!game.inBattle)return;
+  const skill=SKILLS.find(s=>s.id===skillId);
+  if(!skill)return;
+  const cd=game.skillCooldowns[skill.id]||0;
+  if(cd>0){toast('ทักษะยังไม่พร้อม!');return}
+  const s=getTotalStats();
+  let dmg=0,msg='';
+  if(skill.id==='fire'){dmg=Math.floor(s.atk*1.5);msg=`🔥 เพลิงนรก ${dmg} dmg`}
+  else if(skill.id==='shield'){msg='🛡️ สร้างโล่!';game.playerShield=2}
+  else if(skill.id==='lightning'){dmg=Math.floor(s.atk*2);msg=`⚡ สายฟ้า ${dmg} dmg + Stun!`;game.enemyStun=1}
+  else if(skill.id==='wind'){const hit=Math.floor(s.atk*0.8);dmg=hit*3;msg=`💨 ลมใบมีด ${dmg} dmg (3x)`}
+  else if(skill.id==='meteor'){dmg=Math.floor(s.atk*3*0.5);msg=`☄️ ดาวตก ${dmg} dmg (DEF -50%)`}
+  else if(skill.id==='immortal'){const heal=Math.floor(s.hp*0.5);game.playerHP=Math.min(game.maxPlayerHP,game.playerHP+heal);msg=`✨ รักษา ${heal} HP + ATK x2`;game.playerAtkBoost=2}
+  if(dmg>0)currentEnemy.hp-=dmg;
+  logC(msg,'info','combatLog');
+  game.skillCooldowns[skill.id]=skill.cooldown;
+  renderSkillButtons();
+}
+
+// ==================== ENCHANT ====================
+function getEnchantCost(lv){
+  if(lv<5)return Math.floor(50+lv*20);
+  if(lv<10)return Math.floor(200+(lv-5)*50);
+  if(lv<13)return Math.floor(450+(lv-10)*100);
+  return 850;
+}
+function getEnchantSuccess(lv){
+  if(lv<6)return 0.9;
+  if(lv<11)return 0.6;
+  if(lv<14)return 0.3;
+  return 0.1;
+}
+function showEnchantModal(item,idx){
+  if(item.type==='accessory'||!item.enchantLv)item.enchantLv=0;
+  if(item.enchantLv>=15){toast('ไม่สามารถตีบวกได้อีก!');return}
+  const lv=item.enchantLv||0;
+  const nextLv=lv+1;
+  const cost=getEnchantCost(nextLv);
+  const success=getEnchantSuccess(nextLv);
+  let riskText='';
+  if(nextLv<8)riskText='ล้มเหลว: ยังคงระดับเดิม';
+  else if(nextLv<13)riskText='ล้มเหลว: ลดลง 1 ระดับ';
+  else riskText='ล้มเหลว: ✗ อุปกรณ์จะหาย!';
+  const html=`
+    <div class="enchant-level">${item.name} +${lv}</div>
+    <div style="text-align:center;margin:8px 0"><span style="font-size:13px;color:var(--cyan)">↓</span></div>
+    <div class="enchant-level" style="color:var(--gold)">${item.name} +${nextLv}</div>
+    <div class="enchant-cost">💎 ค่าตีบวก: ${cost}</div>
+    <div class="enchant-success">✅ ความสำเร็จ: ${Math.floor(success*100)}%</div>
+    <div class="enchant-risk">⚠️ ${riskText}</div>
+    <button class="enchant-btn" ${game.spiritStones<cost?'disabled':''} onclick="doEnchant(${idx},${nextLv})">ตีบวก</button>
+  `;
+  $('enchantContent').innerHTML=html;
+  $('enchantModal').style.display='flex';
+}
+function doEnchant(idx,targetLv){
+  const item=game.inventory[idx];
+  if(!item)return;
+  const cost=getEnchantCost(targetLv);
+  if(game.spiritStones<cost){toast('หินวิญญาณไม่พอ!');return}
+  game.spiritStones-=cost;
+  const success=getEnchantSuccess(targetLv);
+  if(Math.random()<success){
+    item.enchantLv=targetLv;
+    toast(`✅ ตีบวกสำเร็จ! +${targetLv}`);
+  }else{
+    const curLv=item.enchantLv||0;
+    if(targetLv<8){toast('❌ ตีบวกล้มเหลว ระดับคงเดิม')}
+    else if(targetLv<13){item.enchantLv=Math.max(0,curLv-1);toast(`❌ ตีบวกล้มเหลว ลดลง 1 ระดับ`)}
+    else{game.inventory.splice(idx,1);toast('💀 อุปกรณ์หายไป!');renderInventory();updateUI();$('enchantModal').style.display='none';return}
+  }
+  renderInventory();updateUI();
+  closeEnchantModal();
+}
+function closeEnchantModal(){$('enchantModal').style.display='none'}
+
+// ==================== TOWER ==========
+function checkTowerReset(){
+  const now=Date.now();
+  const last=game.towerLastReset||0;
+  const elapsed=(now-last)/1000;
+  if(elapsed>=1800){
+    game.towerFloor=1;
+    game.towerLastReset=now;
+    updateTowerUI();
+  }
+}
+function startTowerBattle(){
+  checkTowerReset();
+  if(game.inBattle)return;
+  game.inBattle=true;
+  const s=getTotalStats();
+  game.playerHP=s.hp;game.maxPlayerHP=s.hp;
+  const m=1.5+(game.towerFloor-1)*1.3;
+  currentEnemy={
+    name:`หอคอยชั้น ${game.towerFloor}`,icon:'👾',
+    hp:Math.floor(300*m),maxHP:Math.floor(300*m),atk:Math.floor(50*m),def:Math.floor(20*m),spd:Math.floor(15*m),
+    level:game.towerFloor,isTower:true
+  };
+  $('enemyIcon').textContent=currentEnemy.icon;
+  $('enemyName').textContent=currentEnemy.name;
+  $('enemyLevel').textContent='';
+  $('bossBadge').innerHTML='';
+  $('bossPhase').innerHTML='';
+  $('enemyHPBar').classList.remove('boss-hp');
+  updateBattleHP();
+  $('fightBtn').disabled=true;$('fightBtn').textContent='⚔️ กำลังต่อสู้...';
+  $('combatLog').innerHTML='';
+  game.battleInterval=setInterval(()=>{
+    if(!game.inBattle)return clearInterval(game.battleInterval);
+    const pf=s.spd>=currentEnemy.spd;
+    if(pf){if(pAtk(s,true))return;if(eAtk(s,true))return}else{if(eAtk(s,true))return;if(pAtk(s,true))return}
+    updateBattleHP();
+  },700);
+}
+function endTowerBattle(won){
+  clearInterval(game.battleInterval);game.inBattle=false;
+  $('fightBtn').disabled=false;
+  if(won){
+    game.towerFloor++;
+    game.towerBest=Math.max(game.towerBest,game.towerFloor);
+    const xp=Math.floor(100*game.towerFloor);const st=Math.floor(20*game.towerFloor);
+    game.exp+=xp;game.spiritStones+=st;
+    logC(`🎉 ชนะ! ชั้น ${game.towerFloor} +${xp}EXP +${st}💎`,'info','combatLog');
+    game.towerLog.unshift(`ชั้น ${game.towerFloor-1} ✅`);
+    if(game.towerLog.length>10)game.towerLog.pop();
+    $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
+  }else{
+    logC(`💀 พ่ายแพ้ที่ชั้น ${game.towerFloor}!`,'dmg','combatLog');
+    game.towerLog.unshift(`ชั้น ${game.towerFloor} ❌`);
+    if(game.towerLog.length>10)game.towerLog.pop();
+    $('fightBtn').textContent='⚔️ ลองอีกครั้ง';
+  }
+  updateTowerUI();updateUI();
+}
+function updateTowerUI(){
+  $('towerFloor').textContent=game.towerFloor;
+  $('towerBest').textContent=game.towerBest;
+  const now=Date.now();const elapsed=(now-game.towerLastReset||now)/1000;
+  const remain=Math.max(0,1800-elapsed);
+  if(remain>0){const m=Math.floor(remain/60);const s=Math.floor(remain%60);$('towerStatus').innerHTML=`<div style="color:var(--text3);font-size:12px">รีเซ็ตใหม่ใน ${m}นาที ${s}วินาที</div>`}
+  else{$('towerStatus').innerHTML=`<div style="color:var(--green);font-size:12px">พร้อมท้าทาย!</div>`}
+  $('towerLog').innerHTML=game.towerLog.map(l=>`<div>${l}</div>`).join('');
+}
+
+// ==================== BOSS SYSTEM ====================
+function isBossFloor(floor){
+  return floor%10===0&&floor>0;
+}
+function getBossName(floor){
+  let bossFloor=10;
+  while(bossFloor<floor)bossFloor+=10;
+  return BOSS_DATA[bossFloor]||BOSS_DATA[50];
+}
+
+// ==================== COMBAT ====================
+function getEnemyForFloor(f){
+  if(isBossFloor(f)){
+    const bossInfo=getBossName(f);
+    const m=bossInfo.mult;
+    const baseEnemy=ENEMIES_DATA[5][1];
+    return{...baseEnemy,hp:Math.floor(baseEnemy.hp*m),maxHP:Math.floor(baseEnemy.hp*m),atk:Math.floor(baseEnemy.atk*m),def:Math.floor(baseEnemy.def*m),spd:Math.floor(baseEnemy.spd*m),level:f,name:bossInfo.name,icon:bossInfo.icon,isBoss:true};
+  }
+  const ti=Math.min(Math.floor((f-1)/5),ENEMIES_DATA.length-1),pool=ENEMIES_DATA[ti];
+  const b=pool[Math.floor(Math.random()*pool.length)],m=1+((f-1)*0.4);
+  return{...b,hp:Math.floor(b.hp*m),maxHP:Math.floor(b.hp*m),atk:Math.floor(b.atk*m),def:Math.floor(b.def*m),spd:Math.floor(b.spd*m),level:f};
+}
+function startBattle(){
+  if(game.inBattle)return;
+  game.inBattle=true;
+  initSkills();
+  $('fightBtn').disabled=true;$('fightBtn').textContent='⚔️ กำลังต่อสู้...';$('combatLog').innerHTML='';
+  const s=getTotalStats();
+  game.playerHP=s.hp;game.maxPlayerHP=s.hp;
+  currentEnemy=getEnemyForFloor(game.floor);
+  game.bossMode=currentEnemy.isBoss||false;
+  game.bossPhase=0;
+  game.playerShield=0;game.enemyStun=0;game.playerAtkBoost=1;
+  $('enemyIcon').textContent=currentEnemy.icon;
+  $('enemyName').textContent=currentEnemy.name;
+  $('enemyLevel').textContent=`Lv.${currentEnemy.level}`;
+  if(game.bossMode){
+    $('bossBadge').innerHTML=`<div class="boss-badge">⚠️ BOSS</div>`;
+    $('bossPhase').innerHTML=`<div class="boss-phase">Normal Mode</div>`;
+  }else{
+    $('bossBadge').innerHTML='';
+    $('bossPhase').innerHTML='';
+  }
+  $('enemyHPBar').classList.toggle('boss-hp',game.bossMode);
+  updateBattleHP();
+  game.battleInterval=setInterval(()=>{
+    if(!game.inBattle)return clearInterval(game.battleInterval);
+    const pf=s.spd>=currentEnemy.spd;
+    if(pf){if(pAtk(s))return;if(eAtk(s))return}else{if(eAtk(s))return;if(pAtk(s))return}
+    updateBattleHP();
+  },700);
+}
+function pAtk(s,isTower=false){
+  if(game.enemyStun>0){game.enemyStun--;logC('🔒 ศัตรูไม่สามารถโจมตี!','info','combatLog');return false}
+  let d=Math.max(1,s.atk*game.playerAtkBoost-currentEnemy.def*0.5);
+  if(game.playerShield>0){game.playerShield--;d*=0.5}
+  let cr=Math.random()*100<s.crit;if(cr)d*=2;
+  d=Math.floor(d*(0.9+Math.random()*0.2));
+  currentEnemy.hp-=d;
+  logC(cr?`💥 คริ! ${d} dmg`:`⚔️ โจมตี ${d} dmg`,cr?'crit':'dmg','combatLog');
+  if(currentEnemy.hp<=0){
+    currentEnemy.hp=0;updateBattleHP();
+    if(isTower)endTowerBattle(true);else endBattle(true);
+    return true;
+  }
+  if(game.bossMode&&currentEnemy.maxHP&&currentEnemy.hp<=currentEnemy.maxHP*0.5&&game.bossPhase===0){
+    game.bossPhase=1;
+    currentEnemy.atk=Math.floor(currentEnemy.atk*2);
+    currentEnemy.hp=Math.floor(currentEnemy.maxHP*0.5);
+    $('bossPhase').innerHTML=`<div class="boss-phase">⚔️ RAGE MODE!</div>`;
+    logC(`😈 ${currentEnemy.name} ปลุกให้ตื่น!`,'dmg','combatLog');
+  }
+  return false;
+}
+function eAtk(s,isTower=false){
+  let d=Math.max(1,currentEnemy.atk-s.def*0.5);
+  d=Math.floor(d*(0.9+Math.random()*0.2));
+  if(game.playerShield>0){d=Math.floor(d*0.5);game.playerShield--}else{game.playerHP-=d}
+  logC(`👹 ${currentEnemy.name} ${d} dmg`,'dmg','combatLog');
+  if(game.playerHP<=0){
+    game.playerHP=0;updateBattleHP();
+    if(isTower)endTowerBattle(false);else endBattle(false);
+    return true;
+  }
+  return false;
+}
+function endBattle(won){
+  clearInterval(game.battleInterval);game.inBattle=false;$('fightBtn').disabled=false;
+  if(won){
+    const xp=Math.floor(30*game.floor*(1+game.realmIndex*0.5));
+    const st=Math.floor(5+game.floor*2);
+    const qi=Math.floor(50*game.floor);
+    let mult=1;
+    if(game.bossMode)mult=2;
+    let sectMult=1;
+    if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)sectMult=sect.bonus.expMult}
+    game.exp+=Math.floor(xp*sectMult);game.spiritStones+=Math.floor(st*mult);game.qi+=qi;game.floor++;
+    updateQuestProgress('combat',1);
+    logC(`🎉 ชนะ! +${xp} EXP +${Math.floor(st*mult)}💎 +${qi} Qi`,'info','combatLog');
+    if(Math.random()<0.2){const it=dropItem();if(it){logC(`🎁 ดรอป: ${it.name}!`,'info','combatLog');toast(`🎁 ${it.name}!`)}}
+    $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
+  }else{
+    game.exp=Math.floor(game.exp*0.3);
+    logC('💀 พ่ายแพ้!','dmg','combatLog');
+    $('fightBtn').textContent='⚔️ ลองอีกครั้ง';
+  }
+  updateUI();
+}
+function dropItem(){
+  const r=Math.random();let pool;
+  if(r<0.05)pool=ITEMS_DB.filter(i=>i.rarity==='legendary');
+  else if(r<0.15)pool=ITEMS_DB.filter(i=>i.rarity==='epic');
+  else if(r<0.3)pool=ITEMS_DB.filter(i=>i.rarity==='rare');
+  else if(r<0.55)pool=ITEMS_DB.filter(i=>i.rarity==='uncommon');
+  else pool=ITEMS_DB.filter(i=>i.rarity==='common');
+  if(!pool.length)return null;
+  const it={...pool[Math.floor(Math.random()*pool.length)],uid:Date.now()+Math.random(),enchantLv:0};
+  game.inventory.push(it);renderInventory();
+  return it;
+}
+function updateBattleHP(){
+  const ep=currentEnemy?Math.max(0,currentEnemy.hp/currentEnemy.maxHP*100):100;
+  $('enemyHPBar').style.width=ep+'%';$('enemyHPText').textContent=currentEnemy?`${Math.max(0,Math.floor(currentEnemy.hp))}/${currentEnemy.maxHP}`:'';
+  $('playerHPBar').style.width=Math.max(0,game.playerHP/game.maxPlayerHP*100)+'%';
+  $('playerHPText').textContent=`${Math.max(0,Math.floor(game.playerHP))}/${Math.floor(game.maxPlayerHP)}`;
+}
+function logC(msg,type,logId){const l=$(logId),d=document.createElement('div');d.className=type;d.textContent=msg;l.appendChild(d);l.scrollTop=l.scrollHeight}
+
+// ==================== CULTIVATION ====================
+function toggleMeditate(){
+  game.meditating=!game.meditating;
+  const btn=$('meditateBtn'),c=$('cultCircle');
   if(game.meditating){btn.textContent='🧘 หยุดนั่งสมาธิ';btn.classList.add('active');c.classList.add('meditating')}
   else{btn.textContent='🧘 เริ่มนั่งสมาธิ';btn.classList.remove('active');c.classList.remove('meditating');updateQuestProgress('time',0)}
 }
@@ -585,7 +1040,7 @@ function generateNPC(powerRange){
   const atk=Math.floor(basePow*0.25),def=Math.floor(basePow*0.12),hp=Math.floor(basePow*0.8),spd=Math.floor(basePow*0.08),crit=5+ri*2+st;
   return{name,realmIndex:ri,stage:st,power:basePow,hp,atk,def,spd,crit,
     realmName:`${REALMS[ri].name} ชั้น ${st}`,
-    avatar:['👨‍🦱','👩‍🦰','👨‍🦳','👨‍🦲','🧔','👩','👨‍🦱','👩‍🦳'][Math.floor(rng()*8)],
+    avatar:['🧑‍🦱','👩‍🦰','🧑‍🦳','👨‍🦲','🧔','👩','👨‍🦱','👩‍🦳'][Math.floor(rng()*8)],
     bgColor:`hsl(${Math.floor(rng()*360)},40%,20%)`};
 }
 function refreshPvpOpponents(){
@@ -697,7 +1152,7 @@ function renderLeaderboard(){
 function renderSect(){
   const c=$('sectContent');
   if(!game.sectId){
-    c.innerHTML=`<div class="card" style="text-align:center;margin-bottom:12px"><h3 style="color:var(--gold);font-size:16px;margin-bottom:4px">🏯 เลือกสำนัก</h3><p style="font-size:12px;color:var(--text3)">เข้าร่วมสำนักเพื่อรับโบนัสสถาวร!</p></div><div class="sect-grid" id="sectGrid"></div>`;
+    c.innerHTML=`<div class="card" style="text-align:center;margin-bottom:12px"><h3 style="color:var(--gold);font-size:16px;margin-bottom:4px">🏯 เลือกสำนัก</h3><p style="font-size:12px;color:var(--text3)">เข้าร่วมสำนักเพื่อรับโบนัสถาวร!</p></div><div class="sect-grid" id="sectGrid"></div>`;
     const grid=$('sectGrid');
     SECTS.forEach(s=>{
       const d=document.createElement('div');d.className='card sect-option';
@@ -711,7 +1166,7 @@ function renderSect(){
     let members=[];for(let i=0;i<8;i++){
       const n=NPC_NAMES[Math.floor(rng()*NPC_NAMES.length)];
       const ri=Math.floor(rng()*5),st=Math.floor(rng()*9)+1;
-      members.push({name:n,realm:`${REALMS[ri].name} ${st}`,role:i===0?'สำนักจู่':' อาวุโส'});
+      members.push({name:n,realm:`${REALMS[ri].name} ${st}`,role:i===0?'สำนักจู':'อาวุโส'});
     }
     c.innerHTML=`
       <div class="card sect-card">
@@ -761,7 +1216,7 @@ function handleItem(it,i){
   renderInventory();updateUI();
 }
 function updateEquipDisplay(){
-  ['weapon','armor','accessory'].forEach(sl=>{const it=game.equipped[sl];$('eq'+sl.charAt(0).toUpperCase()+sl.slice(1)+'Name').textContent=it?`${it.name}${it.enchantLv>0?' +'+it.enchantLv:''}`:' ว่าง';});}'});
+  ['weapon','armor','accessory'].forEach(sl=>{const it=game.equipped[sl];$('eq'+sl.charAt(0).toUpperCase()+sl.slice(1)+'Name').textContent=it?`${it.name}${it.enchantLv>0?' +'+it.enchantLv:''}`:'ว่าง'});
 }
 
 // ==================== SHOP ====================
@@ -868,7 +1323,7 @@ function updateUI(){
   $('realmBadge').textContent=`${realm.name} ชั้น ${game.stage}`;
   $('realmTitle').textContent=`${realm.name} - ชั้น ${game.stage}`;$('realmDesc').textContent=realm.desc;
   $('floorNum').textContent=`ชั้นที่ ${game.floor}`;
-  $('statsContainer').innerHTML=[[' พลังชีวิต (HP)',Math.floor(stats.hp)],['โจมตี (ATK)',Math.floor(stats.atk)],[' ป้องกัน (DEF)',Math.floor(stats.def)],[' ความเร็ว (SPD)',Math.floor(stats.spd)],[' คริ (%)',stats.crit.toFixed(1)+'%']].map(([n,v])=>`<div class="stat-row"><span>${n}</span><span class="s-val">${v}</span></div>`).join('');
+  $('statsContainer').innerHTML=[['พลังชีวิต (HP)',Math.floor(stats.hp)],['โจมตี (ATK)',Math.floor(stats.atk)],['ป้องกัน (DEF)',Math.floor(stats.def)],['ความเร็ว (SPD)',Math.floor(stats.spd)],['คริ (%)',stats.crit.toFixed(1)+'%']].map(([n,v])=>`<div class="stat-row"><span>${n}</span><span class="s-val">${v}</span></div>`).join('');
   const canBr=game.exp>=expReq;$('breakthroughBtn').disabled=!canBr;
   $('breakthroughBtn').textContent=canBr?'⚡ บุกทะลวงขั้น (พร้อม!)':'⚡ บุกทะลวงขั้น';
   game.maxPlayerHP=stats.hp;
@@ -877,435 +1332,6 @@ function updateUI(){
   const tm=Math.floor(game.totalPlayTime/60),th=Math.floor(tm/60);
   $('playTimeDisplay').textContent=th>0?`${th}ชม.${tm%60}น.`:`${tm}น.`;
   $('playerNameCombat').textContent=game.playerName||'ผู้ฝึกฝน';
-}
-
-loadGame();
-initSkills();
-if(!game.playerName){showNameInputModal()}
-else{updatePlayerIdDisplay()}
-renderInventory();renderShop();refreshPvpOpponents();renderQuests();updateTowerUI();updateUI();
-setInterval(gameLoop,100);
-addEventListener('beforeunload',()=>saveGame());
-document.addEventListener('visibilitychange',()=>{if(document.hidden)saveGame()});
-</script>
-</body>
-</html>
-'});
-}
-
-// ==================== SHOP ====================
-function renderShop(){
-  const c=$('shopList');c.innerHTML='';
-  SHOP_ITEMS.forEach(it=>{
-    const isQi=it.costType==='qi';const can=isQi?game.qi>=it.cost:game.spiritStones>=it.cost;
-    const d=document.createElement('div');d.className='card card-sm';
-    d.innerHTML=`<div class="shop-item"><div class="si-icon">${it.icon}</div><div class="si-info"><div class="si-name">${it.name}</div><div class="si-desc">${it.desc}</div></div><button class="si-btn" ${can?'':'disabled'}>${it.cost} ${isQi?'Qi':'💎'}</button></div>`;
-    d.querySelector('.si-btn').addEventListener('click',()=>{
-      if(isQi){if(game.qi<it.cost)return toast('Qi ไม่พอ!')}
-      else{if(game.spiritStones<it.cost)return toast('หินวิญญาณไม่พอ!');game.spiritStones-=it.cost}
-      it.act(game);toast(`✅ ซื้อ ${it.name} สำเร็จ!`);renderShop();updateUI();
-    });
-    c.appendChild(d);
-  });
-}
-
-// ==================== GAME LOOP ====================
-let saveTimer=0;
-function gameLoop(){
-  game.qi+=getQiPerSec()/10;
-  if(game.meditating){
-    let expRate=0.5+(game.realmIndex*0.3)+(game.stage*0.1);
-    if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)expRate*=sect.bonus.expMult}
-    game.exp+=expRate;
-    updateQuestProgress('time',0.1);
-  }
-  if(game.qiBoostTimer>0)game.qiBoostTimer-=0.1;
-  game.totalPlayTime+=0.1;
-  // Update skill cooldowns
-  SKILLS.forEach(s=>{if((game.skillCooldowns[s.id]||0)>0)game.skillCooldowns[s.id]-=0.1});
-  renderSkillButtons();
-  saveTimer+=0.1;if(saveTimer>=30){saveTimer=0;saveGame()}
-  updateUI();renderShop();
-}
-// ==================== QUESTS ====================
-function resetDailyQuests(){
-  const now=Date.now();
-  const last=game.lastQuestReset||0;
-  const lastDate=new Date(last).toDateString();
-  const nowDate=new Date(now).toDateString();
-  if(lastDate!==nowDate){
-    DAILY_QUESTS.forEach(q=>{game.dailyQuests[q.id]={progress:0,completed:false}});
-    game.lastQuestReset=now;
-  }
-}
-function renderQuests(){
-  resetDailyQuests();
-  const c=$('questsContainer');c.innerHTML='';
-  DAILY_QUESTS.forEach(q=>{
-    const qdata=game.dailyQuests[q.id]||{progress:0,completed:false};
-    const done=qdata.completed;
-    const d=document.createElement('div');
-    d.className=`quest-card ${done?'completed':''}`;
-    let rewardText=[];
-    if(q.reward.spiritStones)rewardText.push(`${q.reward.spiritStones}💎`);
-    if(q.reward.qi)rewardText.push(`${q.reward.qi}🔮`);
-    if(q.reward.exp)rewardText.push(`${q.reward.exp}✨`);
-    d.innerHTML=`
-      <div class="quest-title">${q.icon} ${q.name}</div>
-      <div class="quest-progress">${qdata.progress} / ${q.goal}</div>
-      <div class="quest-reward">รางวัล: ${rewardText.join(' ')}</div>
-      <button class="quest-claim-btn" ${done?'disabled':''}>${done?'✅ ได้รับแล้ว':'รับรางวัล'}</button>
-    `;
-    d.querySelector('.quest-claim-btn').addEventListener('click',()=>claimQuestReward(q.id));
-    c.appendChild(d);
-  });
-}
-function updateQuestProgress(type,amount=1){
-  const q=DAILY_QUESTS.find(x=>x.type===type);
-  if(!q)return;
-  const qdata=game.dailyQuests[q.id];
-  if(!qdata||qdata.completed)return;
-  qdata.progress=Math.min(q.goal,qdata.progress+amount);
-  if(qdata.progress>=q.goal)renderQuests();
-}
-function claimQuestReward(qid){
-  const q=DAILY_QUESTS.find(x=>x.id===qid);
-  if(!q)return;
-  const qdata=game.dailyQuests[q.id];
-  if(!qdata||qdata.completed||qdata.progress<q.goal)return;
-  qdata.completed=true;
-  if(q.reward.spiritStones)game.spiritStones+=q.reward.spiritStones;
-  if(q.reward.qi)game.qi+=q.reward.qi;
-  if(q.reward.exp)game.exp+=q.reward.exp;
-  toast(`✅ รับรางวัลภารกิจ!`);
-  renderQuests();updateUI();
-}
-// ==================== SKILLS ====================
-function initSkills(){
-  SKILLS.forEach(s=>{
-    if(!(s.id in game.skillLevels))game.skillLevels[s.id]=0;
-    if(!(s.id in game.skillCooldowns))game.skillCooldowns[s.id]=0;
-  });
-}
-function renderSkillButtons(){
-  const s=$('skillsPanel');if(!s)return;
-  s.innerHTML='';
-  const availSkills=SKILLS.filter(sk=>game.realmIndex>=sk.realm);
-  availSkills.slice(0,6).forEach(sk=>{
-    const cd=game.skillCooldowns[sk.id]||0;
-    const btn=document.createElement('button');
-    btn.className='skill-btn';
-    btn.disabled=cd>0||!currentEnemy||game.inBattle===false;
-    btn.innerHTML=`<span class="skill-icon">${sk.icon}</span><span>${sk.name}</span>${cd>0?`<span class="skill-cd">CD: ${cd.toFixed(0)}s</span>`:''}`;
-    btn.addEventListener('click',()=>useSkill(sk.id));
-    s.appendChild(btn);
-  });
-}
-function useSkill(skillId){
-  if(!currentEnemy||!game.inBattle)return;
-  const skill=SKILLS.find(s=>s.id===skillId);
-  if(!skill)return;
-  const cd=game.skillCooldowns[skill.id]||0;
-  if(cd>0){toast('ทักษะยังไม่พร้อม!');return}
-  const s=getTotalStats();
-  let dmg=0,msg='';
-  if(skill.id==='fire'){dmg=Math.floor(s.atk*1.5);msg=`🔥 เพลิงนรก ${dmg} dmg`}
-  else if(skill.id==='shield'){msg='🛡️ สร้างโล่!';game.playerShield=2}
-  else if(skill.id==='lightning'){dmg=Math.floor(s.atk*2);msg=`⚡ สายฟ้า ${dmg} dmg + Stun!`;game.enemyStun=1}
-  else if(skill.id==='wind'){const hit=Math.floor(s.atk*0.8);dmg=hit*3;msg=`💨 ลมใบมีด ${dmg} dmg (3x)`}
-  else if(skill.id==='meteor'){dmg=Math.floor(s.atk*3*0.5);msg=`☄️ ดาวตก ${dmg} dmg (DEF -50%)`}
-  else if(skill.id==='immortal'){const heal=Math.floor(s.hp*0.5);game.playerHP=Math.min(game.maxPlayerHP,game.playerHP+heal);msg=`✨ รักษา ${heal} HP + ATK x2`;game.playerAtkBoost=2}
-  if(dmg>0)currentEnemy.hp-=dmg;
-  logC(msg,'info','combatLog');
-  game.skillCooldowns[skill.id]=skill.cooldown;
-  renderSkillButtons();
-}
-// ==================== ENCHANT ====================
-function getEnchantCost(lv){
-  if(lv<5)return Math.floor(50+lv*20);
-  if(lv<10)return Math.floor(200+(lv-5)*50);
-  if(lv<13)return Math.floor(450+(lv-10)*100);
-  return 850;
-}
-function getEnchantSuccess(lv){
-  if(lv<6)return 0.9;
-  if(lv<11)return 0.6;
-  if(lv<14)return 0.3;
-  return 0.1;
-}
-function showEnchantModal(item,idx){
-  if(item.type==='accessory'||!item.enchantLv)item.enchantLv=0;
-  if(item.enchantLv>=15){toast('ไม่สามารถตีบวกได้อีก!');return}
-  const lv=item.enchantLv||0;
-  const nextLv=lv+1;
-  const cost=getEnchantCost(nextLv);
-  const success=getEnchantSuccess(nextLv);
-  let riskText='';
-  if(nextLv<8)riskText='ล้มเหลว: ยังคงระดับเดิมเดิม';
-  else if(nextLv<13)riskText='ล้มเหลว: ลดลง 1 ระดับ';
-  else riskText='ล้มเหลว: ✗ อุปกรณ์จะหายไป!';
-  const html=`
-    <div class="enchant-level">${item.name} +${lv}</div>
-    <div style="text-align:center;margin:8px 0"><span style="font-size:13px;color:var(--cyan)">↓</span></div>
-    <div class="enchant-level" style="color:var(--gold)">${item.name} +${nextLv}</div>
-    <div class="enchant-cost">💎 ค่าตีบวก: ${cost}</div>
-    <div class="enchant-success">✅ ความสำเร็จ: ${Math.floor(success*100)}%</div>
-    <div class="enchant-risk">⚠️ ${riskText}</div>
-    <button class="enchant-btn" ${game.spiritStones<cost?'disabled':''} onclick="doEnchant(${idx},${nextLv})">ตีบวก</button>
-  `;
-  $('enchantContent').innerHTML=html;
-  $('enchantModal').style.display='flex';
-}
-function doEnchant(idx,targetLv){
-  const item=game.inventory[idx];
-  if(!item)return;
-  const cost=getEnchantCost(targetLv);
-  if(game.spiritStones<cost){toast('หินวิญญาณไม่พอ!');return}
-  game.spiritStones-=cost;
-  const success=getEnchantSuccess(targetLv);
-  if(Math.random()<success){
-    item.enchantLv=targetLv;
-    toast(`✅ ตีบวกสำเร็จ! +${targetLv}`);
-  }else{
-    const curLv=item.enchantLv||0;
-    if(targetLv<8){toast('❌ ตีบวกล้มเหลว ระดับคงเดิม')}
-    else if(targetLv<13){item.enchantLv=Math.max(0,curLv-1);toast(`❌ ตีบวกล้มเหลว ลดลง 1 ระดับ`)}
-    else{game.inventory.splice(idx,1);toast('💀 อุปกรณ์หายไป!');renderInventory();updateUI();$('enchantModal').style.display='none';return}
-  }
-  renderInventory();updateUI();
-  closeEnchantModal();
-}
-function closeEnchantModal(){$('enchantModal').style.display='none'}
-// ==================== TOWER ==========
-function checkTowerReset(){
-  const now=Date.now();
-  const last=game.towerLastReset||0;
-  const elapsed=(now-last)/1000;
-  if(elapsed>=1800){
-    game.towerFloor=1;
-    game.towerLastReset=now;
-    updateTowerUI();
-  }
-}
-function startTowerBattle(){
-  checkTowerReset();
-  if(game.inBattle)return;
-  game.inBattle=true;
-  const s=getTotalStats();
-  game.playerHP=s.hp;game.maxPlayerHP=s.hp;
-  const m=1.5+(game.towerFloor-1)*1.3;
-  currentEnemy={
-    name:`หอคอยชั้น ${game.towerFloor}`,icon:'🐲',
-    hp:Math.floor(300*m),maxHP:Math.floor(300*m),atk:Math.floor(50*m),def:Math.floor(20*m),spd:Math.floor(15*m),
-    level:game.towerFloor,isTower:true
-  };
-  $('enemyIcon').textContent=currentEnemy.icon;
-  $('enemyName').textContent=currentEnemy.name;
-  $('enemyLevel').textContent='';
-  $('bossBadge').innerHTML='';
-  $('bossPhase').innerHTML='';
-  $('enemyHPBar').classList.remove('boss-hp');
-  updateBattleHP();
-  $('fightBtn').disabled=true;$('fightBtn').textContent='⚔️ กำลังต่อสู้...';
-  $('combatLog').innerHTML='';
-  game.battleInterval=setInterval(()=>{
-    if(!game.inBattle)return clearInterval(game.battleInterval);
-    const pf=s.spd>=currentEnemy.spd;
-    if(pf){if(pAtk(s,true))return;if(eAtk(s,true))return}else{if(eAtk(s,true))return;if(pAtk(s,true))return}
-    updateBattleHP();
-  },700);
-}
-function endTowerBattle(won){
-  clearInterval(game.battleInterval);game.inBattle=false;
-  $('fightBtn').disabled=false;
-  if(won){
-    game.towerFloor++;
-    game.towerBest=Math.max(game.towerBest,game.towerFloor);
-    const xp=Math.floor(100*game.towerFloor);const st=Math.floor(20*game.towerFloor);
-    game.exp+=xp;game.spiritStones+=st;
-    logC(`🎉 ชนะ! ชั้น ${game.towerFloor} +${xp}EXP +${st}💎`,'info','combatLog');
-    game.towerLog.unshift(`ชั้น ${game.towerFloor-1} ✅`);
-    if(game.towerLog.length>10)game.towerLog.pop();
-    $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
-  }else{
-    logC(`💀 พ่ายแพ้ที่ชั้น ${game.towerFloor}!`,'dmg','combatLog');
-    game.towerLog.unshift(`ชั้น ${game.towerFloor} ❌`);
-    if(game.towerLog.length>10)game.towerLog.pop();
-    $('fightBtn').textContent='⚔️ ลองอีกครั้ง';
-  }
-  updateTowerUI();updateUI();
-}
-function updateTowerUI(){
-  $('towerFloor').textContent=game.towerFloor;
-  $('towerBest').textContent=game.towerBest;
-  const now=Date.now();const elapsed=(now-game.towerLastReset||now)/1000;
-  const remain=Math.max(0,1800-elapsed);
-  if(remain>0){const m=Math.floor(remain/60);const s=Math.floor(remain%60);$('towerStatus').innerHTML=`<div style="color:var(--text3);font-size:12px">รีเซ็ตใหม่ใน ${m}นาที ${s}วินาที</div>`}
-  else{$('towerStatus').innerHTML=`<div style="color:var(--green);font-size:12px">พร้อมทำลายใหม่!</div>`}
-  $('towerLog').innerHTML=game.towerLog.map(l=>`<div>${l}</div>`).join('');
-}';});
-}
-
-// ==================== SHOP ====================
-function renderShop(){
-  const c=$('shopList');c.innerHTML='';
-  SHOP_ITEMS.forEach(it=>{
-    const isQi=it.costType==='qi';const can=isQi?game.qi>=it.cost:game.spiritStones>=it.cost;
-    const d=document.createElement('div');d.className='card card-sm';
-    d.innerHTML=`<div class="shop-item"><div class="si-icon">${it.icon}</div><div class="si-info"><div class="si-name">${it.name}</div><div class="si-desc">${it.desc}</div></div><button class="si-btn" ${can?'':'disabled'}>${it.cost} ${isQi?'Qi':'💎'}</button></div>`;
-    d.querySelector('.si-btn').addEventListener('click',()=>{
-      if(isQi){if(game.qi<it.cost)return toast('Qi ไม่พอ!')}
-      else{if(game.spiritStones<it.cost)return toast('หินวิญญาณไม่พอ!');game.spiritStones-=it.cost}
-      it.act(game);toast(`✅ ซื้อ ${it.name} สำเร็จ!`);renderShop();updateUI();
-    });
-    c.appendChild(d);
-  });
-}
-// ==================== BOSS SYSTEM ====================
-function isBossFloor(floor){
-  return floor%10===0&&floor>0;
-}
-function getBossName(floor){
-  let bossFloor=10;
-  while(bossFloor<floor)bossFloor+=10;
-  return BOSS_DATA[bossFloor]||BOSS_DATA[50];
-}
-
-// ==================== COMBAT ====================
-function getEnemyForFloor(f){
-  if(isBossFloor(f)){
-    const bossInfo=getBossName(f);
-    const m=bossInfo.mult;
-    const baseEnemy=ENEMIES_DATA[5][1];
-    return{...baseEnemy,hp:Math.floor(baseEnemy.hp*m),maxHP:Math.floor(baseEnemy.hp*m),atk:Math.floor(baseEnemy.atk*m),def:Math.floor(baseEnemy.def*m),spd:Math.floor(baseEnemy.spd*m),level:f,name:bossInfo.name,icon:bossInfo.icon,isBoss:true};
-  }
-  const ti=Math.min(Math.floor((f-1)/5),ENEMIES_DATA.length-1),pool=ENEMIES_DATA[ti];
-  const b=pool[Math.floor(Math.random()*pool.length)],m=1+((f-1)*0.4);
-  return{...b,hp:Math.floor(b.hp*m),maxHP:Math.floor(b.hp*m),atk:Math.floor(b.atk*m),def:Math.floor(b.def*m),spd:Math.floor(b.spd*m),level:f};
-}
-function startBattle(){
-  if(game.inBattle)return;
-  game.inBattle=true;
-  initSkills();
-  $('fightBtn').disabled=true;$('fightBtn').textContent='⚔️ กำลังต่อสู้...';$('combatLog').innerHTML='';
-  const s=getTotalStats();
-  game.playerHP=s.hp;game.maxPlayerHP=s.hp;
-  currentEnemy=getEnemyForFloor(game.floor);
-  game.bossMode=currentEnemy.isBoss||false;
-  game.bossPhase=0;
-  game.playerShield=0;game.enemyStun=0;game.playerAtkBoost=1;
-  $('enemyIcon').textContent=currentEnemy.icon;
-  $('enemyName').textContent=currentEnemy.name;
-  $('enemyLevel').textContent=`Lv.${currentEnemy.level}`;
-  if(game.bossMode){
-    $('bossBadge').innerHTML=`<div class="boss-badge">⚠️ BOSS</div>`;
-    $('bossPhase').innerHTML=`<div class="boss-phase">Normal Mode</div>`;
-  }else{
-    $('bossBadge').innerHTML='';
-    $('bossPhase').innerHTML='';
-  }
-  $('enemyHPBar').classList.toggle('boss-hp',game.bossMode);
-  updateBattleHP();
-  game.battleInterval=setInterval(()=>{
-    if(!game.inBattle)return clearInterval(game.battleInterval);
-    const pf=s.spd>=currentEnemy.spd;
-    if(pf){if(pAtk(s))return;if(eAtk(s))return}else{if(eAtk(s))return;if(pAtk(s))return}
-    updateBattleHP();
-  },700);
-}
-function pAtk(s,isTower=false){
-  if(game.enemyStun>0){game.enemyStun--;logC('🔒 ศัตรูไม่สามารถโจมตี!','info','combatLog');return false}
-  let d=Math.max(1,s.atk*game.playerAtkBoost-currentEnemy.def*0.5);
-  if(game.playerShield>0){game.playerShield--;d*=0.5}
-  let cr=Math.random()*100<s.crit;if(cr)d*=2;
-  d=Math.floor(d*(0.9+Math.random()*0.2));
-  currentEnemy.hp-=d;
-  logC(cr?`💥 คริ! ${d} dmg`:`⚔️ โจมตี ${d} dmg`,cr?'crit':'dmg','combatLog');
-  if(currentEnemy.hp<=0){
-    currentEnemy.hp=0;updateBattleHP();
-    if(isTower)endTowerBattle(true);else endBattle(true);
-    return true;
-  }
-  if(game.bossMode&&currentEnemy.maxHP&&currentEnemy.hp<=currentEnemy.maxHP*0.5&&game.bossPhase===0){
-    game.bossPhase=1;
-    currentEnemy.atk=Math.floor(currentEnemy.atk*2);
-    currentEnemy.hp=Math.floor(currentEnemy.maxHP*0.5);
-    $('bossPhase').innerHTML=`<div class="boss-phase">⚔️ RAGE MODE!</div>`;
-    logC(`😈 ${currentEnemy.name} ปลุกให้ตื่น!`,'dmg','combatLog');
-  }
-  return false;
-}
-function eAtk(s,isTower=false){
-  let d=Math.max(1,currentEnemy.atk-s.def*0.5);
-  d=Math.floor(d*(0.9+Math.random()*0.2));
-  if(game.playerShield>0){d=Math.floor(d*0.5);game.playerShield--}else{game.playerHP-=d}
-  logC(`👤 ${currentEnemy.name} ${d} dmg`,'dmg','combatLog');
-  if(game.playerHP<=0){
-    game.playerHP=0;updateBattleHP();
-    if(isTower)endTowerBattle(false);else endBattle(false);
-    return true;
-  }
-  return false;
-}
-function endBattle(won){
-  clearInterval(game.battleInterval);game.inBattle=false;$('fightBtn').disabled=false;
-  if(won){
-    const xp=Math.floor(30*game.floor*(1+game.realmIndex*0.5));
-    const st=Math.floor(5+game.floor*2);
-    const qi=Math.floor(50*game.floor);
-    let mult=1;
-    if(game.bossMode)mult=2;
-    let sectMult=1;
-    if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)sectMult=sect.bonus.expMult}
-    game.exp+=Math.floor(xp*sectMult);game.spiritStones+=Math.floor(st*mult);game.qi+=qi;game.floor++;
-    updateQuestProgress('combat',1);
-    logC(`🎉 ชนะ! +${xp} EXP +${Math.floor(st*mult)}💎 +${qi} Qi`,'info','combatLog');
-    if(Math.random()<0.2){const it=dropItem();if(it){logC(`🎁 ดรอป: ${it.name}!`,'info','combatLog');toast(`🎁 ${it.name}!`)}}
-    $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
-  }else{
-    game.exp=Math.floor(game.exp*0.3);
-    logC('💀 พ่ายแพ้!','dmg','combatLog');
-    $('fightBtn').textContent='⚔️ ลองอีกครั้ง';
-  }
-  updateUI();
-}
-function dropItem(){
-  const r=Math.random();let pool;
-  if(r<0.05)pool=ITEMS_DB.filter(i=>i.rarity==='legendary');
-  else if(r<0.15)pool=ITEMS_DB.filter(i=>i.rarity==='epic');
-  else if(r<0.3)pool=ITEMS_DB.filter(i=>i.rarity==='rare');
-  else if(r<0.55)pool=ITEMS_DB.filter(i=>i.rarity==='uncommon');
-  else pool=ITEMS_DB.filter(i=>i.rarity==='common');
-  if(!pool.length)return null;
-  const it={...pool[Math.floor(Math.random()*pool.length)],uid:Date.now()+Math.random(),enchantLv:0};
-  game.inventory.push(it);renderInventory();
-  return it;
-}
-function updateBattleHP(){
-  const ep=currentEnemy?Math.max(0,currentEnemy.hp/currentEnemy.maxHP*100):100;
-  $('enemyHPBar').style.width=ep+'%';$('enemyHPText').textContent=currentEnemy?`${Math.max(0,Math.floor(currentEnemy.hp))}/${currentEnemy.maxHP}`:'';
-  $('playerHPBar').style.width=Math.max(0,game.playerHP/game.maxPlayerHP*100)+'%';
-  $('playerHPText').textContent=`${Math.max(0,Math.floor(game.playerHP))}/${Math.floor(game.maxPlayerHP)}`;
-}
-function logC(msg,type,logId){const l=$(logId),d=document.createElement('div');d.className=type;d.textContent=msg;l.appendChild(d);l.scrollTop=l.scrollHeight}
-
-// ==================== CULTIVATION ====================
-function toggleMeditate(){
-  game.meditating=!game.meditating;
-  const btn=$('meditateBtn'),c=$('cultCircle');
-  if(game.meditating){btn.textContent='🧘 หยุดนั่งสมาธิ';btn.classList.add('active');c.classList.add('meditating')}
-  else{btn.textContent='🧘 เริ่มนั่งสมาธิ';btn.classList.remove('active');c.classList.remove('meditating');updateQuestProgress('time',0)}
-}
-function tryBreakthrough(){
-  const expReq=getExpRequired();if(game.exp<expReq)return;game.exp-=expReq;
-  let chance=0.6+game.stage*-0.03;if(game.stage>=REALMS[game.realmIndex].stages)chance-=0.1;chance=Math.max(0.1,Math.min(0.95,chance));
-  if(Math.random()<chance){
-    if(game.stage>=REALMS[game.realmIndex].stages){
-      if(game.realmIndex<REALMS.length-1){game.realmIndex++;game.stage=1;toast(`🎉 ก้าวเข้าสู่ ${REALMS[game.realmIndex].name}!`)}
-      else toast('🏆 บรรลุขั้นสูงสุด!')
-    }else{game.stage++;toast(`✨ บุกทะลวงสำเร็จ! ชั้น ${game.stage}`)}
-  }else{toast('💥 บุกทะลวงล้มเหลว!');game.exp=Math.floor(game.exp*0.3)}
-  updateUI();
 }
 
 loadGame();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ปลูกฝังเซียน - Cultivation Idle RPG</title>
+<title>ปลูกฝังเซี่ยน - Cultivation Idle RPG</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -193,17 +193,38 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 @media(max-width:500px){.app{max-width:100%}.bottom-nav{max-width:100%}}
+
+/* Player ID Modal */
+.id-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);z-index:2000;display:flex;align-items:center;justify-content:center}
+.id-modal{background:linear-gradient(180deg,#1a1040,#0a0e1a);border:2px solid var(--gold);border-radius:20px;padding:30px;max-width:380px;width:90%;text-align:center;animation:modalIn .5s}
+.id-modal h2{font-size:22px;color:var(--gold);margin-bottom:6px}
+.id-modal .id-sub{font-size:13px;color:var(--text3);margin-bottom:18px}
+.id-modal input{width:100%;padding:12px 16px;border:2px solid var(--border);border-radius:10px;background:var(--card2);color:var(--text);font-size:16px;font-family:inherit;text-align:center;outline:none;transition:.3s}
+.id-modal input:focus{border-color:var(--gold);box-shadow:0 0 12px rgba(251,191,36,0.3)}
+.id-modal input::placeholder{color:var(--text3)}
+.id-modal .id-preview{margin:14px 0;padding:12px;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.id-modal .id-preview .id-code{font-size:20px;font-weight:700;color:var(--cyan);letter-spacing:2px}
+.id-modal .id-preview .id-label{font-size:10px;color:var(--text3);margin-top:2px}
+.id-modal .id-confirm-btn{width:100%;padding:14px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-family:inherit;margin-top:8px;transition:.2s}
+.id-modal .id-confirm-btn:hover{transform:scale(1.02);box-shadow:0 0 20px rgba(251,191,36,0.4)}
+.id-modal .id-confirm-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.player-id-badge{display:inline-block;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-size:10px;color:var(--cyan);margin-top:3px;letter-spacing:1px;cursor:pointer;transition:.2s}
+.player-id-badge:hover{border-color:var(--cyan);background:rgba(6,182,212,0.1)}
+.player-name-display{font-size:11px;color:var(--text2);margin-top:2px}
 </style>
 </head>
 <body>
 
 <div class="app" id="app">
   <div class="header">
-    <h1>ปลูกฝังเซียน</h1>
-    <div class="realm-badge" id="realmBadge">ขั้นฝึกกาย ชั้น 1</div>
+    <h1>ปลูกฝังเซี่ยน</h1>
+    <div class="realm-badge" id="realmBadge">ข้นฝึกกาย ชั้น 1</div>
+    <div class="player-name-display" id="playerNameDisplay"></div>
+    <div class="player-id-badge" id="playerIdBadge" onclick="copyPlayerId()" title="คลิกเพื่อคัดลอก ID"></div>
     <div class="header-meta">
       <span id="playTimeDisplay">0น.</span> |
       <span onclick="saveGame();toast('💾 บันทึกแล้ว!')">💾 บันทึก</span> |
+      <span onclick="showEditNameModal()" style="color:var(--cyan)">✏️ แก้ชื่อ</span> |
       <span onclick="resetGame()" style="color:var(--red)">รีเซ็ต</span>
     </div>
   </div>
@@ -231,9 +252,9 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
       <div class="progress-bar"><div class="progress-fill" id="expBar" style="width:0%"></div></div>
     </div>
     <button class="btn btn-purple" id="meditateBtn" onclick="toggleMeditate()">🧘 เริ่มนั่งสมาธิ</button>
-    <button class="btn btn-gold" id="breakthroughBtn" onclick="tryBreakthrough()"" disabled>⚡ บุกทะลวงขั้น</button>
+    <button class="btn btn-gold" id="breakthroughBtn" onclick="tryBreakthrough()" disabled>⚡ บุกทะลวงขั้น</button>
     <div class="card" style="margin-top:12px">
-      <h3 id="realmTitle" style="color:var(--gold);font-size:14px;margin-bottom:4px">ขั้นฝึกกาย - ชั้น 1</h3>
+      <h3 id="realmTitle" style="color:var(--gold);font-size:14px;margin-bottom:4px">ข้นฝึกกาย - ชั้น 1</h3>
       <p id="realmDesc" style="font-size:12px;color:var(--text2);line-height:1.5">เริ่มต้นเส้นทางการฝึกฝน</p>
     </div>
     <div class="section-title">📊 สถานะ</div>
@@ -260,7 +281,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
       </div>
       <div class="combat-log" id="combatLog"><div class="info">พร้อมต่อสู้...</div></div>
     </div>
-    <button class="btn btn-red" id="fightBtn" onclick="startBattle()">⚔️ เข้าต่อสู้</button>
+    <button class="btn btn-red" id="fightBtn" onclick="startBattle()">⚔️ เข้าต่อสู้button>
   </div>
 
   <!-- ========== PVP ARENA ========== -->
@@ -276,7 +297,7 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
       <div><div class="pr-val" style="color:var(--red)" id="pvpLosses">0</div><div class="pr-label">แพ้</div></div>
       <div><div class="pr-val" style="color:var(--gold)" id="pvpStreak">0</div><div class="pr-label">ชนะติด</div></div>
     </div>
-    <div class="section-title">🏇 คู่ต่อสู้</div>
+    <div class="section-title">🏯 คู่ต่อสู้</div>
     <div id="pvpOpponents"></div>
     <button class="btn btn-blue" onclick="refreshPvpOpponents()" style="margin-top:4px">🔄 รีเฟรชคู่ต่อสู้</button>
     <!-- PvP Battle Area (hidden by default) -->
@@ -293,8 +314,8 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
   <!-- ========== LEADERBOARD ========== -->
   <div class="panel" id="panel-leaderboard">
     <div class="lb-tabs">
-      <button class="lb-tab active" onclick="switchLB('power',this)">💪 พลังรบ</button>
-      <button class="lb-tab" onclick="switchLB('realm',this)">🧘 ขั้นฝึก</button>
+      <button class="lb-tab active" onclick="switchLB('power',this)">💪 พลังรับ</button>
+      <button class="lb-tab" onclick="switchLB('realm',this)">🧘 ข้นฝึก</button>
       <button class="lb-tab" onclick="switchLB('pvp',this)">🏆 PvP</button>
     </div>
     <div id="lbContent"></div>
@@ -341,8 +362,8 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 <!-- Idle Modal -->
 <div class="modal-overlay" id="idleModal" style="display:none">
   <div class="modal">
-    <h2>🌙 ยินดีต้อนรับกลับ!</h2>
-    <div class="modal-sub">ศิษย์ได้ฝึกฝนต่อเนื่องขณะท่านจากไป</div>
+    <h2>🌙 ยินดีต้อนรับ!</h2>
+    <div class="modal-sub">ศิษย์ได้ฝึกฝนต่อเนื่องขณะที่จากไป</div>
     <div style="font-size:14px;color:var(--cyan);margin-bottom:10px" id="idleTime"></div>
     <div class="reward-list">
       <div class="reward-row"><span>🔮 พลังจิต</span><span class="rw-val" id="idleQi">+0</span></div>
@@ -369,41 +390,41 @@ body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--te
 <script>
 // ==================== DATA ====================
 const REALMS=[
-  {name:'ขั้นฝึกกาย',stages:9,baseExp:100,mult:1.5,desc:'เริ่มต้นเส้นทาง ร่างกายรับรู้พลังจิตจากสวรรค์และแผ่นดิน',stats:{hp:20,atk:3,def:2,spd:1,crit:0.5}},
-  {name:'ขั้นสร้างฐาน',stages:9,baseExp:500,mult:1.6,desc:'สถาปนาฐานราก (Dantian) เก็บพลังจิตมหาศาล',stats:{hp:50,atk:8,def:5,spd:2,crit:1}},
-  {name:'ขั้นก่อแกนทอง',stages:9,baseExp:2000,mult:1.7,desc:'หลอมรวมพลังจิตเป็นแกนทอง ใช้เทคนิคขั้นสูง',stats:{hp:120,atk:20,def:12,spd:4,crit:1.5}},
-  {name:'ขั้นจิตวิญญาณ',stages:9,baseExp:8000,mult:1.8,desc:'จิตวิญญาณตื่นรู้ มองทะลุสรรพสิ่ง',stats:{hp:300,atk:50,def:30,spd:8,crit:2}},
-  {name:'ขั้นรวมดาว',stages:9,baseExp:30000,mult:2,desc:'ดึงพลังดวงดาว ข้ามพ้นขีดจำกัดมนุษย์',stats:{hp:800,atk:120,def:70,spd:15,crit:3}},
-  {name:'ขั้นอมตะ',stages:9,baseExp:100000,mult:2.5,desc:'ก้าวสู่อาณาจักรอมตะ พลังเทียบเทพเซียน!',stats:{hp:2000,atk:300,def:180,spd:30,crit:5}}
+  {name:'ข้นฝึกกาย',stages:9,baseExp:100,mult:1.5,desc:'เริ่มต้นเส้นทาง รื่องกายรับรูพลังจิตจากสวรรคแลแผ่นดิน',stats:{hp:20,atk:3,def:2,spd:1,crit:0.5}},
+  {name:'ข้นสร้างธาน',stages:9,baseExp:500,mult:1.6,desc:'สถาปนาธาน (Dantian) เก็บพลังจิตมหาศาล',stats:{hp:50,atk:8,def:5,spd:2,crit:1}},
+  {name:'ข้นก่อแกนทอง',stages:9,baseExp:2000,mult:1.7,desc:'หลอมรวมพลังจิตเป็นแกนทอง ใช้เทคนิคขั้นสูง',stats:{hp:120,atk:20,def:12,spd:4,crit:1.5}},
+  {name:'ข้นจิตวิญญาณ',stages:9,baseExp:8000,mult:1.8,desc:'จิตวิญญาณตื่นรูป มองทะลุสรรพสิ่ง',stats:{hp:300,atk:50,def:30,spd:8,crit:2}},
+  {name:'ข้นรวมดาว',stages:9,baseExp:30000,mult:2,desc:'ดึงพลังดวงดาว ข้ามพ้นขีดจำกัดมนุษย์',stats:{hp:800,atk:120,def:70,spd:15,crit:3}},
+  {name:'ข้นอมตะ',stages:9,baseExp:100000,mult:2.5,desc:'ก้าวสู่อานาจักรอมตะ พลังเทียบเท่า!',stats:{hp:2000,atk:300,def:180,spd:30,crit:5}}
 ];
 const ENEMIES_DATA=[
-  [{name:'สัตว์ป่า',icon:'🐗',hp:80,atk:8,def:2,spd:5},{name:'หมาป่า',icon:'🐺',hp:120,atk:12,def:4,spd:8}],
+  [{name:'สัตว์ป่า',icon:'🐐',hp:80,atk:8,def:2,spd:5},{name:'หมาป่า',icon:'🐺',hp:120,atk:12,def:4,spd:8}],
   [{name:'ภูตไม้',icon:'🌳',hp:200,atk:18,def:10,spd:6},{name:'งูยักษ์',icon:'🐍',hp:250,atk:25,def:8,spd:12}],
   [{name:'ปีศาจหิน',icon:'🗿',hp:500,atk:35,def:25,spd:8},{name:'นกอินทรีเพลิง',icon:'🦅',hp:400,atk:50,def:15,spd:20}],
   [{name:'มังกรน้ำ',icon:'🐉',hp:1000,atk:80,def:40,spd:18},{name:'ยักษ์เหล็ก',icon:'👹',hp:1500,atk:60,def:60,spd:10}],
   [{name:'เทพอสูร',icon:'😈',hp:3000,atk:150,def:80,spd:25},{name:'ราชามังกร',icon:'🐲',hp:5000,atk:200,def:100,spd:20}],
-  [{name:'จักรพรรดิอมตะ',icon:'👑',hp:10000,atk:400,def:200,spd:40},{name:'เทพเซียนมืด',icon:'☠️',hp:15000,atk:500,def:250,spd:35}]
+  [{name:'จักรพรรดิอมตะ',icon:'👑',hp:10000,atk:400,def:200,spd:40},{name:'เทพเซี่ยนมืด',icon:'☠️',hp:15000,atk:500,def:250,spd:35}]
 ];
 const ITEMS_DB=[
   {id:'sw1',name:'ดาบเหล็ก',icon:'🗡️',type:'weapon',rarity:'common',atk:5,desc:'+5 ATK'},
   {id:'sw2',name:'ดาบเงิน',icon:'⚔️',type:'weapon',rarity:'uncommon',atk:15,desc:'+15 ATK'},
   {id:'sw3',name:'ดาบมังกร',icon:'🔥',type:'weapon',rarity:'rare',atk:40,desc:'+40 ATK'},
-  {id:'sw4',name:'ดาบสวรรค์',icon:'✨',type:'weapon',rarity:'epic',atk:100,desc:'+100 ATK'},
-  {id:'sw5',name:'ดาบเซียน',icon:'🌟',type:'weapon',rarity:'legendary',atk:250,desc:'+250 ATK'},
-  {id:'ar1',name:'เสื้อผ้า',icon:'👘',type:'armor',rarity:'common',hp:30,def:3,desc:'+30 HP +3 DEF'},
+  {id:'sw4',name:'ดาบสวรรคค',icon:'✨',type:'weapon',rarity:'epic',atk:100,desc:'+100 ATK'},
+  {id:'sw5',name:'ดาบเซี่ยน',icon:'⭐',type:'weapon',rarity:'legendary',atk:250,desc:'+250 ATK'},
+  {id:'ar1',name:'เสื้อผ้า',icon:'👕',type:'armor',rarity:'common',hp:30,def:3,desc:'+30 HP +3 DEF'},
   {id:'ar2',name:'เกราะเหล็ก',icon:'🛡️',type:'armor',rarity:'uncommon',hp:80,def:10,desc:'+80 HP +10 DEF'},
   {id:'ar3',name:'เกราะมังกร',icon:'🐉',type:'armor',rarity:'rare',hp:200,def:25,desc:'+200 HP +25 DEF'},
   {id:'ar4',name:'จีวรทอง',icon:'👑',type:'armor',rarity:'epic',hp:500,def:60,desc:'+500 HP +60 DEF'},
   {id:'ri1',name:'แหวนพลัง',icon:'💍',type:'accessory',rarity:'common',crit:3,spd:2,desc:'+3% Crit +2 SPD'},
   {id:'ri2',name:'แหวนมังกร',icon:'🐲',type:'accessory',rarity:'rare',crit:8,spd:5,atk:20,desc:'+8% Crit +5 SPD +20 ATK'},
-  {id:'ri3',name:'แหวนเซียน',icon:'🌙',type:'accessory',rarity:'legendary',crit:15,spd:12,atk:50,hp:300,desc:'+15% Crit +12 SPD +50 ATK +300 HP'},
+  {id:'ri3',name:'แหวนเซี่ยน',icon:'🌙',type:'accessory',rarity:'legendary',crit:15,spd:12,atk:50,hp:300,desc:'+15% Crit +12 SPD +50 ATK +300 HP'},
 ];
 const SHOP_ITEMS=[
   {id:'p1',name:'ยาฟื้นฟูจิต',icon:'💊',desc:'+500 Qi',cost:50,act:g=>{g.qi+=500}},
-  {id:'p2',name:'ยาเร่งฝึก',icon:'🧪',desc:'Qi/s x2 เป็นเวลา 60 วินาที',cost:200,act:g=>{g.qiBoostTimer=60}},
-  {id:'p3',name:'คัมภีร์โบราณ',icon:'📜',desc:'+500 EXP',cost:300,act:g=>{g.exp+=500}},
+  {id:'p2',name:'ยาเร่งฝึก',icon:'🦪',desc:'Qi/s x2 เป็นเวลา 60 วินาที',cost:200,act:g=>{g.qiBoostTimer=60}},
+  {id:'p3',name:'คัมภีร์โบราณ',icon:'📖',desc:'+500 EXP',cost:300,act:g=>{g.exp+=500}},
   {id:'p4',name:'กล่องสมบัติ',icon:'📦',desc:'สุ่มไอเทม 1 ชิ้น',cost:150,act:g=>{const pool=ITEMS_DB;const r=Math.random();let it;if(r<0.05)it=pool.find(i=>i.rarity==='legendary');else if(r<0.15)it=pool.find(i=>i.rarity==='epic');else if(r<0.3)it=pool.find(i=>i.rarity==='rare');else if(r<0.55)it=pool.find(i=>i.rarity==='uncommon');else it=pool.find(i=>i.rarity==='common');if(it){g.inventory.push({...it,uid:Date.now()+Math.random()});toast(`🎁 ได้รับ ${it.name}!`);renderInventory()}}},
-  {id:'p5',name:'หินวิญญาณ x10',icon:'💎',desc:'แลก 1000 Qi',costType:'qi',cost:1000,act:g=>{if(g.qi>=1000){g.qi-=1000;g.spiritStones+=10;toast('แลกได้ 10 หินวิญญาณ!')}else toast('Qi ไม่พอ!')}},
+  {id:'p5',name:'หินวิญญาณ x10',icon:'💎',desc:'แลก 1000 Qi',costType:'qi',cost:1000,act:g=>{if(g.qi>=1000){g.qi-=1000;g.spiritStones+=10;toast('แลกได้ 10 หินวิญญาณ!')}else toast('Qi ไม่พอ')}},
 ];
 
 // PvP Tier
@@ -418,14 +439,14 @@ const PVP_TIERS=[
 
 // Sects
 const SECTS=[
-  {id:'sword',name:'สำนักกระบี่สวรรค์',icon:'⚔️',desc:'เชี่ยวชาญดาบ สายโจมตี',bonus:{atk:15,crit:3},bonusText:'+15% ATK, +3% CRIT'},
-  {id:'shield',name:'สำนักโล่เหล็ก',icon:'🛡️',desc:'แข็งแกร่งดั่งภูเขา สายป้องกัน',bonus:{def:20,hp:10},bonusText:'+20% DEF, +10% HP'},
-  {id:'wind',name:'สำนักสายลม',icon:'🌪️',desc:'ว่องไวด้านลม สายความเร็ว',bonus:{spd:20,crit:5},bonusText:'+20% SPD, +5% CRIT'},
+  {id:'sword',name:'สำนักกระบี่สวรรคค',icon:'⚔️',desc:'เชี่ยวชาญดาบ สายโจมตี',bonus:{atk:15,crit:3},bonusText:'+15% ATK, +3% CRIT'},
+  {id:'shield',name:'สำนักโล่เหล็ก',icon:'🛡️',desc:'แข็งแกร่งแกร่ง สายป้องกัน',bonus:{def:20,hp:10},bonusText:'+20% DEF, +10% HP'},
+  {id:'wind',name:'สำนักสายลม',icon:'💨',desc:'ว่องไวด่างลม สายความเร็ว',bonus:{spd:20,crit:5},bonusText:'+20% SPD, +5% CRIT'},
   {id:'spirit',name:'สำนักจิตวิญญาณ',icon:'🔮',desc:'ฝึก Qi ขั้นเทพ สาย Idle',bonus:{qiMult:1.5,expMult:1.3},bonusText:'+50% Qi/s, +30% EXP'},
 ];
 
 // NPC Names
-const NPC_NAMES=['เซียนจันทรา','มังกรเพลิง','ดาวเหนือ','จิตอสูร','เงาสายฟ้า','พายุหิมะ','ราชามืด','แสงทอง','เหล็กดำ','ลมครัว','เมฆมรณะ','ไฟนรก','น้ำค้างเหล็ก','ปลาหมึก','สายรุ้ง','จิ้งจอกเรียว','หมู่เขา','เหยี่ยวแดน','ลมเขี','มหาบ','นักหงส์แดง','กระตายทอง','เต่าหยิ่งจันทร์','ผีเสื้อขาว','อินทรีลม'];
+const NPC_NAMES=['เซี่ยนจันทรา','มังกรเพลิง','ดาวเหนือ','จิตอสูร','เงาสายฟ้า','พายุหิมะ','ราชามืด','แสงทอง','เหล็กดำ','ลมกรด','เมฆมรณะ','ไฟนรก','น้ำค้าง','เสือขาว','จึงจอกเงิน','หมีป่าดำ','เต่าหิน','ปลามหัศจรรย์','อินทรีย์','เมฆมงคล'];
 
 // ==================== STATE ====================
 const SAVE_KEY='overmortal_save_v3';
@@ -441,9 +462,64 @@ let game={
   // Sect
   sectId:null,sectJoinTime:0,
   // Leaderboard seed
-  lbSeed:Math.floor(Math.random()*99999)
+  lbSeed:Math.floor(Math.random()*99999),
+  // Player ID
+  playerId:null,
+  playerName:''
 };
 let pendingIdleRewards=null;
+
+// ==================== PLAYER ID SYSTEM ====================
+function generatePlayerId(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let id='';for(let i=0;i<6;i++)id+=chars[Math.floor(Math.random()*chars.length)];
+  return id;
+}
+function showNameInputModal(){
+  const overlay=document.createElement('div');overlay.className='id-modal-overlay';overlay.id='idModalOverlay';
+  const previewId=game.playerId||generatePlayerId();
+  overlay.innerHTML=`<div class="id-modal"><h2>⭐ ยินดีต้อนรับ</h2><div class="id-sub">ตั้งชื่อตัวละครของคุณเพื่อเริ่มต้นปลูกฝังเซี่ยน</div><input type="text" id="nameInput" placeholder="ใส่ชื่อตัวละคร..." maxlength="20" autocomplete="off"><div class="id-preview"><div class="id-label">Player ID ของคุณ</div><div class="id-code" id="previewIdCode">#${previewId}</div></div><button class="id-confirm-btn" id="confirmNameBtn" disabled onclick="confirmPlayerName()">⚡ เริ่มปลูกฝัง</button></div>`;
+  document.body.appendChild(overlay);
+  if(!game.playerId)game.playerId=previewId;
+  const inp=document.getElementById('nameInput');const btn=document.getElementById('confirmNameBtn');
+  inp.addEventListener('input',()=>{const v=inp.value.trim();btn.disabled=v.length<1;});
+  inp.focus();
+  inp.addEventListener('keydown',(e)=>{if(e.key==='Enter'&&inp.value.trim().length>0)confirmPlayerName()});
+}
+function confirmPlayerName(){
+  const inp=document.getElementById('nameInput');
+  const name=inp.value.trim();if(!name)return;
+  game.playerName=name;
+  saveGame();
+  document.getElementById('idModalOverlay').remove();
+  updatePlayerIdDisplay();
+  toast('🎉 ยินดีต้อนรับ '+name+'!');
+}
+function showEditNameModal(){
+  const overlay=document.createElement('div');overlay.className='id-modal-overlay';overlay.id='editNameOverlay';
+  overlay.innerHTML=`<div class="id-modal"><h2>✏️ แก้ไขชื่อ</h2><div class="id-sub">Player ID: <span style="color:var(--cyan)">#${game.playerId}</span></div><input type="text" id="editNameInput" placeholder="ชื่อใหม่..." maxlength="20" value="${game.playerName}" autocomplete="off"><button class="id-confirm-btn" id="editNameBtn" onclick="confirmEditName()" style="margin-top:14px">✅ บันทึก</button><button class="id-confirm-btn" onclick="document.getElementById('editNameOverlay').remove()" style="margin-top:6px;background:var(--card2);color:var(--text);border:1px solid var(--border)">ยกเลิก</button></div>`;
+  document.body.appendChild(overlay);
+  const inp=document.getElementById('editNameInput');inp.focus();inp.select();
+  inp.addEventListener('keydown',(e)=>{if(e.key==='Enter')confirmEditName()});
+}
+function confirmEditName(){
+  const inp=document.getElementById('editNameInput');
+  const name=inp.value.trim();if(!name)return;
+  game.playerName=name;saveGame();
+  document.getElementById('editNameOverlay').remove();
+  updatePlayerIdDisplay();
+  toast('✅ เปลี่ยนชื่อเป็น '+name);
+}
+function copyPlayerId(){
+  if(navigator.clipboard){navigator.clipboard.writeText(game.playerId).then(()=>toast('📋 คัดลอก ID: #'+game.playerId))}
+  else toast('ID: #'+game.playerId);
+}
+function updatePlayerIdDisplay(){
+  const badge=document.getElementById('playerIdBadge');
+  const nameDisp=document.getElementById('playerNameDisplay');
+  if(game.playerId){badge.textContent='ID: #'+game.playerId;badge.style.display='inline-block'}
+  if(game.playerName){nameDisp.textContent='⚔️ '+game.playerName;nameDisp.style.display='block'}
+}
 
 // ==================== HELPERS ====================
 function $(id){return document.getElementById(id)}
@@ -478,7 +554,7 @@ function getQiPerSec(){
 
 // ==================== SAVE/LOAD ====================
 function saveGame(){
-  const d={qi:game.qi,spiritStones:game.spiritStones,exp:game.exp,realmIndex:game.realmIndex,stage:game.stage,baseHP:game.baseHP,baseATK:game.baseATK,baseDEF:game.baseDEF,baseSPD:game.baseSPD,baseCRIT:game.baseCRIT,meditating:game.meditating,floor:game.floor,inventory:game.inventory,equipped:game.equipped,lastSaveTime:Date.now(),totalPlayTime:game.totalPlayTime,pvpPoints:game.pvpPoints,pvpWins:game.pvpWins,pvpLosses:game.pvpLosses,pvpStreak:game.pvpStreak,pvpBestStreak:game.pvpBestStreak,sectId:game.sectId,sectJoinTime:game.sectJoinTime,lbSeed:game.lbSeed};
+  const d={qi:game.qi,spiritStones:game.spiritStones,exp:game.exp,realmIndex:game.realmIndex,stage:game.stage,baseHP:game.baseHP,baseATK:game.baseATK,baseDEF:game.baseDEF,baseSPD:game.baseSPD,baseCRIT:game.baseCRIT,meditating:game.meditating,floor:game.floor,inventory:game.inventory,equipped:game.equipped,lastSaveTime:Date.now(),totalPlayTime:game.totalPlayTime,pvpPoints:game.pvpPoints,pvpWins:game.pvpWins,pvpLosses:game.pvpLosses,pvpStreak:game.pvpStreak,pvpBestStreak:game.pvpBestStreak,sectId:game.sectId,sectJoinTime:game.sectJoinTime,lbSeed:game.lbSeed,playerId:game.playerId,playerName:game.playerName};
   try{localStorage.setItem(SAVE_KEY,JSON.stringify(d));$('saveIndicator').classList.add('show');setTimeout(()=>$('saveIndicator').classList.remove('show'),1200)}catch(e){}
 }
 function loadGame(){
@@ -527,7 +603,7 @@ function updateUI(){
   $('realmTitle').textContent=`${realm.name} - ชั้น ${game.stage}`;$('realmDesc').textContent=realm.desc;
   $('floorNum').textContent=`ชั้นที่ ${game.floor}`;
   // Stats
-  $('statsContainer').innerHTML=[['พลังชีวิต (HP)',Math.floor(stats.hp)],['โจมตี (ATK)',Math.floor(stats.atk)],['ป้องกัน (DEF)',Math.floor(stats.def)],['ความเร็ว (SPD)',Math.floor(stats.spd)],['คริ (%)',stats.crit.toFixed(1)+'%']].map(([n,v])=>`<div class="stat-row"><span>${n}</span><span class="s-val">${v}</span></div>`).join('');
+  $('statsContainer').innerHTML=[[' พลังชีวิต (HP)',Math.floor(stats.hp)],['โจมตี (ATK)',Math.floor(stats.atk)],['ป้องกัน (DEF)',Math.floor(stats.def)],['ความเร็ว (SPD)',Math.floor(stats.spd)],['คริ (%)',stats.crit.toFixed(1)+'%']].map(([n,v])=>`<div class="stat-row"><span>${n}</span><span class="s-val">${v}</span></div>`).join('');
   // Breakthrough
   const canBr=game.exp>=expReq;$('breakthroughBtn').disabled=!canBr;
   $('breakthroughBtn').textContent=canBr?'⚡ บุกทะลวงขั้น (พร้อม!)':'⚡ บุกทะลวงขั้น';
@@ -608,7 +684,7 @@ function endBattle(won){
     let sectMult=1;if(game.sectId){const sect=SECTS.find(s=>s.id===game.sectId);if(sect&&sect.bonus.expMult)sectMult=sect.bonus.expMult}
     game.exp+=Math.floor(xp*sectMult);game.spiritStones+=st;game.qi+=qi;game.floor++;
     logC(`🎉 ชนะ! +${xp} EXP +${st}💎 +${qi} Qi`,'info','combatLog');
-    if(Math.random()<0.3){const it=dropItem();if(it){logC(`🎁 ดรอป: ${it.name}!`,'info','combatLog');toast(`🎁 ${it.name}!`)}}
+    if(Math.random()<0.3){const it=dropItem();if(it){logC(`🎁 ดรอปได้: ${it.name}!`,'info','combatLog');toast(`🎁 ${it.name}!`)}}
     $('fightBtn').textContent='⚔️ ชั้นถัดไป →';
   }else{logC('💀 พ่ายแพ้!','dmg','combatLog');$('fightBtn').textContent='⚔️ ลองอีกครั้ง'}
   updateUI();
@@ -643,7 +719,7 @@ function generateNPC(powerRange){
   const atk=Math.floor(basePow*0.25),def=Math.floor(basePow*0.12),hp=Math.floor(basePow*0.8),spd=Math.floor(basePow*0.08),crit=5+ri*2+st;
   return{name,realmIndex:ri,stage:st,power:basePow,hp,atk,def,spd,crit,
     realmName:`${REALMS[ri].name} ชั้น ${st}`,
-    avatar:['🧑‍🦱','👩‍🦰','🧑‍🦳','👨‍🦱','🧔','👩','👨‍🦱','👩‍🦳'][Math.floor(rng()*8)],
+    avatar:['🧑‍🦱','👩‍🦰','🧑‍🦳','👨‍🦲','🧔','👩','👨‍🦱','👩‍🦳'][Math.floor(rng()*8)],
     bgColor:`hsl(${Math.floor(rng()*360)},40%,20%)`};
 }
 function refreshPvpOpponents(){
@@ -703,7 +779,7 @@ function endPvpBattle(won,opp){
   game.pvpPoints=Math.max(0,game.pvpPoints+ptsChange);
   // Show result modal
   $('pvpResultIcon').textContent=won?'🏆':'💀';
-  $('pvpResultText').textContent=won?'ชัยชนะ!':'พ่ายแพ้...';
+  $('pvpResultText').textContent=won?'ชั่ยชนะ!':'พ่ายแพ้...';
   $('pvpResultText').style.color=won?'var(--gold)':'var(--red)';
   let rewards=`<div class="reward-row"><span>🏆 คะแนน PvP</span><span class="rw-val" style="color:${ptsChange>=0?'var(--green)':'var(--red)'}">${ptsChange>=0?'+':''}${ptsChange}</span></div>`;
   if(won)rewards+=`<div class="reward-row"><span>💎 หินวิญญาณ</span><span class="rw-val">+${stonesReward}</span></div><div class="reward-row"><span>✨ EXP</span><span class="rw-val">+${expReward}</span></div>`;
@@ -740,7 +816,7 @@ function renderLeaderboard(){
     entries.push({name,realmIndex:ri,stage:st,power:pow,pvpPoints:pvpP,realmName:`${REALMS[ri].name} ${st}`});
   }
   // Add player
-  entries.push({name:'🌟 คุณ',realmIndex:game.realmIndex,stage:game.stage,power:getCombatPower(),pvpPoints:game.pvpPoints,realmName:`${REALMS[game.realmIndex].name} ${game.stage}`,isPlayer:true});
+  entries.push({name:'⭐ '+(game.playerName||'คุณ'),realmIndex:game.realmIndex,stage:game.stage,power:getCombatPower(),pvpPoints:game.pvpPoints,realmName:`${REALMS[game.realmIndex].name} ${game.stage}`,isPlayer:true});
   // Sort
   if(currentLBType==='power')entries.sort((a,b)=>b.power-a.power);
   else if(currentLBType==='realm')entries.sort((a,b)=>(b.realmIndex*10+b.stage)-(a.realmIndex*10+a.stage));
@@ -762,7 +838,7 @@ function renderSect(){
   const c=$('sectContent');
   if(!game.sectId){
     // Choose sect
-    c.innerHTML=`<div class="card" style="text-align:center;margin-bottom:12px"><h3 style="color:var(--gold);font-size:16px;margin-bottom:4px">🏯 เลือกสำนัก</h3><p style="font-size:12px;color:var(--text3)">เข้าร่วมสำนักเพื่อรับโบนัสสถาวร!</p></div><div class="sect-grid" id="sectGrid"></div>`;
+    c.innerHTML=`<div class="card" style="text-align:center;margin-bottom:12px"><h3 style="color:var(--gold);font-size:16px;margin-bottom:4px">🏯 เลือกสำนัก</h3><p style="font-size:12px;color:var(--text3)">เข้าร่วมสำนักเพื่อรับโบนัสสถาวรร!</p></div><div class="sect-grid" id="sectGrid"></div>`;
     const grid=$('sectGrid');
     SECTS.forEach(s=>{
       const d=document.createElement('div');d.className='card sect-option';
@@ -788,7 +864,7 @@ function renderSect(){
       </div>
       <div class="section-title">👥 สมาชิกสำนัก</div>
       <div class="card card-sm">
-        <div class="sect-member"><span class="sm-rank">1</span><span>🌟 คุณ</span><span class="sm-role">ศิษย์</span></div>
+        <div class="sect-member"><span class="sm-rank">1</span><span>⭐ คุณ</span><span class="sm-role">ศิษย์</span></div>
         ${members.map((m,i)=>`<div class="sect-member"><span class="sm-rank">${i+2}</span><span>${m.name}</span><span class="sm-role">${m.role}</span></div>`).join('')}
       </div>
       <button class="btn btn-red" style="margin-top:8px;font-size:13px;padding:10px" onclick="leaveSect()">ออกจากสำนัก</button>
@@ -864,6 +940,9 @@ function gameLoop(){
 (function(){const c=document.createElement('canvas');c.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none';document.body.appendChild(c);const cx=c.getContext('2d');function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);const st=[];for(let i=0;i<60;i++)st.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*1.2+0.3,sp:Math.random()*0.2+0.05,b:Math.random()});(function d(){cx.clearRect(0,0,c.width,c.height);st.forEach(s=>{s.y+=s.sp;if(s.y>c.height){s.y=0;s.x=Math.random()*c.width}s.b+=0.015;cx.fillStyle=`rgba(255,255,255,${0.15+Math.sin(s.b)*0.1})`;cx.beginPath();cx.arc(s.x,s.y,s.s,0,Math.PI*2);cx.fill()});requestAnimationFrame(d)})()})();
 
 loadGame();
+// Show name input if new player
+if(!game.playerName){showNameInputModal()}
+else{updatePlayerIdDisplay()}
 renderInventory();renderShop();refreshPvpOpponents();updateUI();
 setInterval(gameLoop,100);
 addEventListener('beforeunload',()=>saveGame());

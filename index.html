@@ -410,7 +410,7 @@ const SHOP_ITEMS=[
   {id:'qi_pill',name:'ยาเพิ่มพลังจิต',icon:'🧃',desc:'+5000 พลังจิต',cost:300,costType:'stones',reward:{qi:5000}},
   {id:'tree_seed',name:'เมล็ดพันธุ์',icon:'🌱',desc:'อัพต้นไม้ +1',cost:1000,costType:'stones',reward:{treeLv:1}},
   {id:'fellow_gift',name:'กล่องของขวัญ',icon:'🎁',desc:'ของขวัญมิตรเซี่ยน x5',cost:500,costType:'stones',reward:{gifts:5}},
-  {id:'beast_bone',name:'กระดูกเทพ',icon:''🧴',desc:'ล้างกระดูกสัตว์เทพ',cost:800,costType:'stones',reward:{bones:1}}
+  {id:'beast_bone',name:'กระดูกเทพ',icon:'🧴',desc:'ล้างกระดูกสัตว์เทพ',cost:800,costType:'stones',reward:{bones:1}}
 ];
 
 // ==================== GAME STATE ====================
@@ -875,7 +875,7 @@ function runCombat(playerStats,enemy,onWin,onLose){
         let dmg=Math.max(1,eATK-pDEF*0.5);
         // Player evasion
         if(Math.random()*100<playerStats.eva){log.push('💨 คุณหลบหลีก!');continue}
-        pHP-=Math.floor(dmg");
+        pHP-=Math.floor(dmg);
         log.push(`👿 ${enemy.name}โจมตี ${Math.floor(dmg)}`);
         // Counter
         if(Math.random()*100<playerStats.counter){

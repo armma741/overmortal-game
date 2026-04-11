@@ -840,7 +840,7 @@ function showItemDetail(itemId){
     <button class="btn btn-red" onclick="sellItem('${item.id}')" style="font-size:12px">💰 ขาย (+${Math.floor(itemPower(item)*0.2)}💎)</button>
     <button class="btn" onclick="el('itemModal').style.display='none'" style="background:var(--card2);color:var(--text);border:1px solid var(--border)">ปิด</button>
   `;
-  el('itemModal').style.display='flex';
+  el('itemModal').style.display='flex';window.scrollTo(0,0);
 }
 
 function equipItem(itemId){
@@ -875,7 +875,7 @@ function showSlotOptions(slotId){
     ${matching.map(i=>`<div onclick="equipItem('${i.id}')" style="cursor:pointer">${itemHTML(i,false)}</div>`).join('')}
     <button class="btn" onclick="el('itemModal').style.display='none'" style="background:var(--card2);color:var(--text);border:1px solid var(--border)">ปิด</button>
   `;
-  el('itemModal').style.display='flex';
+  el('itemModal').style.display='flex';window.scrollTo(0,0);
 }
 
 // ==================== FELLOWS ====================
@@ -1025,6 +1025,7 @@ function runCombat(playerStats,enemy,onWin,onLose){
 }
 
 function showCombatResult(win,enemy,log,remainHP,maxHP,callback){
+  window._combatCallback=callback;
   el('combatContent').innerHTML=`
     <div class="combat-scene">
       <span class="enemy-icon">${enemy.icon}</span>
@@ -1033,9 +1034,9 @@ function showCombatResult(win,enemy,log,remainHP,maxHP,callback){
       <div style="font-size:11px;color:var(--muted)">HP เหลือ: ${Math.max(0,remainHP)}/${maxHP}</div>
     </div>
     <div class="combat-log">${log.slice(-10).map(l=>`<div>${l}</div>`).join('')}</div>
-    <button class="btn btn-gold" onclick="el('combatModal').style.display='none';(${callback.toString()})();">ตกลง</button>
+    <button class="btn btn-gold" onclick="el('combatModal').style.display='none';if(window._combatCallback)window._combatCallback();">ตกลง</button>
   `;
-  el('combatModal').style.display='flex';
+  el('combatModal').style.display='flex';window.scrollTo(0,0);
 }
 
 // ==================== ADVENTURE ====================
@@ -1245,7 +1246,7 @@ function guildShop(){
     ${items.map(it=>`<div class="fellow-card" onclick="(function(){if(G.guildPoints<${it.cost}){toast('❌ แต้มไม่พอ');return}G.guildPoints-=${it.cost};(${it.action.toString()})();updateUI()})()"><div class="fellow-icon">${it.icon}</div><div class="fellow-info"><div class="fellow-name">${it.name}</div><div class="fellow-sub">${it.cost} แต้ม</div></div></div>`).join('')}
     <button class="btn" onclick="el('itemModal').style.display='none'" style="background:var(--card2);color:var(--text);border:1px solid var(--border)">ปิด</button>
   `;
-  el('itemModal').style.display='flex';
+  el('itemModal').style.display='flex';window.scrollTo(0,0);
 }
 
 // ==================== SHOP ====================
